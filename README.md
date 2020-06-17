@@ -96,7 +96,7 @@ Things you may want to cover:
 
 ## images table
 |image|text|null: false|
-|item_id|reference|null: false|
+|item_id|reference|null: false,foreginkey: true|
 
 ### Association
 - belongs_to :item
