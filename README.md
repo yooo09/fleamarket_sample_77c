@@ -30,11 +30,22 @@ Things you may want to cover:
 |nickname|string|null: false,unique: true,index: true|
 |email|integer|null: false,unique: true|
 |password|integer|null: false|
-|last_name_kannji|string|null: false|
-|first_name_kanji|string|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
 |last_name_kana|string|null: false|
 |first_name_kana|string|null: false|
 |birthday|integer|null: false|
+
+
+### Association
+- has_many :credit_card
+- has_many :items
+- has_many :adresses
+
+
+## adresses table
+|Colm|Type|Option|
+|----|----|------|
 |zip_code|integernull: false|
 |prefecture|string|null: false|
 |city|string|null: false|
@@ -42,10 +53,9 @@ Things you may want to cover:
 |building|string|null: false|
 |phone_number|integer|null: false|
 
-### Association
-- has_many :credit_card
-- has_many :items
 
+### Association
+- belongs_to :user
 
 
 
@@ -63,7 +73,7 @@ Things you may want to cover:
 
 
 
-## itemss table
+## itemes table
 |Colm|Type|Option|
 |----|----|------|
 |image|text|
@@ -79,79 +89,46 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :categoris through: :item_categoies
-- has_many :brand through: :items_categories 
-- has_many :condition
-
-
+- belongs_to :category
+- belongs_to :brand
+- belongs_to :condition
 
 
 
 ## categories table
 |Colm|Type|Option|
 |----|----|------|
-|name|string|
+|category_name|string|null: false|
 
 ### Association
-- belongs_to :items
+- has_many :items
 
 
-## items_categories table
+
+
+##  brands
 |Colm|Type|Option|
 |----|----|------|
-|user|reference|null: false,foreginkey: true|
-|category||reference|foreginkey: true|
+|brand_name|string|null: false|
 
 ### Association
-- belongs_to :items
-- belongs_to :categories 
+- has_many :items
 
 
 
 
-##  brand
-|Colm|Type|Option|
-|----|----|------|
-|brand_name|integr|
-
-### Association
-- belongs_to :items
-
-
-
-
-##  itme-brand
-|Colm|Type|Option|
-|----|----|------|
-|item-id|reference|foreginkey: true|
-|brand-id|reference|foreginkey: true|
-
-### Association
-- belongs_to :items
-- belongs_to :brand
-
-
-
-## condition
+## conditions
 |Colm|Type|Option|
 |----|----|------|
 |condition|integer|null: false|
 |itme_id|reference|null: false||foreginkey: true|
 
 ### Association
-- belongs_to :items
+- has_many :items
 
 
 
 
-##  item-condition
-|Colm|Type|Option|
-|----|----|------|
-|item_id|reference|null: false||foreginkey: true|
-|condition_id|reference|null: false||foreginkey: true|
-
-### Association
-- belongs_to :items
 
 
 
