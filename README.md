@@ -91,11 +91,12 @@ Things you may want to cover:
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :condition
-v
+- has_many :images
 
 
 ## images table
-|image|text|
+|image|text|null: false|
+|item_id|reference|null: false|
 
 ### Association
 - belongs_to :item
