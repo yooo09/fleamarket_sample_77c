@@ -38,7 +38,7 @@ Things you may want to cover:
 
 
 ### Association
-- has_many :credit_card
+- has_many :credit_cards
 - has_many :items
 - has_many :adresses
 
@@ -76,7 +76,6 @@ Things you may want to cover:
 ## itemes table
 |Colm|Type|Option|
 |----|----|------|
-|image|text|
 |item_name|string|null: false|
 |item_detail|text|
 |category|string
@@ -92,6 +91,14 @@ Things you may want to cover:
 - belongs_to :category
 - belongs_to :brand
 - belongs_to :condition
+v
+
+
+## images table
+|image|text|
+
+### Association
+- belongs_to :item
 
 
 
@@ -121,7 +128,6 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |condition|integer|null: false|
-|itme_id|reference|null: false||foreginkey: true|
 
 ### Association
 - has_many :items
