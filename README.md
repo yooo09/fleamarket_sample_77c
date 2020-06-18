@@ -52,7 +52,7 @@ Things you may want to cover:
 |house_number|integer|null: false|
 |building|string|null: false|
 |phone_number|integer|null: false|
-
+|user_id|references|null: false,foreginkey: true|
 
 ### Association
 - belongs_to :user
@@ -66,7 +66,7 @@ Things you may want to cover:
 |card_number|integer|null:false|
 |CVS|integer|null:false|
 |Expiration_date|date|null: false|
-|user_id||reference|foreginkey: true|
+|user_id||references|null: false|foreginkey: true|
 
 ### Association
 - belongs_to :user
@@ -76,15 +76,13 @@ Things you may want to cover:
 ## itemes table
 |Colm|Type|Option|
 |----|----|------|
-|item_name|string|null: false|
-|item_detail|text|
-|category|string
-|brand|string|
+|name|string|null: false|
+|detail|text|
 |delivery_fee|integer|null: false|
 |shippig_area|string|null: false|
 |delivery_time|integer|null: false|
 |price|integer|null:false|
-|user_id|reference|foreginkey: true|
+|user_id|references|null:false,foreginkey: true|
 
 ### Association
 - belongs_to :user
@@ -96,7 +94,7 @@ Things you may want to cover:
 
 ## images table
 |image|text|null: false|
-|item_id|reference|null: false,foreginkey: true|
+|item_id|references|null: false,foreginkey: true|
 
 ### Association
 - belongs_to :item
@@ -106,7 +104,8 @@ Things you may want to cover:
 ## categories table
 |Colm|Type|Option|
 |----|----|------|
-|category_name|string|null: false|
+|name|string|null: false|
+|item_id|references|foreginkey: true|
 
 ### Association
 - has_many :items
@@ -117,7 +116,8 @@ Things you may want to cover:
 ##  brands
 |Colm|Type|Option|
 |----|----|------|
-|brand_name|string|null: false|
+|name|string|null: false|
+|item_id|references|foreginkey: true|
 
 ### Association
 - has_many :items
@@ -129,6 +129,7 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |condition|integer|null: false|
+|item_id|references|null: false,foreginkey: true|
 
 ### Association
 - has_many :items
