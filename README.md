@@ -78,11 +78,15 @@ Things you may want to cover:
 |----|----|------|
 |name|string|null: false|
 |detail|text|
+|condition|integer|null: false|
 |delivery_fee|integer|null: false|
 |shippig_area|string|null: false|
 |delivery_time|integer|null: false|
 |price|integer|null:false|
 |user_id|references|null:false,foreginkey: true|
+|brand_id|references|foreginkey: true|
+|category_id|references|foreginkey: true|
+
 
 ### Association
 - belongs_to :user
@@ -105,7 +109,7 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |name|string|null: false|
-|item_id|references|foreginkey: true|
+
 
 ### Association
 - has_many :items
@@ -117,7 +121,6 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |name|string|null: false|
-|item_id|references|foreginkey: true|
 
 ### Association
 - has_many :items
@@ -125,14 +128,14 @@ Things you may want to cover:
 
 
 
-## conditions
+<!-- ## conditions
 |Colm|Type|Option|
 |----|----|------|
 |condition|integer|null: false|
 |item_id|references|null: false,foreginkey: true|
 
 ### Association
-- has_many :items
+- has_many :items -->
 
 
 
