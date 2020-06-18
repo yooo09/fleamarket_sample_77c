@@ -21,14 +21,14 @@
                 %p商品名
               .required
                 %p必須
-            %input(type="text")/
+            %input{type: "text"}
           .detail-content
             .menu
               .menu-name
                 %p商品の説明
               .required
                 %p必須
-            %input(type="text")/
+            %input{type:"text"}
       .sell__about
         .content
           %p商品の詳細
@@ -39,21 +39,21 @@
                   %pカテゴリ
                 .required
                   %p必須
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
             .about-content__box
               .menu
                 .menu-name
                   %pブランド
                 .any
                   %p任意
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
             .about-content__box
               .menu
                 .menu-name
                   %p商品の状態
                 .required
                   %p必須
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
       .sell__price
         .content
           %p配送について
@@ -67,7 +67,7 @@
               .price__yen
                 %p¥
               .price__box
-                %input(type="integer")/
+                %input{type:"integer"}
       .sell__delivery
         .content
           %p配送について
@@ -78,21 +78,21 @@
                   %p配送料
                 .required
                   %p必須
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
             .delivery-content__box
               .menu
                 .menu-name
                   %p発送元地域
                 .required
                   %p必須
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
             .delivery-content__box
               .menu
                 .menu-name
                   %p発送までの日数
                 .required
                   %p必須
-              %select{:multiple => "multiple", :name => "カテゴリ", :size => "3"} ～
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
       .sell__submit
         .content
           %input{type:"submit",class:"submit-btn",value:"出品する"}
