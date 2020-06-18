@@ -37,9 +37,10 @@ Things you may want to cover:
 |birthday|integer|null: false|
 
 ### Association
+- has_many :adresses dependent: :destroy
 - has_many :credit_cards dependent: :destroy
 - has_many :items dependent: :destroy
-- has_many :adresses dependent: :destroy
+
 
 
 ## adresses table
@@ -90,7 +91,6 @@ Things you may want to cover:
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
-- belongs_to :condition
 - has_many :images dependent: :destroy
 
 
