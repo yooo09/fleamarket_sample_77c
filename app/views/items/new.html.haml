@@ -1,4 +1,104 @@
 .new-content
   .main-box
     .header
-  .
+      = image_tag "/images/logo/logo.png",size: "300x80"
+    .sell
+      .sell__image
+        .content
+          .menu
+            .menu-name
+              %p出品画像
+            .required
+              %p必須
+          .sell__image__area
+            %input{type: "file"}
+              -# %pクリックして画像を選択
+      .sell__name
+        .content
+          .name-content
+            .menu
+              .menu-name
+                %p商品名
+              .required
+                %p必須
+            %input{type: "text"}
+          .detail-content
+            .menu
+              .menu-name
+                %p商品の説明
+              .required
+                %p必須
+            %input{type:"text"}
+      .sell__about
+        .content
+          %p商品の詳細
+          .about-content
+            .about-content__box
+              .menu
+                .menu-name
+                  %pカテゴリ
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .about-content__box
+              .menu
+                .menu-name
+                  %pブランド
+                .any
+                  %p任意
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .about-content__box
+              .menu
+                .menu-name
+                  %p商品の状態
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+      .sell__price
+        .content
+          %p配送について
+          .price-content__box
+            .menu
+              .menu-name
+                %p販売価格
+              .required
+                %p必須
+            .price
+              .price__yen
+                %p¥
+              .price__box
+                %input{type:"integer"}
+      .sell__delivery
+        .content
+          %p配送について
+          .delivery-content
+            .delivery-content__box
+              .menu
+                .menu-name
+                  %p配送料
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .delivery-content__box
+              .menu
+                .menu-name
+                  %p発送元地域
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .delivery-content__box
+              .menu
+                .menu-name
+                  %p発送までの日数
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+      .sell__submit
+        .content
+          %input{type:"submit",class:"submit-btn",value:"出品する"}
+        
+
+
+    .footer
+      .footer__logo
+        = image_tag "/images/logo/logo.png",size: "150x50"
