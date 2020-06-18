@@ -78,7 +78,7 @@ Things you may want to cover:
 |----|----|------|
 |name|string|null: false|
 |detail|text|
-|condition|integer|null: false|
+|condition|integer|null: false,default: 0|
 |delivery_fee|integer|null: false|
 |shippig_area|string|null: false|
 |delivery_time|integer|null: false|
@@ -127,15 +127,6 @@ Things you may want to cover:
 
 
 
-
-<!-- ## conditions
-|Colm|Type|Option|
-|----|----|------|
-|condition|integer|null: false|
-|item_id|references|null: false,foreginkey: true|
-
-### Association
-- has_many :items -->
 
 
 
