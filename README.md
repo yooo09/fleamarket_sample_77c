@@ -36,7 +36,6 @@ Things you may want to cover:
 |first_name_kana|string|null: false|
 |birthday|integer|null: false|
 
-
 ### Association
 - has_many :credit_cards
 - has_many :items
@@ -87,7 +86,6 @@ Things you may want to cover:
 |brand_id|references|foreginkey: true|
 |category_id|references|foreginkey: true|
 
-
 ### Association
 - belongs_to :user
 - belongs_to :category
@@ -110,10 +108,8 @@ Things you may want to cover:
 |----|----|------|
 |name|string|null: false|
 
-
 ### Association
 - has_many :items
-
 
 
 
