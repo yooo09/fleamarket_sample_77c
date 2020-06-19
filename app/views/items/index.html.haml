@@ -1,34 +1,5 @@
 .index-content
   = render "header"
-  -# .header
-  -#   .box
-  -#     .box__center
-  -#       .icon
-  -#         %a{:href => "/"} 
-  -#           = image_tag ("/images/logo/logo.png")
-  -#       .form
-  -#         %form.search
-  -#           .search__input-box
-  -#             %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
-  -#           %botton{type: "submit", class: "search__submit"}
-  -#             = image_tag ("/images/icon/icon-search 1.png")
-  -#     .box__under
-  -#       %ul.left-item
-  -#         %li.left-item__main
-  -#           %a{:href => "/"} 商品一覧
-  -#           -# .tree
-  -#           -#   %ul.category-tree
-  -#           -#     %li.category-tree
-  -#           -#       %a レディース
-  -#         -# %li.left-item__brend
-  -#         -#   %a ブランド
-  -#           .brend-list
-  -#             %ul.brend-pulldown
-  -#       %ul.right-menu
-  -#         %li.right-menu__login
-  -#           %a{:href => "/"} ログイン
-  -#         %li.right-menu__new
-  -#           %a{:href => "/"}  新規会員登録
 
   .main
     .mein-title
@@ -39,11 +10,6 @@
           FURIMAは誰でもかんたんに出品・購入できる
           %br
             フリマアプリです
-        -# .content__app
-        -#   %a{:href => "/"} 
-        -#     = image_tag ("/images/icon/icon-search 1.png")
-        -#   %a{:href => "/"} 
-        -#     = image_tag ("/images/icon/icon-search 1.png")
     .top-list
       %h2.list-title
         FURIMAが選ばれる3つの理由
@@ -91,11 +57,6 @@
             出品•購入回数も業界最多です!
             %br
               ほしかったあの商品に出会えるかもしれません。
-        -# .content__app
-        -#   %a{:href => "/"} 
-        -#     = image_tag ("/images/icon/icon-search 1.png")
-        -#   %a{:href => "/"} 
-        -#     = image_tag ("/images/icon/icon-search 1.png")
     .characteristic
       %h2.list-title
         FURIMAの特徴
@@ -126,12 +87,12 @@
         ピックアップカテゴリー
       .new-item
         .item-head
-          %a{:href => "/"}
+          = link_to "#"  do
             .h3.list-test
               新規投稿商品
         .item-lists
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -146,7 +107,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -161,7 +122,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -176,7 +137,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -195,12 +156,12 @@
         ピックアップブランド
       .new-item
         .item-head
-          %a{:href => "/"}
+          = link_to "#"  do
             .h3.list-test
               アーカイバ
         .item-lists
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -215,7 +176,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -230,7 +191,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -245,7 +206,7 @@
                   %p
                     （税込）
           .item-list
-            %a{:href => "/"}
+            = link_to "#"  do
               %figure.item-list__img
                 = image_tag ("/images/icon/member_photo_noimage_thumb.png")
               .item-list__body
@@ -265,50 +226,6 @@
         だれでもかんたん、人生を変えるフリマアプリ
       %p.content__text
         今すぐ無料ダウンロード！
-      -# .content__app
-      -#   %a{:href => "/"} 
-      -#     = image_tag ("/images/icon/icon-search 1.png")
-      -#   %a{:href => "/"} 
-      -#     = image_tag ("/images/icon/icon-search 1.png")
   = render "footer"
-  -# .footer
-  -#   %ul.contens
-  -#     %li.content
-  -#       %h2.content__title
-  -#         FURIMAについて
-  -#       %ul
-  -#         %li
-  -#           %a{:href => "/"} 会社概要（運営会社）
-  -#         %li
-  -#           %a{:href => "/"} プライバシーポリシー
-  -#         %li
-  -#           %a{:href => "/"} FURIMA利用規約
-  -#         %li
-  -#           %a{:href => "/"} ポイントに関する特約
-  -#     %li.content
-  -#       %h2.content__title
-  -#         FURIMAを見る
-  -#       %ul
-  -#         %li
-  -#           %a{:href => "/"} カテゴリー一覧
-  -#         %li
-  -#           %a{:href => "/"} ブランド一覧
-  -#     %li.content
-  -#       %h2.content__title
-  -#         ヘルプ＆ガイド
-  -#       %ul
-  -#         %li
-  -#           %a{:href => "/"} FURIMAガイド
-  -#         %li
-  -#           %a{:href => "/"} FURIMAロゴ利用ガイドライン
-  -#         %li
-  -#           %a{:href => "/"} お知らせ
-  -#   .footer-logo
-  -#     %a{:href => "/"} 
-  -#       = image_tag ("/images/logo/logo-white.png")
-  -#   %p © FURIMA
   = render "cameraicon"
-  -# %a{:href => "/"}
-  -#   .exhibition-btn
-  -#     %span.exhibition-btn__text 出品する
-  -#     = image_tag ("/images/icon/icon_camera.png"), class: "exhibition-btn__icon"
+

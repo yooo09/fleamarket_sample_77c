@@ -2,7 +2,7 @@
   .box
     .box__center
       .icon
-        %a{:href => "/"} 
+        = link_to "#" do
           = image_tag ("/images/logo/logo.png")
       .form
         %form.search
@@ -13,17 +13,14 @@
     .box__under
       %ul.left-item
         %li.left-item__main
-          %a{:href => "/"} 商品一覧
-          -# .tree
-          -#   %ul.category-tree
-          -#     %li.category-tree
-          -#       %a レディース
-        -# %li.left-item__brend
-        -#   %a ブランド
+          = link_to "#"  do
+            商品一覧
           .brend-list
             %ul.brend-pulldown
       %ul.right-menu
         %li.right-menu__login
-          %a{:href => "/"} ログイン
+          = link_to "#"  do
+            ログイン
         %li.right-menu__new
-          %a{:href => "/"}  新規会員登録
+          = link_to "#"  do
+            新規会員登録
