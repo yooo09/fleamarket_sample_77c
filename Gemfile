@@ -73,3 +73,6 @@ group :production do
 end
 gem 'devise'
 gem 'haml-rails'
+gem 'fog-aws'
+gem 'carrierwave'
+gem 'mini_magick'
