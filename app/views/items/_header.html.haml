@@ -1,0 +1,29 @@
+.header
+  .box
+    .box__center
+      .icon
+        %a{:href => "/"} 
+          = image_tag ("/images/logo/logo.png")
+      .form
+        %form.search
+          .search__input-box
+            %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
+          %botton{type: "submit", class: "search__submit"}
+            = image_tag ("/images/icon/icon-search 1.png")
+    .box__under
+      %ul.left-item
+        %li.left-item__main
+          %a{:href => "/"} 商品一覧
+          -# .tree
+          -#   %ul.category-tree
+          -#     %li.category-tree
+          -#       %a レディース
+        -# %li.left-item__brend
+        -#   %a ブランド
+          .brend-list
+            %ul.brend-pulldown
+      %ul.right-menu
+        %li.right-menu__login
+          %a{:href => "/"} ログイン
+        %li.right-menu__new
+          %a{:href => "/"}  新規会員登録
