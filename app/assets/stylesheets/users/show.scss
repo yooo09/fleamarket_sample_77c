@@ -1,0 +1,82 @@
+.show_content{
+  width: 100%;
+  height: 100%;
+  .show_header{
+    width: 100%;
+    height: 100px;
+    background-color: #3CCACE;
+  }
+  .main{
+    margin-top: 40px;
+    width: 100%;
+    height: calc(100vh - 100px);
+    &_content{
+      height: 600px;
+      width: 1020px;
+      margin: 0 auto;
+      .user{
+        width: 100%;
+        height: 150px;
+        text-align: center;
+        line-height: 150px;
+        font-size: 35px;
+        font-weight: bold;
+        background-color: #3CCACE;
+      }
+      .product{
+        width: 100%;
+        height: calc(600px - 150px);
+        &_header{
+          height: 70px;
+          line-height: 70px;
+          padding-left: 20px;
+          font-size: 20px;
+          background-color: rgba(192, 192, 192, 0.2);
+        }
+        &_items{
+          margin-top: 50px;
+          padding-bottom: 40px;
+          background-color: #fff;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          width: 100%;
+          margin: 0 auto;
+          .tab_item{
+            width: calc(100%/2);
+            height: 50px;
+            border-bottom: 5px solid rgba(60, 202, 206, 0.5);
+            background-color: #d9d9d9;
+            line-height: 50px;
+            font-size: 16px;
+            text-align: center;
+            color: #565656;
+            display: block;
+            float: left;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.2s ease;
+          }
+          .tab_item:hover {
+            opacity: 0.6;
+          }
+          .tab_radio{
+            display: none;
+          }
+          .tab_content{
+            display: none;
+            padding: 40px 40px 0;
+            clear: both;
+            overflow: hidden;
+          }
+          #selling:checked ~ #selling_content,
+          #bought:checked ~ #bought_content{
+            display: block;
+          }
+        }
+        &_items input:checked + .tab_item{
+          background-color: #3CCACE;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
