@@ -1,1 +1,231 @@
+.index-content
+  = render "header"
+
+  .main
+    .mein-title
+      .content
+        %h2.content__title
+          人生を変えるフリマアプリ
+        %p.content__text
+          FURIMAは誰でもかんたんに出品・購入できる
+          %br
+            フリマアプリです
+    .top-list
+      %h2.list-title
+        FURIMAが選ばれる3つの理由
+      %ul.choose
+        %li.choose__list
+          .choose__list__pic
+            %span.number
+              1
+            = image_tag ("/images/pict/pict-reason-01.jpg")
+          %h3.list__text
+            %span 
+              3分
+            ですぐに出品
+          %p.list__detail
+            スマホで入力するだけで簡単に出品できる!
+        %li.choose__list
+          .choose__list__pic
+            %span.number
+              2
+            = image_tag ("/images/pict/pict-reason-02.jpg")
+          %h3.list__text
+            %span
+              シンプル
+            で使いやすい
+          %p.list__detail
+            めんどくさい入力は必要なく、検索もスムーズ!
+        %li.choose__list
+          .choose__list__pic
+            %span.number
+              3
+            = image_tag ("/images/pict/pict-reason-03.jpg")
+          %h3.list__text
+            手数料
+            %span
+              業界最安
+          %p.list__detail
+            最大3%でお得に出品＆購入!
+    .top-share
+      .content
+        %h2.content__title
+          会員数日本一
+        %p.content__text
+          FURIMAは、フリマアプリで最も人気。
+          %br
+            出品•購入回数も業界最多です!
+            %br
+              ほしかったあの商品に出会えるかもしれません。
+    .characteristic
+      %h2.list-title
+        FURIMAの特徴
+      .items
+        .item
+          %figure.item__pic
+            = image_tag ("/images/icon/icon-01.png")
+          %h3.list__text
+            簡単に売り買いできる
+          %p.list__detail
+            スマホ一つで、いつでもどこでも簡単に出品・購入が可能!
+        .item
+          %figure.item__pic
+            = image_tag ("/images/icon/icon-03.png")
+          %h3.list__text
+            売上金は即日振り込みに対応
+          %p.list__detail
+            午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+        .item
+          %figure.item__pic
+            = image_tag ("/images/icon/icon-04.png")
+          %h3.list__text
+            様々な支払いに対応
+          %p.list__detail
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    .picup-top
+      %h2.list-title
+        ピックアップカテゴリー
+      .new-item
+        .item-head
+          = link_to "#"  do
+            .h3.list-test
+              新規投稿商品
+        .item-lists
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+    .picup-under
+      %h2.list-title
+        ピックアップブランド
+      .new-item
+        .item-head
+          = link_to "#"  do
+            .h3.list-test
+              アーカイバ
+        .item-lists
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+          .item-list
+            = link_to "#"  do
+              %figure.item-list__img
+                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              .item-list__body
+                %h3.item-list__name
+                  smile
+                .itemu-list__data
+                  %ul
+                    %li
+                      0円
+                    %i.lile-icon
+                      ★ 0
+                  %p
+                    （税込）
+  .app
+    .content
+      %h2.content__title
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.content__text
+        今すぐ無料ダウンロード！
+  = render "footer"
+  = render "cameraicon"
 
