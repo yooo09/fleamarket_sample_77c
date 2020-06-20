@@ -18,9 +18,15 @@
           .brend-list
             %ul.brend-pulldown
       %ul.right-menu
-        %li.right-menu__login
-          = link_to "#"  do
-            ログイン
-        %li.right-menu__new
-          = link_to "#"  do
-            新規会員登録
+        - if user_signed_in?
+          %li.right-menu__login
+            = link_to "#"  do
+              ログアウト
+        - else
+          %li.right-menu__login
+            = link_to "#"  do
+              ログイン
+          %li.right-menu__new
+            = link_to "#"  do
+              新規会員登録
+          
