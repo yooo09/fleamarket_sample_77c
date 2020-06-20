@@ -1,1 +1,88 @@
-test
+.show-content
+  = render "header"
+  .main-box
+    .item
+      .item__name
+        %pアイテム名
+      .item__image
+        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+      .item__mini
+        .item__mini__image
+          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+        .item__mini__image
+          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+    .price
+      .price__value
+        %p¥0
+      .price__fee
+        %p
+          (税込) 送料込み
+    .detail
+      .detail__sentences
+        %p
+          この商品はテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト。
+      .detail__content
+        .user
+          .user__box
+            %p出品者
+          .user__name
+            %p株式会社リサイクル
+        .category
+          .category__box
+            %pカテゴリ
+          .category__name
+            %p財布
+        .brand
+          .brand__box
+            %pブランド
+          .brand__name
+            %pヴィトン
+        .condition
+          .condition__box
+            %p商品状況
+          .condition__name
+            %p未使用
+        .delivery_fee
+          .delivery_fee__box
+            %p配送料の負担
+          .delivery_fee__name
+            %p
+              送料込み（出品者負担）
+        .shipping_area
+          .shipping_area__box
+            %p発送元の地域
+          .shipping_area__name
+            %p北海道
+        .delivery_time
+          .delivery_time__box
+            %p発送日の目安
+          .delivery_time__name
+            %p
+              1-2日で発送
+  .under
+    .more
+      %pヴィトンをもっとみる
+    .recommended
+      .recommended__image
+        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+      .recommended__price
+        %p商品名
+        .recommended__price__box
+          %p
+            1000円
+          .recommended__price__box__fee
+            %p
+              (税込)
+  = render "footer"
+  = render "cameraicon"
+
+      
+
+    
+    
+      
+
+    
+      
+      
+

@@ -24,4 +24,99 @@ Things you may want to cover:
 * ...
 
 
-### create tables
+## users table
+|Colm|Type|Option|
+|----|----|------|
+|nickname|string|null: false,unique: true,index: true|
+|email|integer|null: false,unique: true|
+|password|integer|null: false|
+|last_name|string|null: false|
+|first_name|string|null: false|
+|last_name_kana|string|null: false|
+|first_name_kana|string|null: false|
+|birthday|integer|null: false|
+
+### Association
+- has_many :adresses dependent: :destroy
+- has_many :credit_cards dependent: :destroy
+- has_many :items dependent: :destroy
+
+
+
+## adresses table
+|Colm|Type|Option|
+|----|----|------|
+|zip_code|integernull: false|
+|prefecture|string|null: false|
+|city|string|null: false|
+|house_number|integer|null: false|
+|building|string|null: false|
+|phone_number|integer|null: false|
+|user_id|references|null: false,foreginkey: true|
+
+### Association
+- belongs_to :user
+
+
+
+## credit_card table
+|Colm|Type|Option|
+|----|----|------|
+|credit_card_type|string|null: false|
+|card_number|integer|null:false|
+|CVS|integer|null:false|
+|Expiration_date|date|null: false|
+|user_id||references|null: false|foreginkey: true|
+
+### Association
+- belongs_to :user
+
+
+
+## itemes table
+|Colm|Type|Option|
+|----|----|------|
+|name|string|null: false|
+|detail|text|
+|condition|integer|null: false,default: 0|
+|delivery_fee|integer|null: false|
+|shippig_area|string|null: false|
+|delivery_time|integer|null: false|
+|price|integer|null:false|
+|user_id|references|null:false,foreginkey: true|
+|brand_id|references|foreginkey: true|
+|category_id|references|foreginkey: true|
+
+### Association
+- belongs_to :user
+- belongs_to :category
+- belongs_to :brand
+- has_many :images dependent: :destroy
+
+
+## images table
+|image|text|null: false|
+|item_id|references|null: false,foreginkey: true|
+
+### Association
+- belongs_to :item
+
+
+
+## categories table
+|Colm|Type|Option|
+|----|----|------|
+|name|string|null: false|
+
+### Association
+- has_many :items 
+
+
+
+##  brands
+|Colm|Type|Option|
+|----|----|------|
+|name|string|null: false|
+
+### Association
+- has_many :items 
