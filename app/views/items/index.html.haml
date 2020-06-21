@@ -93,21 +93,40 @@
               投稿商品
         .item-lists
           - @items.each do |item|
-            %ul.item-list
-              = link_to "#"  do
-                %li.item-list__img
-                  = image_tag item.image
-                .item-list__body
-                  %li.item-list__name
-                    = item.item_name
-                  .itemu-list__data
-                    %ul
-                      %li
-                        = item.price
-                        円
-                    %p
-                      （税込）
-
+            -if item.customer_id.present? 
+              %ul.item-list
+                = link_to "#"  do
+                  .sold
+                    .back
+                    .sold-font
+                      SOLD
+                  %li.item-list__img
+                    = image_tag item.image
+                  .item-list__body
+                    %li.item-list__name
+                      = item.item_name
+                    .itemu-list__data
+                      %ul
+                        %li
+                          = item.price
+                          円
+                      %p
+                        （税込）
+            -else
+              %ul.item-list
+                = link_to "#"  do
+                  %li.item-list__img
+                    = image_tag item.image
+                  .item-list__body
+                    %li.item-list__name
+                      = item.item_name
+                    .itemu-list__data
+                      %ul
+                        %li
+                          = item.price
+                          円
+                      %p
+                        （税込）
            
   .app
     .content
@@ -118,7 +137,24 @@
   = render "footer"
   = render "cameraicon"
 
--#商品」一覧の商品にsoldを記載/商品の個別の枠の一番下に配置
+-# .item-lists
+-#           - @items.each do |item|
+-#             %ul.item-list
+-#               = link_to "#"  do
+-#                 %li.item-list__img
+-#                   = image_tag item.image
+-#                 .item-list__body
+-#                   %li.item-list__name
+-#                     = item.item_name
+-#                   .itemu-list__data
+-#                     %ul
+-#                       %li
+-#                         = item.price
+-#                         円
+-#                     %p
+-#                       （税込）
+
+-#商品一覧の商品にsoldを記載/商品の個別の枠の一番下に配置
 -#  -if product.purchaser_id.present? 
 -#         .items-box_photo__sold
 -#           .items-box_photo__sold__inner
