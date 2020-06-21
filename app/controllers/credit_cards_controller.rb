@@ -1,6 +1,4 @@
 class CreditCardsController < ApplicationController
-  
-  before_action :set_group
   def new
     @credit_card = CreditCard.new
   end
@@ -19,10 +17,6 @@ class CreditCardsController < ApplicationController
 
   def credit_params
     params.permit(:credit_card_type, :card_number, :cvs, :expiation_date, :expiation_year)
-  end
-
-  def set_group
-    @user = User.find(params[:user_id])
   end
   
 end
