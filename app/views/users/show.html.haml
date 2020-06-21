@@ -1,6 +1,11 @@
 .show_content
   .show_header
+    = render "items/header"
   .main
+    .main_logout
+      ログアウト
+    .mian_credit
+      =link_to "クレジット", new_user_credit_card_path(:user_id)
     .main_content
       .user
         tech camp
@@ -25,5 +30,9 @@
               %p.c-txtsp 購入した商品
               %p.c-txtsp 購入した商品
               %p.c-txtsp 購入した商品
+  .show_sell_icon
+    = render "items/cameraicon"
+  .show_footer
+    =render "items/footer"
 
 
