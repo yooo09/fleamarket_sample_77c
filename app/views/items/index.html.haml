@@ -84,142 +84,50 @@
             お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
     .picup-top
       %h2.list-title
-        ピックアップカテゴリー
+        商品一覧
       .new-item
+
         .item-head
           = link_to "#"  do
             .h3.list-test
-              新規投稿商品
+              投稿商品
         .item-lists
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-    .picup-under
-      %h2.list-title
-        ピックアップブランド
-      .new-item
-        .item-head
-          = link_to "#"  do
-            .h3.list-test
-              アーカイバ
-        .item-lists
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
-          .item-list
-            = link_to "#"  do
-              %figure.item-list__img
-                = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-              .item-list__body
-                %h3.item-list__name
-                  smile
-                .itemu-list__data
-                  %ul
-                    %li
-                      0円
-                    %i.lile-icon
-                      ★ 0
-                  %p
-                    （税込）
+          - @items.each do |item|
+            -if item.customer_id.present? 
+              %ul.item-list
+                = link_to "#"  do
+                  .sold
+                    .back
+                    .sold-font
+                      SOLD
+                  %li.item-list__img
+                    = image_tag item.image
+                  .item-list__body
+                    %li.item-list__name
+                      = item.item_name
+                    .itemu-list__data
+                      %ul
+                        %li
+                          = item.price
+                          円
+                      %p
+                        （税込）
+            -else
+              %ul.item-list
+                = link_to "#"  do
+                  %li.item-list__img
+                    = image_tag item.image
+                  .item-list__body
+                    %li.item-list__name
+                      = item.item_name
+                    .itemu-list__data
+                      %ul
+                        %li
+                          = item.price
+                          円
+                      %p
+                        （税込）
+           
   .app
     .content
       %h2.content__title
@@ -228,3 +136,4 @@
         今すぐ無料ダウンロード！
   = render "footer"
   = render "cameraicon"
+

@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
-  before_action :user_permitted_parameters, if: :devise_controller?
-    
+  before_action :authenticate_user!, except: [:index]
+  before_action :user_permitted_parameters, if: :devise_controller?   
+
 
   private
 
