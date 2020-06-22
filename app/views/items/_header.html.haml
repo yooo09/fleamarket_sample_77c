@@ -13,14 +13,14 @@
     .box__under
       %ul.left-item
         %li.left-item__main
-          = link_to "#"  do
-            商品一覧
+          = link_to "#" do
+            カテゴリー
           .brend-list
             %ul.brend-pulldown
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__login
-            = link_to "#"  do
+            = link_to "#" do
               ログアウト
         - else
           %li.right-menu__login

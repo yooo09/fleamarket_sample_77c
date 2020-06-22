@@ -1,31 +1,26 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  text-decoration: none;
-}
-
-.new-user {
-  width: 500px;
-  height: 100%;
-  margin: 150px auto 0;
-  border-radius: 10px;
-  border: 1px solid rgb(235, 232, 232);
-  box-shadow: 0px 0px 20px #3CCACE inset;
-}
-
-.content-inner {
-  padding: 20px 40px;
-}
-
-h2 {
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  padding-bottom: 4px;
-}
-
-.box-last_name {
+.user_new_content{
+  .new-user {
+    width: 500px;
+    height: 100%;
+    margin: 150px auto 0;
+    border-radius: 10px;
+    border: 1px solid rgb(235, 232, 232);
+    box-shadow: 0px 0px 20px #3CCACE inset;
+  }
+  
+  .content-inner {
+    padding: 20px 40px;
+  }
+  
+  h2 {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+  }
+  
+  .box-last_name {
   margin-bottom: 13px;
   float: left;
 }
@@ -105,7 +100,7 @@ h2 {
 .actions {
   margin-top: 30px;
   margin-bottom: 30px;
-
+  
   input[type="submit"] {
     border-style: none;
     width: 100%;
@@ -113,7 +108,7 @@ h2 {
     background-color:rgb(125, 233, 236);
     border-radius: 5px;
     border: 1px #3CCACE solid;
-
+    
     &:hover {
       cursor: pointer;
       background: #3CCACE;
@@ -138,14 +133,4 @@ h2 {
   float: right;
 }
 
-a{
-  color: black;
-
-
-  &:hover {
-  
-  background-color: #3CCACE;
-  border-radius: 5px;
-
-  }
 }
