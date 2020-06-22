@@ -9,9 +9,14 @@ $(document).on('turbolinks:load', ()=> {
                   </div>`;
     return html;
   }
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+  }
 
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+
 
   $('#image-box').on('change', '.js-file', function(e) {
     // fileIndexの先頭の数字を使ってinputを作る
@@ -27,3 +32,7 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 });
+
+
+
+
