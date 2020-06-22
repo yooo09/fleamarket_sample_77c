@@ -3,99 +3,102 @@
     .header
       = image_tag "/images/logo/logo.png",size: "300x80"
     .sell
-      .sell__image
-        .content
-          .menu
-            .menu-name
-              %p出品画像
-            .required
-              %p必須
-          .sell__image__area
-            %input{type: "file"}
-              -# %pクリックして画像を選択
-      .sell__name
-        .content
-          .name-content
+      = form_for [@item] do |f|
+        .sell__image
+          .content
             .menu
               .menu-name
-                %p商品名
+                %p出品画像
               .required
                 %p必須
-            %input{type: "text"}
-          .detail-content
-            .menu
-              .menu-name
-                %p商品の説明
-              .required
-                %p必須
-            %input{type:"text"}
-      .sell__about
-        .content
-          %p商品の詳細
-          .about-content
-            .about-content__box
+            .sell__image__area
+              = f.fields_for :images do |i|
+                .js-file_group{"data-index" => "#{i.index}"}
+                  = i.file_field :src, class: 'js-file'
+                  -# %span.js-remove 削除
+        .sell__name
+          .content
+            .name-content
               .menu
                 .menu-name
-                  %pカテゴリ
+                  %p商品名
                 .required
                   %p必須
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-            .about-content__box
+              = f.text_field :item_name, type:"text"
+            .detail-content
               .menu
                 .menu-name
-                  %pブランド
-                .any
-                  %p任意
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-            .about-content__box
-              .menu
-                .menu-name
-                  %p商品の状態
+                  %p商品の説明
                 .required
                   %p必須
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-      .sell__price
-        .content
-          %p配送について
-          .price-content__box
-            .menu
-              .menu-name
-                %p販売価格
-              .required
-                %p必須
-            .price
-              .price__yen
-                %p¥
-              .price__box
-                %input{type:"integer"}
-      .sell__delivery
-        .content
-          %p配送について
-          .delivery-content
-            .delivery-content__box
+              = f.text_field :detail, type:"text"
+        .sell__about
+          .content
+            %p商品の詳細
+            .about-content
+              .about-content__box
+                .menu
+                  .menu-name
+                    %pカテゴリ
+                  .required
+                    %p必須
+                = f.select :category_id,['sample1', 'sample2', 'sample3'],{include_blank: '選択してください'}
+              .about-content__box
+                .menu
+                  .menu-name
+                    %pブランド
+                  .any
+                    %p任意
+                = f.select :brand_id,['sample1', 'sample2', 'sample3'],{include_blank: '選択してください'}
+              .about-content__box
+                .menu
+                  .menu-name
+                    %p商品の状態
+                  .required
+                    %p必須
+                = f.select :condition, Item.conditions.keys, {}
+        .sell__price
+          .content
+            %p配送について
+            .price-content__box
               .menu
                 .menu-name
-                  %p配送料
+                  %p販売価格
                 .required
                   %p必須
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-            .delivery-content__box
-              .menu
-                .menu-name
-                  %p発送元地域
-                .required
-                  %p必須
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-            .delivery-content__box
-              .menu
-                .menu-name
-                  %p発送までの日数
-                .required
-                  %p必須
-              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
-      .sell__submit
-        .content
-          %input{type:"submit",class:"submit-btn",value:"出品する"}
+              .price
+                .price__yen
+                  %p¥
+                .price__box
+                  = f.text_field :price, type:"integer"
+        .sell__delivery
+          .content
+            %p配送について
+            .delivery-content
+              .delivery-content__box
+                .menu
+                  .menu-name
+                    %p配送料
+                  .required
+                    %p必須
+                = f.select :delivery_fee,['送料込み(出品者負担)', '着払い(購入者負担)'],{include_blank: '選択してください'}
+              .delivery-content__box
+                .menu
+                  .menu-name
+                    %p発送元地域
+                  .required
+                    %p必須
+                = f.select :shipping_area, Item.shipping_areas.keys, {}
+              .delivery-content__box
+                .menu
+                  .menu-name
+                    %p発送までの日数
+                  .required
+                    %p必須
+                = f.select :delivery_time,['1~2日で発送', '2~3日で発送','4~7日で発送'],{include_blank: '選択してください'}
+        .sell__submit
+          .content
+            = f.submit '出品する',class: "submit-btn"
         
 
 
