@@ -11,6 +11,58 @@
                 %p出品画像
               .required
                 %p必須
+
+            %input{type: "text"}
+          .detail-content
+            .menu
+              .menu-name
+                %p商品の説明
+              .required
+                %p必須
+            %input{type:"text"}
+      .sell__about
+        .content
+          %p商品の詳細
+          .about-content
+            .about-content__box
+              .menu
+                .menu-name
+                  %pカテゴリ
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .about-content__box
+              .menu
+                .menu-name
+                  %pブランド
+                .any
+                  %p任意
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+            .about-content__box
+              .menu
+                .menu-name
+                  %p商品の状態
+                .required
+                  %p必須
+              %select{multiple:"multiple", name:"カテゴリ", size:"3"}
+      .sell__price
+        .content
+          .price-content__box
+            .menu
+              .menu-name
+                %p販売価格
+              .required
+                %p必須
+            .price
+              .price__yen
+                %p¥
+              .price__box
+                %input{type:"integer"}
+      .sell__delivery
+        .content
+          %p配送について
+          .delivery-content
+            .delivery-content__box
             .sell__image__area#image-box
               - if @item.persisted?
                 - @item.images.each_with_index do |image, i|
