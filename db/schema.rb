@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_105201) do
     t.integer "user_id", null: false
     t.integer "brand_id"
     t.integer "category_id"
-ActiveRecord::Schema.define(version: 2020_06_21_022733) do
+# ActiveRecord::Schema.define(version: 2020_06_21_022733) do
 
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
