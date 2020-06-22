@@ -1,0 +1,14 @@
+.logout_content
+  .logout_header
+    = render "items/header"
+  .logout_main
+    .main_content
+      .select
+        .select_logout
+          = link_to "ログアウトする" ,"#" , class: "select_logout_btn"
+        .select_return
+          = link_to "トップページに戻る", "#", class: "select_return_btn"
+
+
+  .logout_footer
+    = render "items/footer"
