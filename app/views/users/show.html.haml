@@ -1,0 +1,36 @@
+.show_content
+  .show_header
+    = render "items/header"
+  .main
+    .main_logout
+      ログアウト
+    .mian_credit
+      =link_to "クレジット", new_user_credit_card_path(:user_id)
+    .main_content
+      .user
+        tech camp
+      .product
+        .product_header
+          購入した商品
+
+        .product_items
+          %input#selling.tab_radio{checked: "checked", name: "tab_item", type: "radio"}/
+          %label.tab_item{ for: "selling"} 取引中
+          %input#bought.tab_radio{name: "tab_item", type: "radio"}/
+          %label.tab_item{ for: "bought"} 購入した商品
+
+          #selling_content.tab_content
+            .tab_content_description
+              %p.c-txtsp 取引
+              %p.c-txtsp 取引
+              %p.c-txtsp 取引
+          #bought_content.tab_content
+            .tab_content_description
+              %p.c-txtsp 購入した商品
+              %p.c-txtsp 購入した商品
+              %p.c-txtsp 購入した商品
+              %p.c-txtsp 購入した商品
+  .show_sell_icon
+    = render "items/cameraicon"
+  .show_footer
+    =render "items/footer"

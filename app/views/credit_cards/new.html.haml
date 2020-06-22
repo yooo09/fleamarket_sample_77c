@@ -1,0 +1,30 @@
+.new_content
+  .credit_header
+    = render "items/header"
+  .credit_main
+    .contents
+      .inner
+        = form_tag user_credit_cards_path do
+          .inner_field
+            = label_tag :credit_card_type, "CARD TYPE"
+            %br
+            = text_field_tag :credit_card_type, '', class: 'inner_field_input'
+          .inner_field
+            = label_tag :card_number, "CARD NUMBER"
+            %br
+            = text_field_tag :card_number, '', class: 'inner_field_input'
+          .inner_field
+            = label_tag :cvs, "CVS"
+            %br
+            = text_field_tag :cvs, '', class: 'inner_field_input'
+          .inner_field
+            = label_tag :expiation_date, "EXPIATION DATE"
+            %br
+            = select_tag :expiation_date , options_for_select([1, 2, 3, 4, 5,6,7,8,9,10,11,12]), class: 'inner_field_select'
+            %span 月
+            = select_tag :expiation_year, options_for_select([20,21,22,23,24,25,26]), class: 'inner_field_select'
+            %span 年
+          .inner_btn
+            = submit_tag "登録する", class: 'inner_btn_tag'
+  .credit_footer
+    =render "items/footer"
