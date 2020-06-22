@@ -3,7 +3,8 @@
   .main-box
     .item
       .item__name
-        %pアイテム名
+        %p 
+          = @item.item_name
       .item__image
         = image_tag ("/images/icon/member_photo_noimage_thumb.png")
       .item__mini
@@ -13,20 +14,22 @@
           = image_tag ("/images/icon/member_photo_noimage_thumb.png")
     .price
       .price__value
-        %p¥0
+        - price = (@item.price + @item.delivery_fee) * 1.1
+        = "¥#{price.floor}"
       .price__fee
         %p
           (税込) 送料込み
     .detail
       .detail__sentences
         %p
-          この商品はテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト。
+          = @item.detail
       .detail__content
         .user
           .user__box
             %p出品者
           .user__name
-            %p株式会社リサイクル
+            %p
+              = @item.user.nickname
         .category
           .category__box
             %pカテゴリ
@@ -41,24 +44,26 @@
           .condition__box
             %p商品状況
           .condition__name
-            %p未使用
+            %p
+              = @item.condition
         .delivery_fee
           .delivery_fee__box
             %p配送料の負担
           .delivery_fee__name
             %p
-              送料込み（出品者負担）
+              = @item.delivery_fee
         .shipping_area
           .shipping_area__box
             %p発送元の地域
           .shipping_area__name
-            %p北海道
+            %p
+              = @item.shipping_area
         .delivery_time
           .delivery_time__box
             %p発送日の目安
           .delivery_time__name
             %p
-              1-2日で発送
+              = " #{@item.delivery_time}日で発送予定"
   .under
     .more
       %pヴィトンをもっとみる
