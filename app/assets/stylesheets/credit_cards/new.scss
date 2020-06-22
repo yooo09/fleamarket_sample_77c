@@ -1,0 +1,38 @@
+.credit_main{
+  margin-top: 50px;
+  width: 100%;
+  height: 70vh;
+  .contents{
+    width: 500px;
+    margin: 0 auto;
+    border: 5px solid #3CCACE;
+    padding: 40px 20px;
+    .inner{
+      width: 100%;
+      &_field{
+        &_input{
+          width: 100%;
+          border: none;
+          border-bottom: 2px solid #000;
+        }
+        &_select{
+          height: 40px;
+        }
+      }
+      &_btn{
+        margin: 20px 0 20px;
+        &_tag{
+          width:100%;
+          background-color: #3CCACE;
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          padding: 5px 30px;
+          font-size: 25px;
+          font-weight: bold;
+          
+        }
+      }
+    }
+  }
+}
