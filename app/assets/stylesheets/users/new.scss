@@ -1,0 +1,151 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.new-user {
+  width: 500px;
+  height: 100%;
+  margin: 150px auto 0;
+  border-radius: 10px;
+  border: 1px solid rgb(235, 232, 232);
+  box-shadow: 0px 0px 20px #3CCACE inset;
+}
+
+.content-inner {
+  padding: 20px 40px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+}
+
+.box-last_name {
+  margin-bottom: 13px;
+  float: left;
+}
+
+.box-first_name{
+  margin-bottom: 13px;
+  float: right;
+}
+
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.box-last_name_kana{
+  margin-bottom: 13px;
+  float: left;
+}
+
+.box-first_name_kana{
+  margin-bottom: 13px;
+  float: right;
+}
+
+.box-nickname{
+  margin-bottom: 13px;
+}
+
+
+.box-email {
+  margin-bottom: 13px;
+}
+
+.box-password {
+  margin-bottom: 13px;
+}
+
+.box-password_confirmation{
+  margin-bottom: 13px;
+}
+
+.box-birthday{
+  margin-bottom: 13px;
+}
+
+.box-first_name_kana, .box-last_name_kana, .box-first_name, .box-last_name, .box-nickname label, .box-email label, .box-password label, .box-password_confirmation label, .box-birthday label{
+  font-weight: 700;
+  font-size: 13px;
+  padding-left: 2px;
+  padding-bottom: 2px;
+}
+
+
+.box-email input[type="email"], .box-password input[type="password"], .box-last_name input[type="text"], .box-first_name input[type="text"], .box-last_name_kana input[type="text"], .box-first_name_kana input[type="text"], .box-password_confirmation input[type="password"]{
+  border-style: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  border: 1px solid gray;
+  box-shadow: 1px gray;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.box-nickname input[type="text"], .box-birthday input[type="text"]{
+  border-style: none;
+  box-sizing: border-box;
+  width: 50%;
+  height: 30px;
+  border: 1px solid gray;
+  box-shadow: 1px gray;
+  border-radius: 5px;
+  padding: 0 10p
+}
+
+.actions {
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  input[type="submit"] {
+    border-style: none;
+    width: 100%;
+    height: 30px;
+    background-color:rgb(125, 233, 236);
+    border-radius: 5px;
+    border: 1px #3CCACE solid;
+
+    &:hover {
+      cursor: pointer;
+      background: #3CCACE;
+    }
+  }
+}
+
+.box-nickname label{
+  display: block;
+  float: left;
+  width: 50%;
+}
+
+.must {
+  background: #FF1A00;
+  color: #FFF;
+	border-radius: 5px;
+	font-size: 2px;
+  margin-left: 10px;
+	padding: 3px 3px;
+  letter-spacing: 0.2em;
+  float: right;
+}
+
+a{
+  color: black;
+
+
+  &:hover {
+  
+  background-color: #3CCACE;
+  border-radius: 5px;
+
+  }
+}
