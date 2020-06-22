@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 2020_06_21_022733) do
     t.datetime "updated_at", null: false
     t.integer "expiation_year", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -64,5 +70,4 @@ ActiveRecord::Schema.define(version: 2020_06_21_022733) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "credit_cards", "users"
 end
