@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_105201) do
     t.integer "user_id", null: false
     t.integer "brand_id"
     t.integer "category_id"
+
 ActiveRecord::Schema.define(version: 2020_06_21_022733) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -61,7 +62,6 @@ ActiveRecord::Schema.define(version: 2020_06_21_022733) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
- 
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 2020_06_21_022733) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
+    t.string "last_name", default: ""
+    t.string "first_name", default: ""
+    t.string "last_name_kana", default: ""
+    t.string "first_name_kana", default: ""
     t.integer "birthday", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
