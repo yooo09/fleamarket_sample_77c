@@ -79,16 +79,21 @@
     .more
       %pヴィトンをもっとみる
     .recommended
-      .recommended__image
-        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-      .recommended__price
-        %p商品名
-        .recommended__price__box
-          %p
-            1000円
-          .recommended__price__box__fee
-            %p
-              (税込)
+      - @items.each do |item| 
+        -if (item != @item)
+          .recommended__items
+            .recommended__items__image
+              = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+            .recommended__items__price
+              %p
+              = item.item_name
+              .recommended__items__price__box
+                %p
+                  - item = item.price * 1.1
+                  = "¥#{item.floor}"
+                .recommended__items__price__box__fee
+                  %p
+                    (税込)            
   = render "footer"
   = render "cameraicon"
 

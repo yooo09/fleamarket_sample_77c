@@ -108,26 +108,30 @@
       font-weight: bold;
     }
     .recommended {
-      width: 200px;
-      height: 120px;
-      &__image {
-        background-color: #999999;
-        width: 200px;
-        height: 120px;
-        text-align: center;
-      img {
-        width: 120px;
-        height: 120px;
-      }
-      }
-      &__price {
-        padding-left: 15px;
-        border: solid 1px #BBBBBB;
-        &__box {
-          &__fee {
-            font-size: 8px;
-          }
+      display: flex;
+      height: 240px;
+      overflow: scroll;
+      &__items{
+        margin-right: 10px;
+        &__image {
+          background-color: #999999;
+          width: 200px;
+          height: 120px;
+          text-align: center;
+        img {
+          width: 120px;
+          height: 120px;
         }
+        }
+        &__price {
+          padding-left: 15px;
+          border: solid 1px #BBBBBB;
+          &__box {
+            &__fee {
+              font-size: 8px;
+            }
+          }
+        } 
       }
     }
   }
