@@ -14,8 +14,9 @@
           = image_tag ("/images/icon/member_photo_noimage_thumb.png")
     .price
       .price__value
-        - price = (@item.price + @item.delivery_fee) * 1.1
-        = "¥#{price.floor}"
+        - priceoftem = @item.price * 1.1
+        = "¥#{priceoftem.floor}"
+
       .price__fee
         %p
           (税込) 送料込み
@@ -64,6 +65,16 @@
           .delivery_time__name
             %p
               = " #{@item.delivery_time}日で発送予定"
+    .chenge_item
+      - if user_signed_in? && @item.user_id == current_user.id
+        .edit.btn
+          = link_to "商品の編集する", "#", class: "btn_text"
+        .destroy.btn
+          = link_to "商品の削除をする", "#", class: "btn_text"
+      -else
+        .buy.btn
+          = link_to "購入画面に進む", "#", class: "btn_text"
+
   .under
     .more
       %pヴィトンをもっとみる
