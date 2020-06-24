@@ -26,6 +26,20 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
+  end
+
+  def confirm
+    @item = Item.find(params[:id])
+    if @item.user_id != current_user.id
+    redirect_to root_path
+    end
+  end
+
+
   private
 
   def item_params
@@ -34,15 +48,5 @@ class ItemsController < ApplicationController
 
 end
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to item_path
-  end
-
-  def confirm
-    @item = Item.find(params[:id])
-  end
-end
 
 
