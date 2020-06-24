@@ -28,12 +28,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    begin
-      @item.destroy
-    rescue => e
-      flash[:notice] = "削除に失敗しました"
-    ensure
+    if @item.destroy
       redirect_to root_path
+    else
+      flash[:notice] = "削除に失敗しました"
     end
   end
 
