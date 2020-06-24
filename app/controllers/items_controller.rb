@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:confirm, :destroy]
 
   def index
     @items = Item.all
@@ -27,13 +28,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to root_path
+    begin
+      @item.destroy
+    rescue => e
+      flash[:notice] = "削除に失敗しました"
+    ensure
+      redirect_to root_path
+    end
   end
 
   def confirm
-    @item = Item.find(params[:id])
     if @item.user_id != current_user.id
     redirect_to root_path
     end
@@ -46,6 +50,9 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :item_name,:detail,:condition,:delivery_fee,:shipping_area,:delivery_time,:price,:use_id,:brand_id,:category_id,images_attributes:  [:src, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
 end
 
 

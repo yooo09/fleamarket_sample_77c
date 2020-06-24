@@ -1,3 +1,6 @@
+- if flash[:notice]
+  %p= flash[:notice]
+
 .confirm-content
   .confirm-box
     %p.title 確認
@@ -6,5 +9,7 @@
     .btn-area
       %td= button_to "キャンセル", :back, class: 'btn'
       %td= button_to "    削除    ", item_path(@item),class: 'btn', method: :delete
+
+
 
 
