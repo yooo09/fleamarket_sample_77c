@@ -77,6 +77,23 @@
       }
     }
     }
+    .chenge_item{
+     margin: 20px 0px 20px;
+     .btn{
+       background-color: #3CCACE;
+       width: 100%;
+       height: 50px;
+       margin-top: 20px;
+       text-align: center;
+       font-weight: bold;
+       line-height: 50px;
+       &_text{
+         text-decoration: none;
+         color: #fff;
+         font-size: 25px;
+       }
+     }
+    }
   }
   .under {
     width: 700px;
@@ -91,26 +108,30 @@
       font-weight: bold;
     }
     .recommended {
-      width: 200px;
-      height: 120px;
-      &__image {
-        background-color: #999999;
-        width: 200px;
-        height: 120px;
-        text-align: center;
-      img {
-        width: 120px;
-        height: 120px;
-      }
-      }
-      &__price {
-        padding-left: 15px;
-        border: solid 1px #BBBBBB;
-        &__box {
-          &__fee {
-            font-size: 8px;
-          }
+      display: flex;
+      height: 240px;
+      overflow: scroll;
+      &__items{
+        margin-right: 10px;
+        &__image {
+          background-color: #999999;
+          width: 200px;
+          height: 120px;
+          text-align: center;
+        img {
+          width: 120px;
+          height: 120px;
         }
+        }
+        &__price {
+          padding-left: 15px;
+          border: solid 1px #BBBBBB;
+          &__box {
+            &__fee {
+              font-size: 8px;
+            }
+          }
+        } 
       }
     }
   }

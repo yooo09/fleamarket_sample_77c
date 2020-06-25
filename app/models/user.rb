@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable
 
   has_many :credit_cards
-
+  has_many :items
+  
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
   validates :encrypted_password, length: { minimum: 7 }
