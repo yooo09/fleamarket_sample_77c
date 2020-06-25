@@ -12,6 +12,9 @@
                   %p出品画像
                 .required
                   %p必須
+              -if @item.errors.messages[:images].any?
+                .error-message
+                  %p必ず入力してください
               .sell__image__area
                 #image-box
                   #previews
@@ -35,6 +38,9 @@
                     %p商品名
                   .required
                     %p必須
+                -if @item.errors.messages[:item_name].any?
+                  .error-message
+                    %p必ず入力してください
                 = f.text_field :item_name, type:"text"
               .detail-content
                 .menu
@@ -42,6 +48,9 @@
                     %p商品の説明
                   .required
                     %p必須
+                -if @item.errors.messages[:detail].any?
+                  .error-message
+                    %p必ず入力してください
                 = f.text_field :detail, type:"text"
           .sell__about
             .content
@@ -53,6 +62,9 @@
                       %pカテゴリ
                     .required
                       %p必須
+                  -if @item.errors.messages[:category_id].any?
+                    .error-message
+                      %p必ず入力してください
                   = f.select :category_id,['sample1', 'sample2', 'sample3'],{include_blank: '選択してください'}
                 .about-content__box
                   .menu
@@ -67,7 +79,10 @@
                       %p商品の状態
                     .required
                       %p必須
-                  = f.select :condition, Item.conditions.keys, {}
+                  -if @item.errors.messages[:condition].any?
+                    .error-message
+                      %p必ず選択してください
+                  = f.select :condition, Item.conditions.keys, {include_blank: '選択してください'}
           .sell__price
             .content
               %p配送について
@@ -81,6 +96,9 @@
                   .price__yen
                     %p¥
                   .price__box
+                    -if @item.errors.messages[:price].any?
+                      .error-message
+                        %p必ず入力してください
                     = f.text_field :price, type:"integer"
           .sell__delivery
             .content
@@ -92,6 +110,9 @@
                       %p配送料
                     .required
                       %p必須
+                  -if @item.errors.messages[:delivery_fee].any?
+                    .error-message
+                      %p必ず選択してください
                   = f.select :delivery_fee,['送料込み(出品者負担)', '着払い(購入者負担)'],{include_blank: '選択してください'}
                 .delivery-content__box
                   .menu
@@ -99,13 +120,19 @@
                       %p発送元地域
                     .required
                       %p必須
-                  = f.select :shipping_area, Item.shipping_areas.keys, {}
+                  -if @item.errors.messages[:shipping_area].any?
+                    .error-message
+                      %p必ず選択してください
+                  = f.select :shipping_area, Item.shipping_areas.keys, {include_blank: '選択してください'}
                 .delivery-content__box
                   .menu
                     .menu-name
                       %p発送までの日数
                     .required
                       %p必須
+                  -if @item.errors.messages[:delivery_time].any?
+                    .error-message
+                      %p必ず選択してください
                   = f.select :delivery_time,['1~2日で発送', '2~3日で発送','4~7日で発送'],{include_blank: '選択してください'}
           .sell__submit
             .content
