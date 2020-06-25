@@ -7,7 +7,7 @@
         .select_logout
           = link_to "ログアウトする" ,destroy_user_session_path, method: :delete, class: "select_logout_btn"
         .select_return
-          = link_to "トップページに戻る", "#", class: "select_return_btn"
+          = link_to "トップページに戻る", root_path, class: "select_return_btn"
 
 
   .logout_footer
