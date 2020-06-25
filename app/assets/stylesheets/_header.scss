@@ -26,6 +26,7 @@
        .form {
         margin-left: auto;
         width: 100%;
+        z-index: 3;
          .search {
           display: flex;
           margin-bottom: 5px;
@@ -49,7 +50,10 @@
             }
           }
          }
-
+         .result{
+           width: 100%;
+           background-color: blue;
+         }
        }
     }
   }
