@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:confirm, :destroy, :show]
+
 
   def index
     @items = Item.all
@@ -62,6 +64,24 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def search
+    return nil if params[:keyword] == ""
+    @items = Item.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+  # private
+  # def move_to_index
+  #   redirect_to action: :index unless user_signed_in?
+  # end
+
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 end
 
 
