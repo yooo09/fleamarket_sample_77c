@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2020_06_25_050742) do
+ActiveRecord::Schema.define(version: 0) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip_code", null: false
@@ -39,27 +37,12 @@ ActiveRecord::Schema.define(version: 2020_06_25_050742) do
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "src"
-    t.bigint "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_images_on_item_id"
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "image"
     t.string "item_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price", null: false
-    t.text "detail"
-    t.integer "condition", default: 0, null: false
-    t.string "delivery_fee", null: false
-    t.integer "shipping_area", null: false
-    t.string "delivery_time", null: false
-    t.integer "user_id", null: false
-    t.string "brand_id"
-    t.integer "category_id"
     t.integer "customer_id"
   end
 
@@ -82,5 +65,4 @@ ActiveRecord::Schema.define(version: 2020_06_25_050742) do
   end
 
   add_foreign_key "credit_cards", "users"
-  add_foreign_key "images", "items"
 end
