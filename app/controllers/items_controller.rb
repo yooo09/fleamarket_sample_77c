@@ -21,6 +21,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.new
+  end
+
+  def update
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      @item.images.new
+      render :edit
+    end
   end
 
   def show
