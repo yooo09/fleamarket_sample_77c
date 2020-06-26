@@ -15,4 +15,14 @@ Rails.application.routes.draw do
       get 'confirm'
     end
   end  
+
+  resources :categories, only: [:index] do
+    # member do
+    collection do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
+
 end

@@ -73,30 +73,6 @@
           background-size: 18px;
           padding-right: 30px;
         }
-        .tree{
-          z-index: 2;
-          position: absolute;
-          background-color: #fff;
-          width: 240px;
-          top: 40px;
-          display: none;
-          .category-tree {
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            &__item {
-              position: relative;
-              a {
-                line-height: 40px;
-                display: block;
-                width: 240px;
-                padding: 3px 8px 3px 5px;
-                border-bottom: 1px solid #f8f8f8;
-              }
-            }
-          }
-        }
       }
       &__brend {
         display: flex;
