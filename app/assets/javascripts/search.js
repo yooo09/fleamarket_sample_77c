@@ -2,8 +2,8 @@ $(function(){
   var search_list = $('.result')
   function builtHTML(item){
     var html =`
-              <li>
-                 ${item.item_name}
+              <li class="result_list">
+                 <a class="result_list_link" href= /items/${item.id}>${item.item_name}</a>
               </li>`
     search_list.append(html);
   }
@@ -20,9 +20,11 @@ $(function(){
     })
     .done(function(items){
       search_list.empty();
+      console.log(items)
       if (items.length !== 0) {
         items.forEach(function(item){
           builtHTML(item);
+
         });
       }
       // else  {

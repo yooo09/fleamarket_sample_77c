@@ -16,6 +16,7 @@ class ItemsController < ApplicationController
   end
 
   def search
+    return nil if params[:keyword] == ""
     @items = Item.search(params[:keyword])
     respond_to do |format|
       format.html
