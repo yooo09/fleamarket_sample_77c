@@ -1,0 +1,29 @@
+.header
+  .box
+    .box__center
+      .icon
+        = link_to "#" do
+          = image_tag ("/images/logo/logo.png")
+      .form
+        %form.search
+          .search__input-box
+            %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
+          %botton{type: "submit", class: "search__submit"}
+            = image_tag ("/images/icon/icon-search 1.png")
+
+.category_show_content
+  .category-check
+    .category-check__top
+
+
+
+
+
+
+
+
+
+.category_index_footer
+  = render "items/footer"
+
+

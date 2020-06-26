@@ -11,12 +11,8 @@
           %botton{type: "submit", class: "search__submit"}
             = image_tag ("/images/icon/icon-search 1.png")
     .box__under
-      %ul.left-item
-        %li.left-item__main
-          = link_to "#" do
-            カテゴリー
-          .brend-list
-            %ul.brend-pulldown
+      = render 'categorywindow'
+      
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__login

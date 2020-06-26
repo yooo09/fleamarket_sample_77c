@@ -1,0 +1,49 @@
+.picup-top
+  %h2.list-title
+    =@parents.name
+
+
+
+
+-# .picup-top
+-#   %h2.list-title
+-#     =@parents.name
+-#     = "#{@category.name}の商品一覧"
+-#       .new-item
+-#         .item-lists
+-#           - @items.each do |item|
+-#             - category = Category.find(item.category_id)
+-#               -if item.customer_id.present? 
+-#                 %ul.item-list
+-#                   = link_to "#"  do
+-#                     .sold
+-#                       .back
+-#                       .sold-font
+-#                         SOLD
+-#                     %li.item-list__img
+-#                   = image_tag item.image
+-#                     .item-list__body
+-#                       %li.item-list__name
+-#                         = item.item_name
+-#                       .itemu-list__data
+-#                         %ul
+-#                           %li
+-#                             = item.price
+-#                             円
+-#                         %p
+-#                           （税込）
+-#               -else
+-#                 %ul.item-list
+-#                   = link_to "#"  do
+-#                     %li.item-list__img
+-#                       = image_tag item.image
+-#                     .item-list__body
+-#                       %li.item-list__name
+-#                         = item.item_name
+-#                       .itemu-list__data
+-#                         %ul
+-#                           %li
+-#                             = item.price
+-#                             円
+-#                         %p
+-#                           （税込）

@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   end
 
   resources :items
-  resources :categories
+  resources :categories, only: [:index] do
+    # member do
+    collection do
+      get 'parent'
+      get 'child'
+      get 'grandchild'
+    end
+  end
 
 end
