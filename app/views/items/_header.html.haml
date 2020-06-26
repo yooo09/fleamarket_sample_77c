@@ -2,7 +2,7 @@
   .box
     .box__center
       .icon
-        = link_to "#" do
+        = link_to root_path do
           = image_tag ("/images/logo/logo.png")
       .form
         %form.search
@@ -16,7 +16,7 @@
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__login
-            = link_to "#" do
+            = link_to logout_user_path(current_user) do
               ログアウト
         - else
           %li.right-menu__login

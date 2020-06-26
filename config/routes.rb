@@ -10,7 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    member do
+      get 'confirm'
+    end
+  end  
+
   resources :categories, only: [:index] do
     # member do
     collection do
