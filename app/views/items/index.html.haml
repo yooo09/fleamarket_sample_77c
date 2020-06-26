@@ -101,7 +101,7 @@
                     .sold-font
                       SOLD
                   %li.item-list__img
-                    = image_tag item.image
+                    = image_tag item.image,:image, :fill, 200, 120, format: "jpg"
                   .item-list__body
                     %li.item-list__name
                       = item.item_name
