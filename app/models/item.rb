@@ -2,8 +2,12 @@ class Item < ApplicationRecord
   has_many :images, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :images, allow_destroy: true
+
+  validates_associated:images
+  validates :item_name, :images, :detail, :condition, :delivery_fee, :shipping_area, :delivery_time, :price, :user_id, :category_id, presence: true
+  validates :delivery_fee,:shipping_area,:condition, exclusion: { in: %w(選択してください) }
   enum shipping_area:{
-    "選択してください":0,
+    # "選択してください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,
     茨城県:8,栃木県:9,群馬県:10,埼玉県:11,千葉県:12,東京都:13,神奈川県:14,
     新潟県:15,富山県:16,石川県:17,福井県:18,山梨県:19,長野県:20,
@@ -15,7 +19,7 @@ class Item < ApplicationRecord
     沖縄県:47
   }
   enum condition:{
-    "選択してください ":0,
+    # "状態を選択してください":0,
     新品、未使用:1,未使用に近い:2,目立った傷や汚れなし:3,やや傷や汚れあり:4,傷や汚れあり:5,傷や汚れあり:6,全体てきに状態が悪い:7
   }
 
