@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.images
+      @item = Item.find(params[:id])
       render :edit
     end
   end
