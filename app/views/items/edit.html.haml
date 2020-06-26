@@ -1,49 +1,10 @@
-.edit-content 
-  .main-box
-    .header
-      = image_tag "/images/logo/logo.png",size: "300x80"
-    .center
-      .title
-        %p 購入内容の確認
-      .item
-        .item__i-container
-          .item__i-container__product
-            = image_tag "/images/icon/member_photo_noimage_thumb.png"
-          .item__i-container__i-price
-            %p.item-name にこちゃん    グレー
-            %p.item-price ¥0 (税込) 送料込み
-      .price
-        .p-container
-          .p-container__payment 支払い金額
-          .p-container__p-price ¥0
-      .credit
-        .credit__c-container
-          .credit__c-container__how
-            .how-to 支払い方法
-            .c-right
-              =link_to "#" ,class:"change-credit" do
-                変更する
-          .credit__c-container__c-detail    
-            %p クレジットカード
-            %p ＊＊＊＊＊＊＊＊＊＊＊＊２５２５
-            %p 有効期限 01 / 22
-          .credit__c-container__icon credit card logo
-      .adress
-        .adress__a-container
-          .adress__a-container__shipping
-            .s-adress 配送先
-            .a-right
-              =link_to "#" ,class:"change-adress" do
-                変更する
-          .adress__a-container__a-ditail
-            %p 〒 542-0076
-            %p 大阪府 大阪市中央区 難波 5-1-60 なんばスカイオ 15階
-            %p 難波 空緒
-      .purchase
-        .purchase__p-container
-          .p-btn
-            =link_to "#" ,class:"purchase-btn" do
-              購入する
-          
-    .footer
-      = image_tag "/images/logo/logo.png",size: "300x80"
+.item_new_content
+  .new-content
+    .main-box
+      .header
+        = image_tag "logo/logo.png",size: "300x80"
+      .sell
+        = render partial: 'form'
+      .n-footer
+        .n-footer__logo
+          = image_tag "logo/logo.png",size: "150x50"

@@ -1,0 +1,46 @@
+
+
+.confirm-content{
+  .confirm-box{
+    width: 600px;
+    height: 400px;
+    margin: 150px auto 0;
+    border-radius: 10px;
+    border: 1px solid rgb(235, 232, 232);
+    box-shadow: 0px 0px 20px #3CCACE inset;
+    .title{
+      font-size: 30px;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    .text{
+      text-align: center;
+    }
+  }
+
+  .btn-area{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+    input {
+      display: inline-block;
+      border-radius: 5px;
+      font-size: 18pt;
+      text-align: center;
+      cursor: pointer;
+      padding: 30px 30px;
+      background-color: #3CCACE;
+      color: #ffffff;
+      line-height: 1em;
+      transition: .3s; 
+      box-shadow: 6px 6px 3px #666666;
+      border: 2px solid #3CCACE;
+    }
+    input:hover {
+      box-shadow: none;
+      color: #3CCACE;
+      background: #ffffff;
+    }
+  }
+}
