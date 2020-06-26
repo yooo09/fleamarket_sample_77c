@@ -25,11 +25,11 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.new(item_params)
+    @item = Item.find(params[:id])
     if @item.save
       redirect_to root_path
     else
-      @item.images
+      @item = Item.find(params[:id])
       render :edit
     end
   end
