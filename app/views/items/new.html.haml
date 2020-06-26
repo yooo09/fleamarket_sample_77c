@@ -72,7 +72,7 @@
                       %pブランド
                     .any
                       %p任意
-                  = f.select :brand_id,['sample1', 'sample2', 'sample3'],{include_blank: '選択してください'}
+                  = f.text_field :brand_id, type:"text"
                 .about-content__box
                   .menu
                     .menu-name
