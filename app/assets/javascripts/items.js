@@ -75,7 +75,6 @@ $(document).on('turbolinks:load', ()=> {
 
   $('#image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index');
-    console.log(targetIndex)
 
     $(`#item_images_attributes_${targetIndex}_src`).remove()
 
@@ -84,25 +83,18 @@ $(document).on('turbolinks:load', ()=> {
     // もしチェックボックスが存在すればチェックを入れる
 
     lastIndex = $('.js-file_group:last').data('index');
-    // fileIndex.splice(0, lastIndex);
 
     if (hiddenCheck) hiddenCheck.prop('checked', true);
 
-    // const element = document.getElementById("label_image");
-    // element.htmlFor;
 
     $(this).parent().remove();
     $(`img[data-index="${targetIndex - 1}"]`).remove();
 
     // クリックエリアを表示
     const previewcount = $('.preview').length;
-    console.log(previewcount);
       if (previewcount < 5) {
         $('#label_image').show();
       }
-
-    // element.htmlFor = (buildremove(targetIndex));
-
 
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
