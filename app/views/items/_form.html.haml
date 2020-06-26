@@ -19,7 +19,12 @@
               .js-file_group{"data-index" => "#{i.index}"}
                 = i.file_field :src, class: 'js-file',id:"item_images_attributes_0_src"
               - if @item.persisted?
-                = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                .js-file_group{"data-index" => "#{@item.images.count}"}
+                  = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  .js-remove 削除
+
+              -# - if @item.persisted?
+              -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
         %label{for: "item_images_attributes_0_src",id:"label_image"}
           .click_erea
             .click_erea__content
