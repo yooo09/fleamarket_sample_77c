@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_22_093908) do
+ActiveRecord::Schema.define(version: 2020_06_25_050742) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip_code", null: false
@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(version: 2020_06_22_093908) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
+    t.integer "expiation_year", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
@@ -51,15 +50,15 @@ ActiveRecord::Schema.define(version: 2020_06_22_093908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price", null: false
-    t.integer "customer_id"
     t.text "detail"
     t.integer "condition", default: 0, null: false
-    t.integer "delivery_fee", null: false
-    t.string "shipping_area", null: false
-    t.integer "delivery_time", null: false
+    t.string "delivery_fee", null: false
+    t.integer "shipping_area", null: false
+    t.string "delivery_time", null: false
     t.integer "user_id", null: false
-    t.integer "brand_id"
+    t.string "brand_id"
     t.integer "category_id"
+    t.integer "customer_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -71,10 +70,10 @@ ActiveRecord::Schema.define(version: 2020_06_22_093908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nickname", null: false
-    t.string "last_name", default: ""
-    t.string "first_name", default: ""
-    t.string "last_name_kana", default: ""
-    t.string "first_name_kana", default: ""
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.integer "birthday", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
