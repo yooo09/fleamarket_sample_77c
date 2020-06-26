@@ -1,5 +1,5 @@
 class ChangeDataShippingAreaToItems < ActiveRecord::Migration[5.2]
-  def change
+  def up
     change_column :items, :shipping_area, :integer
     change_column :items, :delivery_fee, :string
     change_column :items, :delivery_time, :string
