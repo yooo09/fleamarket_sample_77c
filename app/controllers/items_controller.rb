@@ -54,6 +54,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    @items = Item.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   private
 
@@ -65,14 +73,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def search
-    return nil if params[:keyword] == ""
-    @items = Item.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
-  end
 
   # private
   # def move_to_index
