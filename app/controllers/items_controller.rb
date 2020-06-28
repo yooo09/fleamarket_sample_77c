@@ -15,23 +15,24 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.images.new
+      # @item.images.new
       render :new
     end
   end
 
   def edit
     @item = Item.find(params[:id])
+    # @item.images.new
   end
 
   def update
     @item = Item.find(params[:id])
-    if @item.save
-      redirect_to root_path
-    else
-      @item = Item.find(params[:id])
-      render :edit
-    end
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        @item = Item.find(params[:id])
+        render :edit
+      end
   end
 
   def show

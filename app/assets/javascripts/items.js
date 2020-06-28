@@ -5,7 +5,6 @@ $(document).on('turbolinks:load', ()=> {
                     <input class="js-file" type="file"
                     name="item[images_attributes][${num}][src]"
                     id="item_images_attributes_${num}_src"><br>
-                    
                   </div>`;
     return html;
   }
@@ -24,10 +23,10 @@ $(document).on('turbolinks:load', ()=> {
     const html = `item_images_attributes_${num + 1}_src`;
     return html;
   }
-  const buildremove = (num)=> {
-    const html = `item_images_attributes_${num}_src`;
-    return html;
-  }
+  // const buildremove = (num)=> {
+  //   const html = `item_images_attributes_${num}_src`;
+  //   return html;
+  // }
 
 
 
@@ -99,6 +98,7 @@ $(document).on('turbolinks:load', ()=> {
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
+  
   
 });
 
