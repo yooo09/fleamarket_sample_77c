@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:confirm, :destroy, :show]
 
-
   def index
     @items = Item.all
   end
