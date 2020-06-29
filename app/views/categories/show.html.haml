@@ -18,7 +18,7 @@
                 .sold-font
                   SOLD
               %li.item-list__img
-                = image_tag item.image,:image, :fill, 200, 120, format: "jpg"
+                = image_tag @item.images.first.src.url
               .item-list__body
                 %li.item-list__name
                   = item.item_name
@@ -33,7 +33,7 @@
           %ul.item-list
             = link_to "/items/#{item.id}",  method: :get do
               %li.item-list__img
-                -# = image_tag item.image
+                = image_tag item.images.first.src.url
               .item-list__body
                 %li.item-list__name
                   = item.item_name

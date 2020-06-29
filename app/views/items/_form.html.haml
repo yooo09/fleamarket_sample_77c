@@ -62,7 +62,8 @@
           -if @item.errors.messages[:category_id].any?
             .error-message
               %p必ず入力してください
-          = f.select :category_id,['sample1', 'sample2', 'sample3'],{include_blank: '選択してください'}
+        .category__choose
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"}, {id: 'parent_category'}
         .about-content__box
           .menu
             .menu-name

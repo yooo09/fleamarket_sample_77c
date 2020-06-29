@@ -94,19 +94,5 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-//categories/indexページスクロール↓
-$(function(){
-  //$('[ 属性 ^= "値" ]')指定した"値"が属性の値と前方一致する要素を選択。なので＃クリックで発火
-  $('a[href^="#"]').click(function() {
-    var speed = 400; 
-    var href= $(this).attr("href");
-    // 三項目演算子を条件分岐をしています。
-    var target = $(href == "#" || href == "" ? 'html' : href);
-    // ofset().topを用いて数値として要素の左上の座標を代入。
-    var position = target.offset().top;
-    // animate関数でアニメーションを指定します。
-    $('body,html').animate({scrollTop:position}, speed, 'swing');
-    return false;
 
-  });
-});
+

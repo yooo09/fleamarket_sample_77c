@@ -3,7 +3,7 @@
   .main-box
     .item
       .item__name
-        %p 
+        %p
           = @item.item_name
       .item__image
         = image_tag ("icon/member_photo_noimage_thumb.png")
@@ -35,12 +35,18 @@
           .category__box
             %pカテゴリ
           .category__name
-            %p財布
+            %p
+              = @item.category.parent.parent.name
+              %p
+                = @item.category.parent.name
+                %p
+                  = @item.category.name
         .brand
           .brand__box
             %pブランド
           .brand__name
-            %pヴィトン
+            %p
+              = @item.brand_id
         .condition
           .condition__box
             %p商品状況
@@ -79,7 +85,7 @@
     .more
       %pヴィトンをもっとみる
     .recommended
-      - @items.each do |item| 
+      - @items.each do |item|
         -if (item != @item)
           .recommended__items
             .recommended__items__image
@@ -93,17 +99,8 @@
                   = "¥#{item.floor}"
                 .recommended__items__price__box__fee
                   %p
-                    (税込)            
+                    (税込)
   = render "footer"
   = render "cameraicon"
 
-      
-
-    
-    
-      
-
-    
-      
-      
 

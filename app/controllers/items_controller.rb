@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:confirm, :destroy, :show]
-  before_action :set_category
-  # before_action :set_category, only: [:index, :new]
+  before_action :set_category, only: [:index, :new, :show]
+
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order("created_at DESC").limit(40)
   end
 
   def new
@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.all
+    @parents = Category.where(ancestry: nil)
   end
 
   def destroy
@@ -81,10 +82,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def set_category
-    @category_parent_array = Category.where(ancestry: nil)
   end
 
 end

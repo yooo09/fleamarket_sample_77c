@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show]
-  before_action :set_array, only: [:index, :show]
-  
+  before_action :set_category_find, only: [:show]
+  before_action :set_category, only: [:index, :show]
+
   def index
     @parents = Category.where(ancestry: nil)
   end
@@ -15,17 +15,13 @@ class CategoriesController < ApplicationController
 
   private
 
-  def set_category
+  def set_category_find
     @category = Category.find(params[:id])
     if @category.has_children?
       @category_links = @category.children
     else
       @category_links = @category.siblings
     end
-  end
-
-  def set_array
-    @category_parent_array = Category.where(ancestry: nil)
   end
 
 end

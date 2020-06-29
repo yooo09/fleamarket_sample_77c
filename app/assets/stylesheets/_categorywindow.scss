@@ -1,4 +1,5 @@
 .categorywindow {
+  position: relative;
   .title {
     &__list {
       a {
@@ -47,10 +48,11 @@
     display: none;
   }
   .category__list{
-    // position: absolute;
+    position: absolute;
     height: 560px;
     background-color: white;
     border-right: 1px solid whitesmoke;
+    z-index: 3;
   }
   .category__child__name{
     width: 100%;
