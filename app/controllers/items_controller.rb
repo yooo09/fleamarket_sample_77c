@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:confirm, :destroy, :show]
+
 
   def index
     @items = Item.all
@@ -52,6 +54,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    @items = Item.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   private
 
