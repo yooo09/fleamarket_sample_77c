@@ -95,13 +95,13 @@
           - @items.each do |item|
             -if item.customer_id.present? 
               %ul.item-list
-                = link_to "#" do
+                = link_to item_path(item) do
                   .sold
                     .back
                     .sold-font
                       SOLD
                   %li.item-list__img
-                    = image_tag item.image,:image, :fill, 200, 120, format: "jpg"
+                     = image_tag item.images.first.src.url
                   .item-list__body
                     %li.item-list__name
                       = item.item_name
@@ -114,9 +114,9 @@
                         （税込）
             -else
               %ul.item-list
-                = link_to "#" do
+                = link_to item_path(item) do
                   %li.item-list__img
-                    -# = image_tag item.image
+                    = image_tag item.images.first.src.url
                   .item-list__body
                     %li.item-list__name
                       = item.item_name

@@ -23,10 +23,11 @@ $(document).on('turbolinks:load', ()=> {
     const html = `item_images_attributes_${num + 1}_src`;
     return html;
   }
-  // const buildremove = (num)=> {
-  //   const html = `item_images_attributes_${num}_src`;
-  //   return html;
-  // }
+  const buildeditlabel = (num)=> {
+    const html = `item_images_attributes_${num}_src`;
+    return html;
+  }
+  
 
 
 
@@ -39,7 +40,7 @@ $(document).on('turbolinks:load', ()=> {
   $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e) {
-
+    console.log('ok');
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
@@ -98,7 +99,18 @@ $(document).on('turbolinks:load', ()=> {
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
-  
+
+// if(document.URL.match(/edit/)){
+
+
+//     const previewscount = $('.previews').length;
+//     const label_image_edit = document.getElementById("label_image");
+//     $('#image-box').append(buildFileField(previewscount));
+//     label_image_edit.htmlFor;
+
+//     label_image_edit.htmlFor = (buildeditlabel(previewscount));
+
+// }
   
 });
 

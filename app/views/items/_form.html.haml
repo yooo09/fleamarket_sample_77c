@@ -16,10 +16,8 @@
               - @item.images.each_with_index do |image, i|
                 .previews
                   = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
-                  .js-file_group{"data-index" => "#{i}"}
-                  = file_field_tag :src, name: "item[images_attributes][#{i}][src]", class: 'js-file'
                   .js-remove 削除
-            = f.fields_for :images, @item.images.build do |i|
+            = f.fields_for :images  do |i|
               .js-file_group{"data-index" => "#{i.index}"}
                 = i.file_field :src, class: 'js-file',id:"item_images_attributes_0_src"
                 -# %br/
@@ -31,11 +29,16 @@
             -#     = file_field_tag :src, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
             -#     .js-remove 削除
                 -# = file_field_tag :src, name: "item[images_attributes][#{@item.images.count} + 1][src]", class: 'js-file'
-
-        %label{for: "item_images_attributes_0_src",id:"label_image"}
-          .click_erea
-            .click_erea__content
-              %pクリックして画像を選択してください
+        - unless @item.persisted?
+          %label{for: "item_images_attributes_0_src",id:"label_image"}
+            .click_erea
+              .click_erea__content
+                %pクリックして画像を選択してください
+        - if @item.persisted?
+          %label{for: "",id:"label_image"}
+            .click_erea
+              .click_erea__content
+                %pクリックして画像を選択してください
   .sell__name
     .content
       .name-content

@@ -43,7 +43,7 @@
                   }
                 }
               }
-              #label_image {
+              #label_image,#label_image_edit {
                 background-color: #EEEEEE;
                 width: 100%;
                 height: 200px;
@@ -59,7 +59,7 @@
                 }
                 
               }
-              #label_image:hover {
+              #label_image,#label_image_edit:hover {
                 border: solid 2px blue;
               }
               input {
