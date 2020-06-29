@@ -1,15 +1,22 @@
 $(function(){
   var search_list = $('.result')
   function builtHTML(item){
-    var html =`
-              <ul class="result_lists"> 
-                <li class="result_lists_list">
-                  <a class="result_lists_list_link" href= /items/${item.id}>${item.item_name}</a>
-                </li>
-              </ul>`
+    if (item.id == item.id ){
+      var html =`
+                <ul class="result_lists"> 
+                  <li class="result_lists_list">
+                    <a class="result_lists_list_link" href= /items/${item.id}>${item.item_name}</a>
+                  </li>
+                </ul>`
+      search_list.append(html);
+    }else{
+      var html = ""
+    }
+  }  
+  function appendErrMsgToHTML(msg){
+    var html =  `<div class='name'>${ msg }</div>`
     search_list.append(html);
   }
-  
   
   $('.search__input-box__text').on('keyup', function(e){ 
     e.preventDefault();
@@ -31,8 +38,5 @@ $(function(){
         appendErrMsgToHTML("商品はございません");
       }
     })
-    .fail(function() {
-      alert('商品検索に失敗しました');
-  });
   });
 });
