@@ -1,0 +1,125 @@
+.category_show_content {
+  width: 100%;
+  height: 100%;
+  background-color: whitesmoke;
+  .category-links {
+    width: 700px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    .category-name {
+      color: rgb(9, 2, 73);
+      text-decoration: none;
+      font-size: 13px;
+      margin-left: 10px;
+      display: inline-block;
+      &:hover {
+        color: #3CCACE;
+      }
+    }
+  }
+  .items-container {
+    width: 880px;
+    height: 100%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    .items-index {
+      background-color: #3CCACE;
+      width: 100%;
+      border-radius: 4px 4px 0 0;
+      padding: 5px 30px;
+      font-size: 20px;
+      .title {
+        color: white;
+        text-align: center;
+      }
+    }
+    .item-lists {
+      width: 880px;
+      height: 100%;
+      margin: 26px auto;
+      display: flex;
+      flex-wrap: wrap;
+      .item-list {
+        width: 200px;
+        display: inline-block;
+        float: left;
+        margin: 0 auto;
+        a {
+          background-color: #fff;
+          display: inline-block;
+          text-decoration: none;
+          margin-left: 25px;
+          .sold {
+            position: relative;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            .back {
+              z-index: 2;
+              position: absolute;
+              background-color: rgb(219, 40, 40) transparent;
+              top: 0;
+              border-bottom: 60px solid transparent;
+              border-left: 60px solid rgb(219, 40, 40);
+            }
+            .sold-font {
+              font-size: 15px;
+              font-family: monospace;
+              line-height: 45px;
+              transform: rotate(-45deg);
+              position: absolute;
+              font-weight: bold;
+              color: white;
+              z-index: 3;
+            }
+          }
+          .item-list__img {
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            z-index: auto;
+            margin: 0;
+            img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              width: 100%;
+              z-index: auto;
+              height: 150px;
+              object-fit: cover;
+            }
+          }
+          .item-list__body {
+            background-color: white;
+            color: #333;
+            padding: 16px;
+            text-decoration: none;
+            .item-list__name {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            .itemu-list__data {
+              font-size: 16px;
+              ul {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                li {
+                }
+              }
+              p {
+                font-size: 10px;
+                text-align: left;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

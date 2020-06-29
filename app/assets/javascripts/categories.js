@@ -1,57 +1,112 @@
-// $(function() {
-//   // 子カテゴリーを追加するための処理です。
-//     function buildChildHTML(child){
-//       var html =`<a class="child_category" id="${child.id}" 
-//                   href="/category/${child.id}">${child.name}</a>`;
-//       return html;
-//     }
 
+//items/new 商品出品カテゴリセレクトボックス↓
+$(document).on('turbolinks:load', function(){
+  $(function(){
+    // カテゴリーセレクトボックスのオプションを作成
+    function appendOption(category){
+      var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+      return html;
+    }
+    // 子カテゴリーの表示作成
+    function appendChidrenBox(insertHTML){
+      var childSelectHtml = '';
+      childSelectHtml = `<div class='category__choose__added' id= 'children_wrapper'>
+                          <div class='category__choose1'>
+                            <select class="category__choose--select" id="child_category" name="item[category_id]">
+                              <option value="---" data-category="---">選択してください</option>
+                              ${insertHTML}
+                            <select>
+                          </div>
+                        </div>`;
+      $('.category__choose').append(childSelectHtml);
+    }
 
+    // 孫カテゴリーの表示作成
+    function appendGrandchidrenBox(insertHTML){
+      var grandchildSelectHtml = '';
+      grandchildSelectHtml = `<div class='category__choose__added' id= 'grandchildren_wrapper'>
+                                <div class='category__choose2'>
+                                  <select class="category__choose--select" id="grandchild_category" name="item[category_id]">
+                                    <option value="---" data-category="---">選択してください</option>
+                                    ${insertHTML}
+                                  </select>
+                                </div>
+                              </div>`;
+      $('.category__choose').append(grandchildSelectHtml);
+    }
 
+    // 親カテゴリー選択後のイベント
+    $('#parent_category').on('change', function(){
+      var parent_category_id = document.getElementById
+      ('parent_category').value; //選択された親カテゴリーの名前を取得
+      if (parent_category_id != "---"){ //親カテゴリーが初期値でないことを確認
+        $.ajax({
+          url: '/items/category/get_category_children',
+          type: 'GET',
+          data: { parent_id: parent_category_id },
+          dataType: 'json'
+        })
+        .done(function(children){
+          $('#children_wrapper').remove(); //親が変更された時、子以下を削除する
+          $('#grandchildren_wrapper').remove();
+          var insertHTML = '';
+          children.forEach(function(child){
+            insertHTML += appendOption(child);
+          });
+          appendChidrenBox(insertHTML);
+        })
+        .fail(function(){
+          alert('カテゴリー取得に失敗しました');
+        })
+      }else{
+        $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
+        $('#grandchildren_wrapper').remove();
+      }
+    });
 
-// $(".parent_category").on("mouseover", function() {
-//   var id = this.id//どのリンクにマウスが乗ってるのか取得します
-//   $(".now-selected-red").removeClass("now-selected-red")//赤色のcssのためです
-//   $('#' + id).addClass("now-selected-red");//赤色のcssのためです
-//   $(".child_category").remove();//一旦出ている子カテゴリ消します！
-//   $(".grand_child_category").remove();//孫、てめえもだ！
-//   $.ajax({
-//     type: 'GET',
-//     url: '/category/new',//とりあえずここでは、newアクションに飛ばしてます
-//     data: {parent_id: id},//どの親の要素かを送りますparams[:parent_id]で送られる
-//     dataType: 'json'
-//   }).done(function(children) {
-//     children.forEach(function (child) {//帰ってきた子カテゴリー（配列）
-//       var html = buildChildHTML(child);//HTMLにして
-//       $(".children_list").append(html);//リストに追加します
-//     })
-//   });
-// });
+    // 子カテゴリー選択後のイベント
+    $('.category__choose').on('change','#child_category', function(){
+      var child_category_id = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
+      if (child_category_id != "---"){ //子カテゴリーが初期値でないことを確認
+        $.ajax({
+          url: '/items/category/get_category_grandchildren',
+          type: 'GET',
+          data: { child_id: child_category_id },
+          dataType: 'json'
+        })
+        .done(function(grandchildren){
+          if (grandchildren.length != 0) {
+            $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
+            var insertHTML = '';
+            grandchildren.forEach(function(grandchild){
+              insertHTML += appendOption(grandchild);
+            });
+            appendGrandchidrenBox(insertHTML);
+          }
+        })
+        .fail(function(){
+          alert('カテゴリー取得に失敗しました');
+        })
+      }else{
+        $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      }
+    });
+  });
+});
 
-// // 孫カテゴリを追加する処理です　基本的に子要素と同じです！
-// function buildGrandChildHTML(child){
-//   var html =`<a class="grand_child_category" id="${child.id}"
-//              href="/category/${child.id}">${child.name}</a>`;
-//   return html;
-// }
+//categories/indexページスクロール↓
+$(function(){
+  //$('[ 属性 ^= "値" ]')指定した"値"が属性の値と前方一致する要素を選択。なので＃クリックで発火
+  $('a[href^="#"]').click(function() {
+    var speed = 400; 
+    var href= $(this).attr("href");
+    // 三項目演算子を条件分岐をしています。
+    var target = $(href == "#" || href == "" ? 'html' : href);
+    // ofset().topを用いて数値として要素の左上の座標を代入。
+    var position = target.offset().top;
+    // animate関数でアニメーションを指定します。
+    $('body,html').animate({scrollTop:position}, speed, 'swing');
+    return false;
 
-// $(document).on("mouseover", ".child_category", function () {//子カテゴリーのリストは動的に追加されたHTMLのため
-//   var id = this.id
-//   $(".now-selected-gray").removeClass("now-selected-gray");//灰色のcssのため
-//   $('#' + id).addClass("now-selected-gray");//灰色のcssのため
-//   $.ajax({
-//     type: 'GET',
-//     url: '/category/new',
-//     data: {parent_id: id},
-//     dataType: 'json'
-//   }).done(function(children) {
-//     children.forEach(function (child) {
-//       var html = buildGrandChildHTML(child);
-//       $(".grand_children_list").append(html);
-//     })
-//     $(document).on("mouseover", ".child_category", function () {
-//       $(".grand_child_category").remove();
-//     });
-//   });
-// });  
-// });
+  });
+});

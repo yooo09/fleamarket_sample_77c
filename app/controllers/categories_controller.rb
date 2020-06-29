@@ -1,50 +1,31 @@
 class CategoriesController < ApplicationController
-  # before_action :set_category, only: [:parent, :child, :grandchild]
-
+  before_action :set_category, only: [:show]
+  before_action :set_array, only: [:index, :show]
+  
   def index
     @parents = Category.where(ancestry: nil)
-    
   end
 
 
-  # def show
-  #   @parents = Category.where(ancestry: nil)
-  # end
-
-  def parent
-    @items = Item.all
-    @parents = Category.where(ancestry: nil)
-    # children = @category.children
-    # grandchildren = []
-
-    # children.each do |child|
-    #   grandchildren << Category.where(ancestry: "#{@category.id}/#{child.id}")
-    # end
-    # @items = []
-    # grandchildren.each do |grandchild|
-    #   grandchild.each do |id|
-    #     @items += Item.where(category_id: id)
-    #   end
-    # end
+  def show
+    @items = @category.set_items
+    @items = @items.where(customer_id: nil).order("created_at DESC")
   end
 
-  def child
-    # grandchildren = @category.children
-    # @items = []
-
-    # grandchildren.each do |grandchild|
-    #   @items += Item.where(category_id: grandchild.id)
-    # end
-  end
-
-  def grandchild
-    # @items = Item.where(category_id: params[:id])
-  end
 
   private
 
   def set_category
-    # @category = Category.find(params[:id])
+    @category = Category.find(params[:id])
+    if @category.has_children?
+      @category_links = @category.children
+    else
+      @category_links = @category.siblings
+    end
+  end
+
+  def set_array
+    @category_parent_array = Category.where(ancestry: nil)
   end
 
 end

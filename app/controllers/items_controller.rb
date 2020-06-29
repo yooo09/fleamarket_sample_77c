@@ -1,15 +1,24 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:confirm, :destroy, :show]
+  before_action :set_category
+  # before_action :set_category, only: [:index, :new]
 
   def index
-    @items = Item.all
-    @parents = Category.where(ancestry: nil)
-    
+    @items = Item.all.order("created_at DESC")
   end
 
   def new
     @item = Item.new
     @item.images.new
+    @category_parent_array = ["---"]
+  end
+
+  def get_category_children
+    @category_children = Category.find(params[:parent_id]).children
+  end
+
+  def get_category_grandchildren
+    @category_grandchildren = Category.find(params[:child_id]).children
   end
 
   def create
@@ -53,6 +62,11 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
 end
 
 

@@ -13,16 +13,15 @@ Rails.application.routes.draw do
   resources :items do
     member do
       get 'confirm'
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
     end
-  end  
-
-  resources :categories, only: [:index] do
-    # member do
     collection do
-      get 'parent'
-      get 'child'
-      get 'grandchild'
+      get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
+      get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
   end
+
+  resources :categories, only: [:index, :show]
 
 end

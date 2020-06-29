@@ -1,29 +1,49 @@
-.header
-  .box
-    .box__center
-      .icon
-        = link_to "#" do
-          = image_tag ("/images/logo/logo.png")
-      .form
-        %form.search
-          .search__input-box
-            %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
-          %botton{type: "submit", class: "search__submit"}
-            = image_tag ("/images/icon/icon-search 1.png")
+= render "items/header"
 
 .category_show_content
-  .category-check
-    .category-check__top
-
-
-
-
-
-
-
-
+  .category-links
+    - @category_links.each do |category|
+      = link_to category.name, category_path(category), class: "category-name"
+  .items-container
+    .items-index
+      .title
+        = "#{@category.name}の商品一覧"
+    .item-lists
+      - @items.each do |item|
+        -if item.customer_id.present? 
+          %ul.item-list
+            = link_to "/items/#{item.id}",  method: :get do
+              .sold
+                .back
+                .sold-font
+                  SOLD
+              %li.item-list__img
+                = image_tag item.image,:image, :fill, 200, 120, format: "jpg"
+              .item-list__body
+                %li.item-list__name
+                  = item.item_name
+                .itemu-list__data
+                  %ul
+                    %li
+                      = item.price
+                      円
+                  %p
+                    （税込）
+        -else
+          %ul.item-list
+            = link_to "/items/#{item.id}",  method: :get do
+              %li.item-list__img
+                -# = image_tag item.image
+              .item-list__body
+                %li.item-list__name
+                  = item.item_name
+                .itemu-list__data
+                  %ul
+                    %li
+                      = item.price
+                      円
+                  %p
+                    （税込）
 
 .category_index_footer
   = render "items/footer"
-
-

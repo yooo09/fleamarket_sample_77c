@@ -7,6 +7,7 @@
       width: 700px;
       margin: 0 auto;
       padding-bottom: 20px;
+      text-align: center;
       h2 {
         font-size: 20px;
         padding: 40px 0 15px;
@@ -32,19 +33,19 @@
     padding-bottom: 20px;
     border-radius: 0 0 10px 10px;
     margin-bottom: 40px;
+
     &__title {
       background-color: #3CCACE;
       width: 100%;
       border-radius: 4px 4px 0 0;
-      color: white;
       padding: 5px 30px;
       font-size: 20px;
+      a {
+        text-decoration: none;
+        color: white;
+      }
     }
     .category-box__child {
-      padding: 35px;
-      &__all {
-        margin-bottom: 15px;
-      }
       .category__link__btn {
         color: rgb(9, 2, 73);
         text-decoration: none;
@@ -54,25 +55,28 @@
         }
       }
       .child-box {
-        &__name{
-          font-size: 13px;
+          font-size: 15px;
           font-weight: bold;
           margin: 5px 0;
+          a {
+            color: rgb(9, 2, 73);
+            text-decoration: none;
+            &:hover {
+              color: #3CCACE;
+            }
+          }
         }
         .grandchild-box{
-          padding: 5px 25px 10px;
+          text-align: center;
           .grandchild__link{
-            width: 290px;
+            width: 35%;
             height: 20px;
             display: inline-flex;
             margin-bottom: 10px;
+            margin-left: 30px;
+
           }
-        }
       }
     }
   }
-}
-
-.category_show_content {
-  
 }
