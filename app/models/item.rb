@@ -19,4 +19,7 @@ class Item < ApplicationRecord
     新品、未使用:1,未使用に近い:2,目立った傷や汚れなし:3,やや傷や汚れあり:4,傷や汚れあり:5,傷や汚れあり:6,全体てきに状態が悪い:7
   }
 
+  has_many :likes, dependent: :destroy
+  has_many :likes, through: :likes, source: :user
+
 end

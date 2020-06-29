@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    # @likes = Like.where(user_id: current_user.id)
   end
 
   def new

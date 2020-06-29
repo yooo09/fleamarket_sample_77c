@@ -112,11 +112,13 @@
                           円
                       %p
                         （税込）
+
+                      
             -else
               %ul.item-list
                 = link_to "#"  do
                   %li.item-list__img
-                    -# = image_tag item.image
+                    = image_tag item.images.first.src.url
                   .item-list__body
                     %li.item-list__name
                       = item.item_name
@@ -127,7 +129,6 @@
                           円
                       %p
                         （税込）
-           
   .app
     .content
       %h2.content__title

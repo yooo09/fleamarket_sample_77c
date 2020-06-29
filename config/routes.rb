@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     member do
       get 'confirm'
     end
-  end  
+  end
+
+  resources :items do
+    resources :likes , only: [:index, :create, :destroy]
+  end
 end
