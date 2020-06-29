@@ -2,13 +2,12 @@
   .show_header
     = render "items/header"
   .main
-    .main_logout
-      ログアウト
-    .mian_credit
-      =link_to "クレジット", new_user_credit_card_path(:user_id)
     .main_content
       .user
         tech camp
+      .credit
+        = link_to "クレジットカード変更画面", new_user_credit_card_path(:user_id), class: "credit_link"
+    
       .product
         .product_header
           購入した商品
@@ -30,6 +29,7 @@
               %p.c-txtsp 購入した商品
               %p.c-txtsp 購入した商品
               %p.c-txtsp 購入した商品
+
   .show_sell_icon
     = render "items/cameraicon"
   .show_footer
