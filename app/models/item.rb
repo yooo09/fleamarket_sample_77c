@@ -31,5 +31,7 @@ class Item < ApplicationRecord
     Item.where('item_name LIKE(?)', "%#{search}%")
   end
   
+  has_many :likes, dependent: :destroy
+  has_many :likes, through: :likes, source: :user
 
 end

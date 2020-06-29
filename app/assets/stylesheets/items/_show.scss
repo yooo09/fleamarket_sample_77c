@@ -86,7 +86,7 @@
        margin-top: 20px;
        text-align: center;
        font-weight: bold;
-       line-height: 50px;
+       line-height: 2;
        &_text{
          text-decoration: none;
          color: #fff;
@@ -132,6 +132,27 @@
             }
           }
         } 
+      }
+    }
+  }
+  
+  ul {
+    .like-btn{
+      margin: 10px 0 0;
+      display: flex;
+      margin-right: auto;
+      li{
+        border-radius: 40px;
+        color: #3CCACE;
+        border: 1px solid #ffb340;
+        color: #3CCACE;
+        border: 1px solid rgb(235, 158, 16);
+        border-radius: 40px;
+        margin: 5px;
+      }
+      a{
+        text-decoration: none;
+        margin: 0 auto;
       }
     }
   }
