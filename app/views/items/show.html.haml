@@ -6,12 +6,12 @@
         %p 
           = @item.item_name
       .item__image
-        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+        = image_tag ("icon/member_photo_noimage_thumb.png")
       .item__mini
         .item__mini__image
-          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+          = image_tag ("icon/member_photo_noimage_thumb.png")
         .item__mini__image
-          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+          = image_tag ("icon/member_photo_noimage_thumb.png")
     .price
       .price__value
         - priceoftem = @item.price * 1.1
@@ -83,7 +83,7 @@
         -if (item != @item)
           .recommended__items
             .recommended__items__image
-              = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+              = image_tag ("icon/member_photo_noimage_thumb.png")
             .recommended__items__price
               %p
               = item.item_name

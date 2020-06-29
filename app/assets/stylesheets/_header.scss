@@ -8,6 +8,7 @@
     margin: 0 auto;
     padding: 15px;
     &__center {
+      z-index: 20;
       position: relative;
       display: flex;
       align-items: center;
@@ -24,8 +25,10 @@
           }
        }
        .form {
+        z-index: 30;
         margin-left: auto;
         width: 100%;
+        position: relative;
          .search {
           display: flex;
           margin-bottom: 5px;
@@ -37,6 +40,8 @@
               height: 34px;
               padding: 0 0 0 5px;
               margin-right: 0;
+              border: 1px solid rgba(192,192,192, 0.8);
+              outline: none;
             }
           }
           .search__submit {
@@ -49,11 +54,34 @@
             }
           }
          }
-
+         .result{
+           position:absolute;
+           top:45px;
+           right:430px;
+           width: 50%;
+           
+           text-decoration: none;
+           &_lists{
+             width:50%;
+            border-bottom: 2px solid rgba(192,192,192, 0.8);
+            &_list{
+              padding: 3px 5px;
+              list-style: none;
+              &_link{
+                text-decoration: none;
+                color: #000;
+              }
+              &_link:hover{
+                color: #3CCACE;
+              }
+            }
+           }
+         }
        }
     }
   }
   .box__under {
+    z-index: 10;
     font-size: 14px;
     display: flex;
     margin-bottom: 10px;

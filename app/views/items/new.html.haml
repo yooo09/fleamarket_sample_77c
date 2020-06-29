@@ -2,8 +2,11 @@
   .new-content
     .main-box
       .header
-        = image_tag "/images/logo/logo.png",size: "300x80"
+        = image_tag "logo/logo.png",size: "300x80"
       .sell
+
+        = render partial: 'form'
+
         = form_for [@item] do |f|
           .sell__image
             .content
@@ -141,6 +144,7 @@
           
 
 
+
       .n-footer
         .n-footer__logo
-          = image_tag "/images/logo/logo.png",size: "150x50"
+          = image_tag "logo/logo.png",size: "150x50"

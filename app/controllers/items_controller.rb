@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:confirm, :destroy, :show]
   before_action :set_category
   # before_action :set_category, only: [:index, :new]
@@ -32,6 +33,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      @item.images
+      render :edit
+    end
   end
 
   def show
@@ -52,6 +64,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    return nil if params[:keyword] == ""
+    @items = Item.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   private
 

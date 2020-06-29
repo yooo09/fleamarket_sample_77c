@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_06_25_050742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price", null: false
-    t.integer "customer_id"
     t.text "detail"
     t.integer "condition", default: 0, null: false
     t.string "delivery_fee", null: false
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_050742) do
     t.integer "user_id", null: false
     t.string "brand_id"
     t.integer "category_id"
+    t.integer "customer_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
