@@ -29,7 +29,6 @@ $(function(){
     })
     .done(function(items){
       search_list.empty();
-      console.log(items)
       if (items.length !== 0) {
         items.forEach(function(item){
           builtHTML(item);

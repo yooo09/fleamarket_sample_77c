@@ -72,16 +72,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
-
-  # private
-  # def move_to_index
-  #   redirect_to action: :index unless user_signed_in?
-  # end
-
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
 end
 
 
