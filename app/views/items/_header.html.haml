@@ -40,7 +40,9 @@
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__mypage
-            = link_to  "/users/#{current_user.id}" do
+
+            = link_to "/users/#{current_user.id}" do
+
               マイページ
           %li.right-menu__login
             = link_to logout_user_path(current_user) do
