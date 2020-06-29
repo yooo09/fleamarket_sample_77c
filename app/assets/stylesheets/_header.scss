@@ -106,6 +106,18 @@
     .right-menu {
       margin-left: auto;
       display: flex;
+      &__mypage {
+        color: #333;
+        line-height: 32px;
+        padding: 0 0 0 16px;
+        a {
+          display: flex;
+          align-items: center;
+          color: #333;
+          text-decoration: none;
+          line-height: 32px;
+         }
+      }
       &__login {
         color: #333;
         line-height: 32px;
