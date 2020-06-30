@@ -11,8 +11,9 @@ $(document).on('turbolinks:load', ()=> {
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
     const html = `
-    <div class="preview" data-index="${index}">
-    <img src="${url}" width="100px" height="100px">
+    <div class="preview">
+    <label for="item_images_attributes_${index}_src">
+    <img src="${url}" width="100px" height="100px" data-index="${index}"></label>
     <div class="js-remove" >削除</div>
     </div>
     `;
@@ -40,7 +41,6 @@ $(document).on('turbolinks:load', ()=> {
   $('.hidden-destroy').hide();
 
   $('#image-box').on('change', '.js-file', function(e) {
-    console.log('ok');
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
@@ -49,7 +49,6 @@ $(document).on('turbolinks:load', ()=> {
     const element = document.getElementById("label_image");
     element.htmlFor;
     
-
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
@@ -57,6 +56,7 @@ $(document).on('turbolinks:load', ()=> {
       $('#image-box').append(buildImg(targetIndex, blobUrl));
 
       const previewcount = $('.preview').length;
+      const previewscount = $('.previews').length;
      
         // fileIndexの先頭の数字を使ってinputを作る
         $('#image-box').append(buildFileField(fileIndex[0]));
@@ -68,6 +68,9 @@ $(document).on('turbolinks:load', ()=> {
 
         // クリックエリアを非表示
         if (previewcount > 4) {
+        $('#label_image').hide();
+      }
+        if (previewcount + previewscount > 4) {
         $('#label_image').hide();
       }
     }
@@ -100,18 +103,6 @@ $(document).on('turbolinks:load', ()=> {
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
 
-// if(document.URL.match(/edit/)){
-
-
-//     const previewscount = $('.previews').length;
-//     const label_image_edit = document.getElementById("label_image");
-//     $('#image-box').append(buildFileField(previewscount));
-//     label_image_edit.htmlFor;
-
-//     label_image_edit.htmlFor = (buildeditlabel(previewscount));
-
-// }
-  
 });
 
 

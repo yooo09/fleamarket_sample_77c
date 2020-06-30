@@ -15,14 +15,15 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      # @item.images.new
       render :new
     end
   end
 
   def edit
     @item = Item.find(params[:id])
-    # @item.images.new
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -30,7 +31,6 @@ class ItemsController < ApplicationController
       if @item.update(item_params)
         redirect_to root_path
       else
-        @item = Item.find(params[:id])
         render :edit
       end
   end
@@ -52,7 +52,6 @@ class ItemsController < ApplicationController
     redirect_to root_path
     end
   end
-
 
   private
 
