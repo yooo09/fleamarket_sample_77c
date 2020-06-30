@@ -1,4 +1,4 @@
-.edit-content 
+.purchase-content 
   .main-box
     .header
       = image_tag "/images/logo/logo.png",size: "300x80"
@@ -42,7 +42,7 @@
       .purchase
         .purchase__p-container
           .p-btn
-            =link_to "#" ,class:"purchase-btn" do
+            = link_to buy_user_credit_cards_path(@user,@credit_card) ,class:"purchase-btn" do
               購入する
           
     .footer

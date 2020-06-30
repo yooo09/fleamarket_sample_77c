@@ -18,7 +18,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
+  def purchase
+    @user = User.find(params[:id])
+    @credit_card = CreditCard.find(params[:id])
   end
 
   def show

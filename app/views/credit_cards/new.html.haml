@@ -4,27 +4,31 @@
   .credit_main
     .contents
       .inner
-        = form_tag user_credit_cards_path do
+        = form_with model: @credit_card, url:user_credit_cards_path, id: 'charge-form',local: true do |f|
           .inner_field
-            = label_tag :credit_card_type, "CARD TYPE"
-            %br
-            = text_field_tag :credit_card_type, '', class: 'inner_field_input'
+            -# = label_tag :credit_card_type, "CARD TYPE"
+            -# %br
+            -# = text_field_tag :credit_card_type, '', class: 'inner_field_input '
           .inner_field
-            = label_tag :card_number, "CARD NUMBER"
+            = f.label :card_number, "CARD NUMBER"
             %br
             = text_field_tag :card_number, '', class: 'inner_field_input'
           .inner_field
-            = label_tag :cvs, "CVS"
+            = f.label :cvv, "CVV"
             %br
-            = text_field_tag :cvs, '', class: 'inner_field_input'
+            = text_field_tag :cvv, '', class: 'cvv'
           .inner_field
-            = label_tag :expiation_date, "EXPIRATION DATE"
+            = f.label:exp_date, "EXPIRATION DATE"
             %br
-            = select_tag :expiation_date , options_for_select([1, 2, 3, 4, 5,6,7,8,9,10,11,12]), class: 'inner_field_select'
+            = select_tag :exp_month , options_for_select([1, 2, 3, 4, 5,6,7,8,9,10,11,12]), class: 'inner_field_select'
             %span 月
-            = select_tag :expiation_year, options_for_select([20,21,22,23,24,25,26]), class: 'inner_field_select'
+            = select_tag :exp_year, options_for_select([[20,2020], [21,2021], [22,2022], [23,2023], [24,2024], [25,2025], [26,2026]]), class: 'inner_field_select'
             %span 年
-          .inner_btn
-            = submit_tag "登録する", class: 'inner_btn_tag'
-  .credit_footer
+          .inner_btn{ id: 'token' }
+            -# .token#card_token 
+            = f.submit "登録する", class: 'inner_btn_tag'
+          .token#card_token 
+            %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
     =render "items/footer"
+   
+  
