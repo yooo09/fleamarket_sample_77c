@@ -7,6 +7,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:item_id])
+    if @comment.destroy
+      redirect_to item_path
+    else
+      flash[:notice] = "削除に失敗しました"
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:text).merge(user_id: current_user.id, item_id: params[:item_id])

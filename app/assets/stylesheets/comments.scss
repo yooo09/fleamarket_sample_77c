@@ -10,7 +10,17 @@
     &__box {
       margin-bottom: 20px;
       &__user {
-        
+      }
+      &__delete {
+        float: right;
+        margin-right: 30px;
+        .delete-btn {
+          text-decoration: none;
+          color: black;
+        }
+        .delete-btn:hover {
+          color: blue;
+        }
       }
       &__text {
         width: 100%;
@@ -53,6 +63,7 @@
     .textbox {
       width: 100%;
       height: 120px;
+      padding: 5px;
     }
     .form__submit {
       width: 100%;

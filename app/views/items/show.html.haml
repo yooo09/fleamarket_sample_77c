@@ -81,6 +81,9 @@
           .comment__box
             .comment__box__user
               = comment.user.nickname
+            - if comment.user_id == current_user.id
+              .comment__box__delete
+                = link_to  "    削除    ", item_comment_path(comment), method: :delete,class:"delete-btn"
             .comment__box__text
               .comment__box__text__content
                 = comment.text
