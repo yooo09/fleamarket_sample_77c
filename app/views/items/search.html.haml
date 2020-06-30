@@ -1,0 +1,26 @@
+.item_search_content
+  .search_header
+    = render "header"
+  .search_main
+    .search_main_details
+    
+    .search_main_lists
+      - @items.each do |item|
+        .search_list
+          = link_to item_path(item) , class: "search_list_link"do
+            .all_one
+              .search_list_img
+                = image_tag item.images.first.src.url ,size: '200x150'
+              .search_list_body
+                .search_list_body_name
+                  = item.item_name
+                .search_list_body_data
+                  %ul
+                    %li
+                      = item.price
+                      円
+                  %p
+                    （税込）
+
+  .search_footer
+    =render "footer"
