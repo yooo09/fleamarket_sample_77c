@@ -13,6 +13,16 @@ Rails.application.routes.draw do
   end
 
   resources :items do
+
+    member do
+      get 'confirm'
+    end
+
+    collection do
+      get :search
+    end
+  end 
+
     member do
       get 'purchase'
     end

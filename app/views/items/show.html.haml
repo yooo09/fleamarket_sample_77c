@@ -3,30 +3,34 @@
   .main-box
     .item
       .item__name
-        %pアイテム名
+        %p 
+          = @item.item_name
       .item__image
-        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+        = image_tag ("icon/member_photo_noimage_thumb.png")
       .item__mini
         .item__mini__image
-          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+          = image_tag ("icon/member_photo_noimage_thumb.png")
         .item__mini__image
-          = image_tag ("/images/icon/member_photo_noimage_thumb.png")
+          = image_tag ("icon/member_photo_noimage_thumb.png")
     .price
       .price__value
-        %p¥0
+        - priceoftem = @item.price * 1.1
+        = "¥#{priceoftem.floor}"
+
       .price__fee
         %p
           (税込) 送料込み
     .detail
       .detail__sentences
         %p
-          この商品はテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテストテスト。
+          = @item.detail
       .detail__content
         .user
           .user__box
             %p出品者
           .user__name
-            %p株式会社リサイクル
+            %p
+              = @item.user.nickname
         .category
           .category__box
             %pカテゴリ
@@ -41,38 +45,55 @@
           .condition__box
             %p商品状況
           .condition__name
-            %p未使用
+            %p
+              = @item.condition
         .delivery_fee
           .delivery_fee__box
             %p配送料の負担
           .delivery_fee__name
             %p
-              送料込み（出品者負担）
+              = @item.delivery_fee
         .shipping_area
           .shipping_area__box
             %p発送元の地域
           .shipping_area__name
-            %p北海道
+            %p
+              = @item.shipping_area
         .delivery_time
           .delivery_time__box
             %p発送日の目安
           .delivery_time__name
             %p
-              1-2日で発送
+              = " #{@item.delivery_time}日で発送予定"
+    .chenge_item
+      - if user_signed_in? && @item.user_id == current_user.id
+        .edit.btn
+          = link_to "商品の編集する", "#", class: "btn_text"
+        .destroy.btn
+          = link_to "商品の削除をする", "#", class: "btn_text"
+      -else
+        .buy.btn
+          = link_to "購入画面に進む", "#", class: "btn_text"
+
   .under
     .more
       %pヴィトンをもっとみる
     .recommended
-      .recommended__image
-        = image_tag ("/images/icon/member_photo_noimage_thumb.png")
-      .recommended__price
-        %p商品名
-        .recommended__price__box
-          %p
-            1000円
-          .recommended__price__box__fee
-            %p
-              (税込)
+      - @items.each do |item| 
+        -if (item != @item)
+          .recommended__items
+            .recommended__items__image
+              = image_tag ("icon/member_photo_noimage_thumb.png")
+            .recommended__items__price
+              %p
+              = item.item_name
+              .recommended__items__price__box
+                %p
+                  - item = item.price * 1.1
+                  = "¥#{item.floor}"
+                .recommended__items__price__box__fee
+                  %p
+                    (税込)            
   = render "footer"
   = render "cameraicon"
 

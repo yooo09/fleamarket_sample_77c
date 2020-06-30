@@ -18,7 +18,7 @@
           .choose__list__pic
             %span.number
               1
-            = image_tag ("/images/pict/pict-reason-01.jpg")
+            = image_tag ("pict/pict-reason-01.jpg")
           %h3.list__text
             %span 
               3分
@@ -29,7 +29,7 @@
           .choose__list__pic
             %span.number
               2
-            = image_tag ("/images/pict/pict-reason-02.jpg")
+            = image_tag ("pict/pict-reason-02.jpg")
           %h3.list__text
             %span
               シンプル
@@ -40,7 +40,7 @@
           .choose__list__pic
             %span.number
               3
-            = image_tag ("/images/pict/pict-reason-03.jpg")
+            = image_tag ("pict/pict-reason-03.jpg")
           %h3.list__text
             手数料
             %span
@@ -63,21 +63,21 @@
       .items
         .item
           %figure.item__pic
-            = image_tag ("/images/icon/icon-01.png")
+            = image_tag ("icon/icon-01.png")
           %h3.list__text
             簡単に売り買いできる
           %p.list__detail
             スマホ一つで、いつでもどこでも簡単に出品・購入が可能!
         .item
           %figure.item__pic
-            = image_tag ("/images/icon/icon-03.png")
+            = image_tag ("icon/icon-03.png")
           %h3.list__text
             売上金は即日振り込みに対応
           %p.list__detail
             午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
         .item
           %figure.item__pic
-            = image_tag ("/images/icon/icon-04.png")
+            = image_tag ("icon/icon-04.png")
           %h3.list__text
             様々な支払いに対応
           %p.list__detail
@@ -95,13 +95,13 @@
           - @items.each do |item|
             -if item.customer_id.present? 
               %ul.item-list
-                = link_to "#"  do
+                = link_to item_path(item) do
                   .sold
                     .back
                     .sold-font
                       SOLD
                   %li.item-list__img
-                    = image_tag item.image
+                    = image_tag item.images.first.src.url
                   .item-list__body
                     %li.item-list__name
                       = item.item_name
@@ -114,9 +114,9 @@
                         （税込）
             -else
               %ul.item-list
-                = link_to "#"  do
+                = link_to item_path(item) do
                   %li.item-list__img
-                    = image_tag item.image
+                    = image_tag item.images.first.src.url
                   .item-list__body
                     %li.item-list__name
                       = item.item_name
