@@ -5,14 +5,13 @@
         = link_to root_path do
           = image_tag ("logo/logo.png")
       .form
-        %form.search
-          .search__input-box
-            %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
-          %botton{type: "submit", class: "search__submit"}
-
-            = image_tag ("icon/icon-search 1.png")
+        = form_tag search_items_path , method: :get do
+          .search
+            .search__input-box
+              = text_field_tag :search, "",class: "search__input-box__text" , placeholder: "キーワードを入力してください"
+              = image_submit_tag "icon/icon-search 1.png", class: "search__submit"
+        
         .result
-
     .box__under
       %ul.left-item
         %li.left-item__main
@@ -35,4 +34,3 @@
           %li.right-menu__new
             = link_to new_user_registration_path do
               新規会員登録
-          

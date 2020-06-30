@@ -55,12 +55,13 @@ class ItemsController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
-    @items = Item.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.all.search(params[:search])
+    # return nil if params[:keyword] == ""
+    # @items = Item.search(params[:keyword])
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   private
