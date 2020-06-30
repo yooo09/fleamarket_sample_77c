@@ -19,9 +19,20 @@
         font-weight: bold;
         background-color: #3CCACE;
       }
+      .credit{
+        padding: 20px 20px;
+        height: 50px;
+        background-color: #3CCACE;
+        &_link{
+          text-decoration: none;
+          font-size: 25px;
+          line-height: 50px;
+          color: #000;
+        }
+      }
       .product{
         width: 100%;
-        height: calc(600px - 150px);
+        height: calc(600px - 200px);
         &_header{
           height: 70px;
           line-height: 70px;

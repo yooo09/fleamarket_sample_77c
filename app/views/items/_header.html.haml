@@ -9,7 +9,10 @@
           .search__input-box
             %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
           %botton{type: "submit", class: "search__submit"}
+
             = image_tag ("icon/icon-search 1.png")
+        .result
+
     .box__under
       %ul.left-item
         %li.left-item__main
@@ -19,6 +22,9 @@
             %ul.brend-pulldown
       %ul.right-menu
         - if user_signed_in?
+          %li.right-menu__mypage
+            = link_to "/users/#{current_user.id}" do
+              マイページ
           %li.right-menu__login
             = link_to logout_user_path(current_user) do
               ログアウト
