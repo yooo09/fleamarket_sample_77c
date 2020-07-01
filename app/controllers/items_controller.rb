@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:confirm, :destroy, :show]
   before_action :set_category, only: [:index, :new, :show]
   before_action :set_category_link, only: [:show]
+  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
+
 
   def index
     @items = Item.all.order("created_at DESC").limit(40)
@@ -27,28 +28,29 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.images.new
       render :new
     end
   end
 
   def edit
-    @item = Item.find(params[:id])
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end
   end
 
   def update
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      @item.images
-      render :edit
-    end
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        render :edit
+      end
   end
 
   def show
     @items = Item.all
     @user_items = Item.where(customer_id: nil, user: @item.user).limit(5)
+    @comment = Comment.new
+    @comments = @item.comments.all
   end
 
   def destroy
@@ -66,12 +68,13 @@ class ItemsController < ApplicationController
   end
 
   def search
-    return nil if params[:keyword] == ""
-    @items = Item.search(params[:keyword])
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @items = Item.all.search(params[:search])
+    # return nil if params[:keyword] == ""
+    # @items = Item.search(params[:keyword])
+    # respond_to do |format|
+    #   format.html
+    #   format.json
+    # end
   end
 
   private
