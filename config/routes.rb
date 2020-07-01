@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
-      get 'deep_search'
     end
   end
 end
