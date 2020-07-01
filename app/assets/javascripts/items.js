@@ -77,7 +77,7 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index');
+    const targetIndex = $(this).parent().prev().data('index');
 
     $(`#item_images_attributes_${targetIndex}_src`).remove()
 
@@ -91,7 +91,7 @@ $(document).on('turbolinks:load', ()=> {
 
 
     $(this).parent().remove();
-    $(`img[data-index="${targetIndex - 1}"]`).remove();
+    // $(`img[data-index="${targetIndex - 1}"]`).remove();
 
     // クリックエリアを表示
     const previewcount = $('.preview').length;
