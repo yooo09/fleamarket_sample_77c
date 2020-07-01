@@ -1,0 +1,49 @@
+= render "items/header"
+
+.category_show_content
+  .category-links
+    - @category_links.each do |category|
+      = link_to category.name, category_path(category), class: "category-name"
+  .items-container
+    .items-index
+      .title
+        = "#{@category.name}の商品一覧"
+    .item-lists
+      - @items.each do |item|
+        -if item.customer_id.present?
+          %ul.item-list
+            = link_to "/items/#{item.id}", method: :get do
+              .sold
+                .back
+                .sold-font
+                  SOLD
+              %li.item-list__img
+                = image_tag @item.images.first.src.url
+              .item-list__body
+                %li.item-list__name
+                  = item.item_name
+                .itemu-list__data
+                  %ul
+                    %li
+                      - item = item.price * 1.1
+                      = "¥#{item.floor}"
+                  %p
+                    （税込）
+        -else
+          %ul.item-list
+            = link_to "/items/#{item.id}", method: :get do
+              %li.item-list__img
+                = image_tag item.images.first.src.url
+              .item-list__body
+                %li.item-list__name
+                  = item.item_name
+                .itemu-list__data
+                  %ul
+                    %li
+                      - item = item.price * 1.1
+                      = "¥#{item.floor}"
+                  %p
+                    （税込）
+
+.category_index_footer
+  = render "items/footer"
