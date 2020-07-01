@@ -4,15 +4,16 @@ class ItemsController < ApplicationController
 
 
   def index
+    # @like = Like.all
     @items = Item.all
-    # @likes = Like.where(user_id: current_user.id)
-  end
 
+  end
+  
   def new
     @item = Item.new
     @item.images.new
   end
-
+  
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -22,11 +23,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def edit
     @item = Item.find(params[:id])
   end
-
+  
   def update
     @item = Item.new(item_params)
     if @item.save
@@ -36,11 +37,14 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
+  
   def show
+    @likes_count = Like.where(item_id: @item.id).count
     @items = Item.all
+    
   end
-
+  
+  
   def destroy
     if @item.destroy
       redirect_to root_path

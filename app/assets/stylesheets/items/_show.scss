@@ -12,11 +12,19 @@
     .item {
       width: 560px;
       height: 450px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       &__name {
         font-size: 30px;
         text-align: center;
+        display: flex;
+        padding: 0 200px;
+        margin: 0 auto;
+      }
+      li.fas.fa-star{
+        color: rgb(235, 158, 16);
+        font-size: 25px;
+        margin-left: 40px;
+        margin-top: 10px;
       }
       &__image {
         width: 100%;
@@ -138,7 +146,6 @@
   
   ul {
     .like-btn{
-      margin: 10px 0 0;
       display: flex;
       margin-right: auto;
       li{

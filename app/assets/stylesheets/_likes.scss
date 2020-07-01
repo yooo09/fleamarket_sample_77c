@@ -1,33 +1,35 @@
-// Place all the styles related to the likes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.like-content{
-  .like-content-box{
-    width: 70%;
+.like-new-content{
+  h1{
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+  }
+  .like-box{
+    width: 700px;
     height: 100px;
+    margin: 0 auto;
     border-radius: 10px;
     border: 1px solid rgb(235, 232, 232);
-    margin: 0 auto;
-
-
-
-
-
-
-
-
-
-
+    .like-box-content{
+      display: flex;
+      justify-content: start;
+    }
+    .item-image{
+      width: 130px;
+      height: 90px;
+      margin: 0 15px;
+      text-align: center;
+      img {
+        width: 90px;
+        height: 90px;
+        }
+      }
+      .item-body{
+        margin-top: 30px;
+        color: black;
+      }
+      a{
+        text-decoration: none;
+      }
   }
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -110,9 +110,12 @@
                         %li
                           = item.price
                           円
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
                       %p
                         （税込）
-
+                    
                       
             -else
               %ul.item-list
@@ -127,8 +130,12 @@
                         %li
                           = item.price
                           円
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
                       %p
                         （税込）
+                    
   .app
     .content
       %h2.content__title

@@ -20,6 +20,7 @@ class LikesController < ApplicationController
     )
     @likes.destroy
   end
+  
 
   private
   
