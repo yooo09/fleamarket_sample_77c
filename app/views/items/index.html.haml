@@ -110,8 +110,13 @@
                         %li
                           = item.price
                           円
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
                       %p
                         （税込）
+                    
+                      
             -else
               %ul.item-list
                 = link_to item_path(item) do
@@ -123,6 +128,14 @@
                     .itemu-list__data
                       %ul
                         %li
+                          = item.price
+                          円
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
+                      %p
+                        （税込）
+                    
                           - item = item.price * 1.1
                           = "¥#{item.floor}"
                       %p

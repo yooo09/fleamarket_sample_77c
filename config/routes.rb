@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :items do
+    resources :likes , only: [:index, :create, :destroy]
     resources :comments, only: [:create, :destroy]  
     member do
       get 'confirm'
@@ -25,5 +26,4 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show]
-
 end

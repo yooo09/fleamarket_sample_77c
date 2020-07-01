@@ -5,6 +5,8 @@
       .item__name
         %p
           = @item.item_name
+        %li.fas.fa-star
+          = @likes_count
       .item__image
         = image_tag @item.images.first.src.url
       .item__mini
@@ -79,6 +81,10 @@
       -else
         .buy.btn
           = link_to "購入画面に進む", "#", class: "btn_text"
+
+          %ul#likeBtn
+            = render partial: 'likes/like', locals: { item: @item}
+
   .item_comment
     .comment
       -if @comments

@@ -1,10 +1,14 @@
 class Item < ApplicationRecord
-
+  
   has_many :images, dependent: :destroy
   belongs_to :user
-  has_many :comments, dependent: :destroy
-  accepts_nested_attributes_for :images, allow_destroy: true
 
+  has_many :likes, dependent: :destroy
+
+  has_many :comments, dependent: :destroy
+
+  accepts_nested_attributes_for :images, allow_destroy: true
+  
   validates_associated:images
   validates :item_name, :images, :detail, :condition, :delivery_fee, :shipping_area, :delivery_time, :price, :user_id, :category_id, presence: true
   validates :delivery_fee,:shipping_area,:condition, exclusion: { in: %w(選択してください) }
@@ -24,15 +28,14 @@ class Item < ApplicationRecord
     # "状態を選択してください":0,
     新品、未使用:1,未使用に近い:2,目立った傷や汚れなし:3,やや傷や汚れあり:4,傷や汚れあり:5,傷や汚れあり:6,全体てきに状態が悪い:7
   }
-
-
+  
+  
   
   def self.search(search)
     return Item.all() unless search
     Item.where('item_name LIKE(?)', "%#{search}%")
   end
   
-
   belongs_to :category
 
 end

@@ -12,11 +12,19 @@
     .item {
       width: 560px;
       height: 450px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       &__name {
         font-size: 30px;
         text-align: center;
+        display: flex;
+        padding: 0 200px;
+        margin: 0 auto;
+      }
+      li.fas.fa-star{
+        color: rgb(235, 158, 16);
+        font-size: 25px;
+        margin-left: 40px;
+        margin-top: 10px;
       }
       &__image {
         width: 100%;
@@ -86,7 +94,7 @@
        margin-top: 20px;
        text-align: center;
        font-weight: bold;
-       line-height: 50px;
+       line-height: 2;
        &_text{
          text-decoration: none;
          color: #fff;
@@ -136,4 +144,23 @@
     }
   }
   
+  ul {
+    .like-btn{
+      display: flex;
+      margin-right: auto;
+      li{
+        border-radius: 40px;
+        color: #3CCACE;
+        border: 1px solid #ffb340;
+        color: #3CCACE;
+        border: 1px solid rgb(235, 158, 16);
+        border-radius: 40px;
+        margin: 5px;
+      }
+      a{
+        text-decoration: none;
+        margin: 0 auto;
+      }
+    }
+  }
 }

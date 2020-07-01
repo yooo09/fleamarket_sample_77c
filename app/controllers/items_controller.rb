@@ -6,9 +6,12 @@ class ItemsController < ApplicationController
 
 
   def index
+    @items = Item.all
     @items = Item.all.order("created_at DESC").limit(40)
   end
 
+  end
+  
   def new
     @item = Item.new
     @item.images.new
@@ -22,7 +25,7 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end
-
+  
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -31,13 +34,13 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  
   def edit
     if @item.user_id != current_user.id
       redirect_to root_path
     end
   end
-
+  
   def update
       if @item.update(item_params)
         redirect_to root_path
@@ -45,14 +48,16 @@ class ItemsController < ApplicationController
         render :edit
       end
   end
-
+  
   def show
+    @likes_count = Like.where(item_id: @item.id).count
     @items = Item.all
     @user_items = Item.where(customer_id: nil, user: @item.user).limit(5)
     @comment = Comment.new
     @comments = @item.comments.all
   end
-
+  
+  
   def destroy
     if @item.destroy
       redirect_to root_path
