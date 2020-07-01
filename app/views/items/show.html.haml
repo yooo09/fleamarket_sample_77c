@@ -6,12 +6,11 @@
         %p
           = @item.item_name
       .item__image
-        = image_tag ("icon/member_photo_noimage_thumb.png")
+        = image_tag @item.images.first.src.url
       .item__mini
-        .item__mini__image
-          = image_tag ("icon/member_photo_noimage_thumb.png")
-        .item__mini__image
-          = image_tag ("icon/member_photo_noimage_thumb.png")
+        - @item.images[1..-1].each do |image|
+          .item__mini__image
+            = image_tag image.src.url
     .price
       .price__value
         - priceoftem = @item.price * 1.1
