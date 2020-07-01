@@ -1,0 +1,28 @@
+= render "items/header"
+
+.category_index_content
+  .category-box
+    .category-box__top
+      %h2 カテゴリー一覧
+      - @category_parent_array.each_with_index do |parent, i|
+        - unless parent.name.include?("カテゴリー一覧")
+          = link_to "##{i}", class: "box__parent__link" do
+            = parent.name
+    - @category_parent_array.each_with_index do |parent, i|
+      - unless parent.name.include?("カテゴリー一覧")
+        .category-box__container
+          .category-box__container__title{id: "#{i}"}
+            = link_to "#{parent.name}", category_path(parent)
+          .category-box__child
+            - parent.children.each do |child|
+              .child-box
+                = link_to "#{child.name}", category_path(child)
+              .grandchild-box
+                - child.children.each do |grandchild|
+                  .grandchild__link
+                    - unless grandchild.name.include?("すべて")
+                      = link_to "#{grandchild.name}", category_path(grandchild), class: "category__link__btn"
+
+.category_index_footer
+  = render "items/footer"
+

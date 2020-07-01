@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_category
 
   def show
     @user = User.find(params[:id])
