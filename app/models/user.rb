@@ -15,5 +15,4 @@ class User < ApplicationRecord
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, presence: true
 
   has_many :likes, dependent: :destroy
-  # has_many :likes, through: :likes, source: :item
 end
