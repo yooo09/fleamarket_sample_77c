@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
     Rails.env.production?
   end
 
+  def set_category
+    @category_parent_array = Category.where(ancestry: nil)
+  end
+
 end

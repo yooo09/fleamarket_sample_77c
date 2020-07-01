@@ -5,25 +5,44 @@
         = link_to root_path do
           = image_tag ("logo/logo.png")
       .form
-        %form.search
-          .search__input-box
-            %input{type: "text", class: "search__input-box__text", placeholder: "キーワードから探す"}
-          %botton{type: "submit", class: "search__submit"}
+        = form_tag search_items_path , method: :get do
+          .search
+            .search__input-box
+              = text_field_tag :search, "",class: "search__input-box__text" , placeholder: "キーワードを入力してください"
+              = image_submit_tag "icon/icon-search 1.png", class: "search__submit"
 
-            = image_tag ("icon/icon-search 1.png")
         .result
-
     .box__under
-      %ul.left-item
-        %li.left-item__main
-          = link_to "#" do
-            カテゴリー
-          .brend-list
-            %ul.brend-pulldown
+      .categorywindow
+        .title
+          .title__list
+            = link_to "/categories/", class: "category__search" do
+              カテゴリー
+          %ul.category__parent
+            - @category_parent_array.each do |parent|
+              %li.category__parent__list
+                = link_to category_path(parent), class: "category__parent__name" do
+                  = parent.name
+                %ul.category__child
+                  - parent.children.each do |child|
+                    %li.category__child__list
+                      = link_to category_path(child), class: "category__child__name" do
+                        = child.name
+                      %ul.category__grandchild
+                        - child.children.each do |grandchild|
+                          %li.category__grandchild__list
+                            = link_to category_path(grandchild), class: "category__grandchild__name" do
+                              = grandchild.name
+
+      .brend-list
+        %ul.brend-pulldown
+
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__mypage
+
             = link_to "/users/#{current_user.id}" do
+
               マイページ
           %li.right-menu__login
             = link_to logout_user_path(current_user) do
@@ -35,4 +54,3 @@
           %li.right-menu__new
             = link_to new_user_registration_path do
               新規会員登録
-          
