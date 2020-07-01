@@ -96,7 +96,20 @@
           background-repeat: no-repeat;
           background-size: 18px;
           padding-right: 30px;
-        } 
+        }
+      }
+      &__brend {
+        display: flex;
+        line-height: 32px;
+        padding: 0 0 0 16px;
+        
+        .brend-list {
+          display: none;
+          .brend-pulldown {
+            position: absolute;
+            background-color: #fff;
+          }
+        }
       }
     }
     .right-menu {
