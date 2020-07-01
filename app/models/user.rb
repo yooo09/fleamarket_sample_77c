@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :credit_cards
   has_many :items
-  has_many :comments
+  has_many :comments, dependent: :destroy
   
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
