@@ -4,11 +4,11 @@
   .category-box
     .category-box__top
       %h2 カテゴリー一覧
-      - @parents.each_with_index do |parent, i|
+      - @category_parent_array.each_with_index do |parent, i|
         - unless parent.name.include?("カテゴリー一覧")
           = link_to "##{i}", class: "box__parent__link" do
             = parent.name
-    - @parents.each_with_index do |parent, i|
+    - @category_parent_array.each_with_index do |parent, i|
       - unless parent.name.include?("カテゴリー一覧")
         .category-box__container
           .category-box__container__title{id: "#{i}"}

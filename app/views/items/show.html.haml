@@ -83,13 +83,15 @@
 
   .under
     .more
-      %pヴィトンをもっとみる
+      %p
+        ="#{@item.user.nickname}さんのその他の商品"
     .recommended
-      - @items.each do |item|
+      - @user_items.each do |item|
         -if (item != @item)
           .recommended__items
-            .recommended__items__image
-              = image_tag ("icon/member_photo_noimage_thumb.png")
+            = link_to item_path(item) do
+              .recommended__items__image
+                = image_tag item.images.first.src.url
             .recommended__items__price
               %p
               = item.item_name
@@ -99,7 +101,9 @@
                   = "¥#{item.floor}"
                 .recommended__items__price__box__fee
                   %p
-                    (税込)
+                  (税込)
+
+
   = render "footer"
   = render "cameraicon"
 

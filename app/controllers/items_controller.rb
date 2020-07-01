@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:confirm, :destroy, :show]
   before_action :set_category, only: [:index, :new, :show]
-
+  before_action :set_category_link, only: [:show]
 
   def index
     @items = Item.all.order("created_at DESC").limit(40)
@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
 
   def show
     @items = Item.all
-    @parents = Category.where(ancestry: nil)
+    @user_items = Item.where(customer_id: nil, user: @item.user).limit(5)
   end
 
   def destroy
@@ -82,6 +82,15 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category_link
+    @category = Category.find(params[:id])
+    if @category.has_children?
+      @category_links = @category.children
+    else
+      @category_links = @category.siblings
+    end
   end
 
 end

@@ -123,11 +123,10 @@
                     .itemu-list__data
                       %ul
                         %li
-                          = item.price
-                          円
+                          - item = item.price * 1.1
+                          = "¥#{item.floor}"
                       %p
                         （税込）
-           
   .app
     .content
       %h2.content__title

@@ -1,9 +1,8 @@
 class CategoriesController < ApplicationController
-  before_action :set_category_find, only: [:show]
+  before_action :set_category_link, only: [:show]
   before_action :set_category, only: [:index, :show]
 
   def index
-    @parents = Category.where(ancestry: nil)
   end
 
 
@@ -15,7 +14,7 @@ class CategoriesController < ApplicationController
 
   private
 
-  def set_category_find
+  def set_category_link
     @category = Category.find(params[:id])
     if @category.has_children?
       @category_links = @category.children

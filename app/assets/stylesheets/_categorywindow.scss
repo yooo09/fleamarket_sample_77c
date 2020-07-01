@@ -1,68 +1,118 @@
+//せつこリスト作業中です↓
+// .categorywindow {
+//   height: 100%;
+//   .title {
+//     position: relative;
+//     background-color: white;
+//     border-right: 1px solid whitesmoke;
+//     &__list {
+//       width: 100%;
+//     }
+//     .category__parent {
+//       display: none;
+//       position: absolute;
+//       z-index: 3;
+//       display: block;
+
+//       &__name {
+//       }
+//     }
+//   }
+// }
+
 .categorywindow {
-  position: relative;
   .title {
     &__list {
-      a {
+      position: relative;
+      .category__search {
         line-height: 32px;
-        padding-right: 30px;
+        // padding-right: 30px;
         text-decoration: none;
         color: #333;
       }
-    }
-    &:hover{
-      color: #3CCACE;
-      .category__parent{
-        top: 122px;
-        display: block;
-        &__name{
-          width: 100%;
-          color: black;
-          display: inline-block;
-          padding: 10px 20px;
-          font-size: 13px;
-        }
-        li {
-          &:hover{
-            .category__child{
-              width: 100%;
-              display: block;
-              top: 0;
-              left: 221px;
-              li {
-                &:hover{
-                  .category__grandchild{
-                    width: 300px;
-                    display: block;
-                    top: 0;
-                    left: 220px;
-                  }
-                }
-              }
-            }
-          }
-        }
+      // .category__search:hover{
+      //   color: #3CCACE;
+        
+      // }
+      // .category__parent{
+      //   position: absolute;
+      //   display: none;
+      //   // top: 30px;
+      //   display: block;
+      //   &__name{
+      //     width: 200px;
+      //     text-align: center;
+      //     text-decoration: none;
+      //     color: black;
+      //     display: inline-block;
+      //     padding: 10px 20px;
+      //     font-size: 13px;
+      //     border-bottom: solid 1px black;
+      //   }
+      // li {
+      //   &:hover{
+      //     .category__child{
+      //       width: 300px;
+      //       display: block;
+      //       top: 0;
+      //       left: 221px;
+      //       li {
+      //         &:hover{
+      //           .category__grandchild{
+      //             width: 300px;
+      //             display: block;
+      //             top: 0;
+      //             left: 220px;
+      //           }
+      //         }
+      //       }
+      //     }
+      //   }
       }
     }
   }
-  .category__parent, .category__child, .category__grandchild{
-    display: none;
-  }
-  .category__list{
-    position: absolute;
-    height: 560px;
-    background-color: white;
-    border-right: 1px solid whitesmoke;
-    z-index: 3;
-  }
-  .category__child__name{
-    width: 100%;
-    color: black;
-    display: inline-block;
-    padding: 3px 15px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    &:hover {
-      color:#3CCACE;
-    }
-  }
-}
+
+
+
+//   }
+//   .category__parent, .category__child, .category__grandchild{
+//     display: none;
+
+//   }
+//   .category__list{
+//     display: inline-block;
+//     // position: absolute;
+//     height: 600px;
+//     width: 250px;
+//     background-color: white;
+//     border-right: 1px solid whitesmoke;
+//     z-index: 3;
+//   }
+//   .category__child__name{
+    
+//     // position: absolute;
+//     width: 100%;
+//     color: black;
+//     display: inline-block;
+//     // padding: 3px 15px;
+//     font-size: 11px;
+//     letter-spacing: 2px;
+//     &:hover {
+//       color:#3CCACE;
+//       border-bottom: solid 1px blue;
+//     }
+//   }
+//   .category__grandchild__name {
+//     // position: absolute;
+//     width: 100%;
+//     color: black;
+//     display: inline-block;
+//     // padding: 3px 15px;
+//     font-size: 11px;
+//     letter-spacing: 2px;
+//     &:hover {
+//       color:#3CCACE;
+//       border-bottom: solid 1px red;
+//    }
+//  }
+// }
