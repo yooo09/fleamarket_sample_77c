@@ -1,118 +1,89 @@
-//せつこリスト作業中です↓
-// .categorywindow {
-//   height: 100%;
-//   .title {
-//     position: relative;
-//     background-color: white;
-//     border-right: 1px solid whitesmoke;
-//     &__list {
-//       width: 100%;
-//     }
-//     .category__parent {
-//       display: none;
-//       position: absolute;
-//       z-index: 3;
-//       display: block;
-
-//       &__name {
-//       }
-//     }
-//   }
-// }
-
 .categorywindow {
   .title {
+    background-color: white;
     &__list {
+      width: 100%;
       position: relative;
       .category__search {
-        line-height: 32px;
-        // padding-right: 30px;
+        color: #333;
+        text-decoration: none;
+        &:hover {
+          color:#3CCACE;
+        }
+      }
+    }
+    .category__parent {
+      display: none;
+      position: absolute;
+      z-index: 3;
+      height: 100%;
+      &:hover {
+        display: block;
+      }
+      &__list {
+        box-sizing: border-box;
+        background-color: rgb(255, 255, 255);
+        width: 224px;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+          color:#3CCACE;
+        }
+        .category__parent__name {
+          text-decoration: none;
+          color: #333;
+          &:hover {
+            color:#3CCACE;
+          }
+        }
+      }
+    }
+    .category__child {
+      display: none;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      display: none;
+      top: 0;
+      left: 224px;
+      bottom: 0px;
+      width: 225px;
+      cursor: pointer;
+      text-align: center;
+      &:hover {
+        color:#3CCACE;
+      }
+      .category__child__name {
         text-decoration: none;
         color: #333;
+        font-size: 13px;
+        &:hover {
+          color:#3CCACE;
+        }
       }
-      // .category__search:hover{
-      //   color: #3CCACE;
-        
-      // }
-      // .category__parent{
-      //   position: absolute;
-      //   display: none;
-      //   // top: 30px;
-      //   display: block;
-      //   &__name{
-      //     width: 200px;
-      //     text-align: center;
-      //     text-decoration: none;
-      //     color: black;
-      //     display: inline-block;
-      //     padding: 10px 20px;
-      //     font-size: 13px;
-      //     border-bottom: solid 1px black;
-      //   }
-      // li {
-      //   &:hover{
-      //     .category__child{
-      //       width: 300px;
-      //       display: block;
-      //       top: 0;
-      //       left: 221px;
-      //       li {
-      //         &:hover{
-      //           .category__grandchild{
-      //             width: 300px;
-      //             display: block;
-      //             top: 0;
-      //             left: 220px;
-      //           }
-      //         }
-      //       }
-      //     }
-      //   }
+
+    }
+    .category__grandchild {
+      display: none;
+      position: absolute;
+      background-color: rgb(255, 255, 255);
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+      display: none;
+      top: 0px;
+      left: 224px;
+      bottom: 0px;
+      width: 225px;
+      cursor: pointer;
+      text-align: center;
+      .category__grandchild__name {
+        text-decoration: none;
+        color: #333;
+        display: inline-flex;
+        font-size: 13px;
+        &:hover {
+          color:#3CCACE;
+        }
       }
     }
   }
-
-
-
-//   }
-//   .category__parent, .category__child, .category__grandchild{
-//     display: none;
-
-//   }
-//   .category__list{
-//     display: inline-block;
-//     // position: absolute;
-//     height: 600px;
-//     width: 250px;
-//     background-color: white;
-//     border-right: 1px solid whitesmoke;
-//     z-index: 3;
-//   }
-//   .category__child__name{
-    
-//     // position: absolute;
-//     width: 100%;
-//     color: black;
-//     display: inline-block;
-//     // padding: 3px 15px;
-//     font-size: 11px;
-//     letter-spacing: 2px;
-//     &:hover {
-//       color:#3CCACE;
-//       border-bottom: solid 1px blue;
-//     }
-//   }
-//   .category__grandchild__name {
-//     // position: absolute;
-//     width: 100%;
-//     color: black;
-//     display: inline-block;
-//     // padding: 3px 15px;
-//     font-size: 11px;
-//     letter-spacing: 2px;
-//     &:hover {
-//       color:#3CCACE;
-//       border-bottom: solid 1px red;
-//    }
-//  }
-// }
+}
