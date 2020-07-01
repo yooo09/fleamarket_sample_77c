@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    respond_to do |format|
-      format.html { redirect_to item_path(params[:item_id])  }
+    if @comment.save
+      respond_to do |format|
+        format.html { redirect_to item_path(params[:item_id])}
+      end
+    else
+      flash[:notice] = "失敗しました"
     end
   end
 
