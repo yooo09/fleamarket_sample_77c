@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
-
+  before_action :deep_search
 
   def index
     @items = Item.all
@@ -61,6 +61,11 @@ class ItemsController < ApplicationController
     #   format.html
     #   format.json
     # end
+  end
+
+  def deep_search
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 
   private
