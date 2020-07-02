@@ -6,6 +6,8 @@
 @import "items/edit";
 @import "items/new";
 @import "items/show";
+@import "categories/show";
+@import "categories/categories";
 @import "credit_cards/credit_card";
 @import "credit_cards/credit_cards";
 @import "credit_cards/edit.scss";
@@ -17,5 +19,8 @@
 @import "users/users";
 @import "cameraicon";
 @import "likes";
+@import "comments";
+@import "search";
+@import "categorywindow";
 @import "font-awesome-sprockets";
 @import "font-awesome";
