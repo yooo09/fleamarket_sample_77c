@@ -7,7 +7,7 @@
     %p.text この商品を削除します。
     %p.text 本当に削除しますか？
     .btn-area
-      %td= button_to "キャンセル", :back, class: 'btn'
+      %td= button_to "キャンセル", :back, class: 'btn',method: :get
       %td= button_to "    削除    ", item_path(@item),class: 'btn', method: :delete
 
 
