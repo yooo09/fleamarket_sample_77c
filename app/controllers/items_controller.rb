@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
     @items = Item.all.order("created_at DESC").limit(40)
   end
 
-  end
   
   def new
     @item = Item.new
@@ -100,8 +99,8 @@ class ItemsController < ApplicationController
       @category_links = @category.siblings
     end
   end
-
 end
+
 
 
 
