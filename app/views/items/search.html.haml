@@ -2,50 +2,7 @@
   .search_header
     = render "header"
   .search_main
-    .search_main_details
-      .search_main_details_form
-        = search_form_for @q, url: deep_search_items_path do |f|
-          .search_name
-            = f.search_field :item_name_cont, placeholder: "キーワード検索", class:"search_form"
-          .search_price
-            %p : 価格範囲
-            = f.number_field :price_gteq,  placeholder: "以上の金額", class: "search_price_form"
-            %span 〜
-            = f.number_field :price_lteq,  placeholder: "以下の金額", class: "search_price_form"
-          .search_condition
-            %p : 商品の状態
-            = f.radio_button :condition_eq,'', {:checked => true}
-            = f.label :condition,"指定なし"
-            %span
-            = f.radio_button :condition_eq,1
-            = f.label :condition,"新品、未使用"
-            %p
-            = f.radio_button :condition_eq,2
-            = f.label :condition,"未使用に近い"
-            %span
-            = f.radio_button :condition_eq,3
-            = f.label :condition,"目立った傷や汚れなし"
-            %p
-            = f.radio_button :condition_eq,4
-            = f.label :condition,"やや傷や汚れあり"
-            %span
-            = f.radio_button :condition_eq,5
-            = f.label :condition,"傷や汚れあり"
-            %p
-            = f.radio_button :condition_eq,6
-            = f.label :condition,"全体てきに状態が悪い"
-          .search_fee
-            %p : 配送料に関して
-            = f.radio_button :delivery_fee_eq,'', {:checked => true}
-            = f.label :delivery_fee,"指定なし"
-            %p
-            = f.radio_button :delivery_fee_eq,'送料込み(出品者負担)',class: "fee_btn"
-            = f.label :delivery_fee,"送料込み(出品者負担)"
-            %p
-            = f.radio_button :delivery_fee_eq,'着払い(購入者負担)',class: "fee_btn"
-            = f.label :delivery_fee,"着払い(購入者負担)"
-          = f.submit "検索", class: "search_btn"
-
+    = render "side_search"
     .search_main_lists
       - @items.each do |item|
         .search_list
