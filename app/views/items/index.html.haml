@@ -135,8 +135,12 @@
                           .fas.fa-star
                             = item.likes.count
                       %p
+
+                        - item = item.price * 1.1
+                        = "¥#{item.floor}"
+                      %p
                         （税込）
-                         
+
   .app
     .content
       %h2.content__title
