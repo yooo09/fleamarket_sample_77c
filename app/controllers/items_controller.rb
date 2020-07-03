@@ -99,8 +99,8 @@ class ItemsController < ApplicationController
       @category_links = @category.siblings
     end
   end
-
 end
+
 
 
 
