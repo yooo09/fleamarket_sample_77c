@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_category, only: [:index, :new, :show, :search]
+  before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
   before_action :set_category_link, only: [:show]
   before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
   before_action :set_item_search_query
