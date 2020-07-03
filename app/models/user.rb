@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates :encrypted_password, length: { minimum: 7 }
   validates :password, confirmation: true
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, presence: true
+
+  has_many :likes, dependent: :destroy
 end

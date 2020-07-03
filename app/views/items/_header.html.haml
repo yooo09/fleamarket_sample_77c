@@ -10,7 +10,6 @@
             .search__input-box
               = text_field_tag :search, "",class: "search__input-box__text" , placeholder: "キーワードを入力してください"
               = image_submit_tag "icon/icon-search 1.png", class: "search__submit"
-        
         -# .result
     .box__under
       .categorywindow
@@ -18,34 +17,33 @@
           .title__list
             = link_to "/categories/", class: "category__search" do
               カテゴリー
+          %ul.category__parent
+            - @category_parent_array.each do |parent|
+              %li.category__parent__list
+                = link_to category_path(parent), class: "category__parent__name" do
+                  = parent.name
+                %ul.category__child
+                  - parent.children.each do |child|
+                    %li.category__child__list
+                      = link_to category_path(child), class: "category__child__name" do
+                        = child.name
+                      %ul.category__grandchild
+                        - child.children.each do |grandchild|
+                          %li.category__grandchild__list
+                            = link_to category_path(grandchild), class: "category__grandchild__name" do
+                              = grandchild.name
 
-          -#せつこリスト作業中です↓
-          -# %ul.category__parent
-          -#   - @category_parent_array.each do |parent|
-          -#     %li.category__parent__list
-          -#       = link_to category_path(parent), class: "category__parent__name" do
-          -#         = parent.name
-          -#       %ul.category__child
-          -#         - parent.children.each do |child|
-          -#           %li.category__child__list
-          -#             = link_to category_path(child), class: "category__child__name" do
-          -#               = child.name
-          -#             %ul.category__grandchild
-          -#               - child.children.each do |grandchild|
-          -#                 %li.category__grandchild__list
-          -#                   = link_to category_path(grandchild), class: "category__grandchild__name" do
-          -#                     = grandchild.name
-          
       .brend-list
         %ul.brend-pulldown
 
       %ul.right-menu
         - if user_signed_in?
+          %li.right-menu__likepage
+            = link_to "#" do
+              お気に入り一覧
           %li.right-menu__mypage
-
             = link_to "/users/#{current_user.id}" do
-
-              マイページ
+              =current_user.nickname
           %li.right-menu__login
             = link_to logout_user_path(current_user) do
               ログアウト
