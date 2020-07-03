@@ -151,5 +151,24 @@
 .box-image__icon:hover {
 border: solid 1px blue;
 }
+}
 
+.new-acount-content {
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    color: blue;
+  }
+}
+.user_edit_content_toppage {
+  margin-top: 10px;
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  a:hover {
+    color: blue;
+  }
 }
