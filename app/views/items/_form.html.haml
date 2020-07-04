@@ -29,7 +29,7 @@
               .js-file_group{"data-index" => "#{@item.images.count}"}
                 = file_field_tag :src, id: "item_images_attributes_#{@item.images.count}_src", class: 'js-file'
 
-        - unless @item.persisted?
+        - unless @item.persisted? 
           %label{for: "item_images_attributes_0_src",id:"label_image"}
             .click_erea
               .click_erea__content
