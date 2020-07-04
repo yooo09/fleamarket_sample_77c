@@ -1,5 +1,5 @@
 .like-btn
-  - if Like.find_by(user_id: current_user.id, item_id: item.id)
+  - if Like.find_by(user_id: current_user, item_id: item.id)
     = link_to(item_like_path(@item, item.id), method: :delete, remote: true) do
       %li.optionalBtn.already
         = icon('fa', 'star')
