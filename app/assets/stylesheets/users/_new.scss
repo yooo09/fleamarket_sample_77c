@@ -1,8 +1,51 @@
 .user_new_content{
+  h2 {
+    margin-top: 30px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+  .omniauth {
+    width: 500px;
+    height: 100%;
+    margin: 20px auto 0;
+    border-radius: 10px;
+    border: 1px solid rgb(235, 232, 232);
+    box-shadow: 0px 0px 20px #3CCACE inset;
+    padding: 30px 0;
+    &__facebook {
+      margin: 0 20px 10px;
+      a {
+        color: white;
+        font-size: 20px;
+        text-align: center;
+        padding: 15px;
+        display: block;
+        text-decoration: none;
+        background-color: #4169e1;
+        border-radius: 10px;
+      }
+    }
+    &__google {
+      margin: 20px 20px 0;
+      a {
+        color: black;
+        font-size: 20px;
+        text-align: center;
+        padding: 15px;
+        display: block;
+        text-decoration: none;
+        border: 1px solid black;
+        border-radius: 10px;
+      }
+    }
+    
+  }
   .new-user {
     width: 500px;
     height: 100%;
-    margin: 150px auto 0;
+    margin: 20px auto 0;
     border-radius: 10px;
     border: 1px solid rgb(235, 232, 232);
     box-shadow: 0px 0px 20px #3CCACE inset;
@@ -12,15 +55,8 @@
     padding: 20px 40px;
   }
   
-  h2 {
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 1.2;
-    margin-bottom: 10px;
-    padding-bottom: 4px;
-  }
-  
   .box-last_name {
+    
   margin-bottom: 13px;
   float: left;
 }
