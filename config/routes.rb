@@ -1,22 +1,32 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
+  }
   root 'items#index'
+  post 'items/:id/edit' => 'items#edit'
+  post 'items/:id/confirm' => 'items#confirm'
+  get '/likes' => 'likes#index'
+  post '/likes/:item_id' => 'likes#create'
+  delete '/likes/:item_id/:user_id' => 'likes#destroy'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  resources :users, only: [:show, :destroy] do
+  resources :users, only: [:new, :show, :destroy] do
     resources :credit_cards, only: [:new, :create, :edit, :update]
+    resources :adresses, only: [:new, :create, :edit, :update,:show]
     member do
       get :logout
     end
   end
 
   resources :items do
-    resources :likes , only: [:index, :create, :destroy]
     resources :comments, only: [:create, :destroy]  
     member do
       get 'confirm'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'purchase'
     end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
@@ -26,6 +36,5 @@ Rails.application.routes.draw do
 
     end
   end
-
   resources :categories, only: [:index, :show]
 end
