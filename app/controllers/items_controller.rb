@@ -39,6 +39,21 @@ class ItemsController < ApplicationController
     if @item.user_id != current_user.id
       redirect_to root_path
     end
+  # 親セレクトボックスの初期値(配列)
+  # @category_parent_array = ["---"]
+  @category_parent_array = []
+  # categoriesテーブルから親カテゴリーのみを抽出、配列に格納
+  Category.where(ancestry: nil).each do |parent|
+    @category_parent_array << parent.name
+  end
+
+
+  @category_parent = @item.category.parent.parent
+  # itemに紐づいていいる孫カテゴリーの親である子カテゴリが属している子カテゴリーの一覧を配列で取得
+  @category_child_array = @item.category.parent.parent.children
+  # itemに紐づいていいる孫カテゴリーが属している孫カテゴリーの一覧を配列で取得
+  @category_grandchild_array = @item.category.parent.children
+  
   end
   
   def update
