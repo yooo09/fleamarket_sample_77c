@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-Schema.define(version: 2020_07_02_023541) do
+
 ActiveRecord::Schema.define(version: 2020_07_05_035942) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -111,4 +120,5 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
   add_foreign_key "images", "items"
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
+  add_foreign_key "sns_credentials", "users"
 end
