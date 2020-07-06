@@ -76,18 +76,6 @@
               %p必ず入力してください
         - if @item.persisted?
           .category__choose
-            -# = f.label :カテゴリー, class: "label" do
-            -#   カテゴリー
-            -#   %span.form-requires 必須
-            -# %br
-            -# = f.select :category_id, options_for_select(@category_parent_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.parent.parent.name), {}, {class: 'select', id: 'parent_category'}
-            -# .form_group#children
-            -#   = f.select :category_id, options_for_select(@category_child_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.parent.id), {}, {class: 'select', id: 'children_wrapper'}
-            -# .form_group#grandchildren
-            -#   = f.select :category_id, options_for_select(@category_grandchild_array.map{|c|[c[:name], c[:id], {'data-category'=>c[:id], 'id'=>c[:id]}]}, @item.category.id), {}, {class: 'select', id: 'grandchildren_wrapper'}
-            -# = f.text_field :category_id, id: 'grand_child_result_id', type: 'hidden'
-
-
             = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください",selected: @item.category&.root_id}, {id: 'parent_category'}
             .category__choose__added
               #children_wrapper
@@ -97,13 +85,6 @@
               #grandchildren_wrapper
                 .category__choose2
                   = f.collection_select :category_id, @category_grandchild_array, :id, :name,{prompt: "選択してください"}, {id: 'grandchild_category'}
-
-
-
-
-
-
-
         - else
           .category__choose
             = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"}, {id: 'parent_category'}

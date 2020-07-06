@@ -95,7 +95,7 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-//header/indexせつこリスト
+//header/indexドロップリスト
 $(function(){
   $(".category__search").mouseover(function(){
     $(".category__parent").toggle();
