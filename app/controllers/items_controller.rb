@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
   before_action :set_category_link, only: [:show]
   before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
@@ -9,7 +8,7 @@ class ItemsController < ApplicationController
     @items = Item.all
     @items = Item.all.order("created_at DESC").limit(40)
   end
-
+  
   
   def new
     @item = Item.new
