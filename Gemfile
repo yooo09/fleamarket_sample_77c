@@ -87,3 +87,4 @@ gem 'devise-i18n-views'
 gem 'ancestry'
 gem 'rails-i18n'
 gem 'ransack'
+
