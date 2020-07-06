@@ -1,9 +1,14 @@
 class LikesController < ApplicationController
   before_action :set_item, only: [:create, :destroy]
   before_action :set_category, only: :index
-
+  
   def index
-    @likes = Like.where(user_id: current_user.id)
+    @likes = Like.where(user_id: current_user.id).order("created_at DESC")
+    @items = []
+    @likes.each do |like|
+      item_id = like.item_id
+      @items << Item.find(item_id)
+    end
   end
 
   def create
@@ -21,7 +26,7 @@ class LikesController < ApplicationController
     )
     @likes.destroy
   end
-  
+
 
   private
   

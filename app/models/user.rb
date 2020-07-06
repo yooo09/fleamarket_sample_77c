@@ -3,11 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
+         
+  mount_uploader :image, ImageUploader
 
   has_many :credit_cards
   has_many :items
   has_many :comments, dependent: :destroy
   has_one :adress
+  
   
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}

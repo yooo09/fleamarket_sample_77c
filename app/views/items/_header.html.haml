@@ -39,7 +39,7 @@
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__likepage
-            = link_to "#" do
+            = link_to "/likes" do
               お気に入り一覧
           %li.right-menu__mypage
             = link_to "/users/#{current_user.id}" do

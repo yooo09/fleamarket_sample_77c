@@ -4,13 +4,18 @@
   .main
     .main_content
       .user
-        tech camp
+        .user__icon
+          %img{:src => @user.image, width: "100", height: '100'}
+        .user__nickname
+          = @user.nickname
       .credit
         = link_to "クレジットカード変更画面", new_user_credit_card_path(:user_id), class: "credit_link"
+
         -if @adress.blank?
           = link_to "新規住所登録" , new_user_adress_path(current_user), class: "adress_link"
         -else
           = link_to "住所変更" , edit_user_adress_path(@adress), class: "adress_link"
+
 
       .product
         .product_header

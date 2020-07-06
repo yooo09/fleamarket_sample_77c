@@ -1,11 +1,12 @@
 .like-btn
-  - if Like.find_by(user_id: current_user.id, item_id: item.id)
-    = link_to(item_like_path(@item, item.id), method: :delete, remote: true) do
+  - if Like.find_by(user_id: current_user.id, item_id: @item.id)
+    = link_to "/likes/#{@item.id}/#{current_user.id}", method: :delete, remote: true do
       %li.optionalBtn.already
         = icon('fa', 'star')
         お気に入り済み
   -else 
-    = link_to(item_likes_path(@item), method: :post, remote: true) do
+    = link_to "/likes/#{@item.id}", method: :post, remote: true do
       %li.optionalBtn.none
         = icon('fa', 'star')
         お気に入りにする
+
