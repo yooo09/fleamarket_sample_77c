@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
-  before_action :set_category, only: [:index, :new, :show]
+  before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
   before_action :set_category_link, only: [:show]
   before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
-
+  before_action :set_item_search_query
 
   def index
     @items = Item.all
@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
+      @item.images.new
       render :new
     end
   end
@@ -73,13 +74,11 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.all.search(params[:search])
-    # return nil if params[:keyword] == ""
-    # @items = Item.search(params[:keyword])
-    # respond_to do |format|
-    #   format.html
-    #   format.json
-    # end
   end
+
+  def deep_search
+  end
+
 
   private
 
@@ -98,6 +97,11 @@ class ItemsController < ApplicationController
     else
       @category_links = @category.siblings
     end
+  end
+
+  def set_item_search_query
+    @q = Item.ransack(params[:q])
+    @items = @q.result(distinct: true)
   end
 end
 

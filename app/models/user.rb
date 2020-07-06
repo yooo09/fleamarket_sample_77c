@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
+         
+  mount_uploader :image, ImageUploader
 
   has_many :credit_cards
   has_many :items
@@ -16,5 +18,4 @@ class User < ApplicationRecord
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, presence: true
 
   has_many :likes, dependent: :destroy
-
 end
