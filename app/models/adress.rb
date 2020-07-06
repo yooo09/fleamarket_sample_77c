@@ -3,5 +3,6 @@ class Adress < ApplicationRecord
   validates :prefecture, presence: true
   validates :city, presence: true
   validates :house_number, presence: true
-  validates :building, presence: true
+
+  belongs_to :user
 end

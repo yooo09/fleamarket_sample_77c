@@ -1,0 +1,17 @@
+.adress_edit_content
+  .adress_edit_content_header
+    =render 'items/header'
+  .adress_edit_content_body
+    .address_inner
+      .address_inner_user_address
+        .adress_header
+          本人情報の登録
+        .adress_warning
+          %pお客さまの本人情報をご登録ください
+          %br登録されたお名前・生年月日を変更する場合、
+          %br本人確認書類の提出が必要になります。
+        .adress_link
+          = link_to ">>本人確認書類アップロードについて","#", class:"link_info"
+        = render partial: 'input'
+  .adress_edit_content_footer
+    = render "items/footer"
