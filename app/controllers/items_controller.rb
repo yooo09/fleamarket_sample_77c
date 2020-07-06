@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
     if @item.user_id != current_user.id
       redirect_to root_path
     end
+  @category_parent = @item.category.parent.parent
+  @category_child_array = @item.category.parent.parent.children
+  @category_grandchild_array = @item.category.parent.children
   end
   
   def update
