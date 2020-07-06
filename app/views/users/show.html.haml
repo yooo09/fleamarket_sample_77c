@@ -14,7 +14,7 @@
         -if @adress.blank?
           = link_to "新規住所登録" , new_user_adress_path(current_user), class: "adress_link"
         -else
-          = link_to "住所変更" , edit_user_adress_path(@adress), class: "adress_link"
+          = link_to "住所変更" , edit_user_adress_path(@user,@adress), class: "adress_link"
 
 
       .product

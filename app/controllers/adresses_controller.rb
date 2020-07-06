@@ -1,7 +1,6 @@
 class AdressesController < ApplicationController
   before_action :set_category
-  before_action :user_params, only: [:new, :edit]
-  before_action :set_item, only: [:edit, :update]
+  before_action :user_params, only: [:new, :edit ]
 
   def new
     @adress = Adress.new
@@ -17,10 +16,11 @@ class AdressesController < ApplicationController
   end
 
   def edit
-    @adress = Adress.find_by(user_id_id: params[:id])
+    @adress = Adress.find(params[:id])
   end
 
   def update
+    @adress = Adress.find(params[:id])
     if @adress.update(adress_params)
       redirect_to root_path
     else
@@ -36,11 +36,7 @@ class AdressesController < ApplicationController
     params.require(:adress).permit(:zip_code, :prefecture, :city, :house_number, :building, :phone_number).merge(user_id_id: current_user.id)
   end
 
-  def set_item
-    @adress = Adress.find(params[:id])
-  end
-
   def user_params
-    @user = User.find(params[:user_id])
+    @user = User.find_by(params[:id])
   end
 end
