@@ -1,10 +1,15 @@
 .user_new_content
+  %h2 新規会員登録
+  .omniauth
+    .omniauth__facebook
+      = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
+    .omniauth__google
+      = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
   .new-user
     .content-inner
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         %span.must 必須
-        %h2 新規会員登録
         .box-last_name
           = f.label :last_name, "姓 (全角)"
           %br/
@@ -30,6 +35,9 @@
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email"
         .box-password
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
           = f.label :password, "パスワード (7文字以上)"
           - if @minimum_password_length
             %em
@@ -37,6 +45,9 @@
           %br/
           = f.password_field :password, autocomplete: "new-password"
         .box-password_confirmation
+        - if @sns_id.present?
+          = hidden_field_tag :sns_auth, true
+        - else
           = f.label :password_confirmation, "パスワード (確認用)"
           %br/
           = f.password_field :password_confirmation, autocomplete: "new-password"
