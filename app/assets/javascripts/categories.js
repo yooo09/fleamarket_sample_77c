@@ -66,8 +66,8 @@ $(document).on('turbolinks:load', function(){
 
     // 子カテゴリー選択後のイベント
     $('.category__choose').on('change','#child_category', function(){
-      console.log('ok');
       var child_category_id = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
+      console.log(child_category_id);
       if (child_category_id != "---"){ //子カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/items/category/get_category_grandchildren',
