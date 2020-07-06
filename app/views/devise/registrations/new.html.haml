@@ -55,6 +55,14 @@
           = f.label :birthday, "生年月日 (例：19950511)"
           %br/
           = f.text_field :birthday, autocomplete: "birthday"
+        .box-image
+          = f.label :image, "アイコン画像"
+          %br/
+          = f.file_field :image, id:"user_image_icon",class:"image_icon"
+          %label{for: "user_image_icon",id:"user_image_icon_label"}
+            .box-image__icon
+
+
         .actions
           = f.submit "新規会員登録"
           = render "devise/shared/links"

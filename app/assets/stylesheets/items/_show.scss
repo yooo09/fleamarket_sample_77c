@@ -12,11 +12,19 @@
     .item {
       width: 560px;
       height: 450px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
+      margin-bottom: 15px;
       &__name {
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
+        display: flex;
+        margin: 0 auto;
+        padding: 0 180px 0 200px;
+      }
+      li.fas.fa-star{
+        color: rgb(235, 158, 16);
+        font-size: 20px;
+        margin: 10px 0 15px 30px;
       }
       &__image {
         width: 100%;
@@ -80,13 +88,28 @@
     .chenge_item{
      margin: 20px 0px 20px;
      .btn{
-       background-color: #3CCACE;
-       width: 100%;
-       height: 50px;
-       margin-top: 20px;
-       text-align: center;
-       font-weight: bold;
-       line-height: 50px;
+      input {
+        display: inline-block;
+        width: 100%;
+        height: 50px;
+        margin-top: 15px;
+        border-radius: 5px;
+        font-size: 18pt;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: #3CCACE;
+        color: #ffffff;
+        line-height: 2;
+        transition: .3s; 
+        box-shadow: 6px 6px 3px #666666;
+        border: 2px solid #3CCACE;
+      }
+      input:hover {
+        box-shadow: none;
+        color: #3CCACE;
+        background: #ffffff;
+      }
        &_text{
          text-decoration: none;
          color: #fff;
@@ -136,4 +159,24 @@
     }
   }
   
+  ul {
+    .like-btn{
+      display: flex;
+      margin-right: auto;
+      margin-top: 20px;
+      li{
+        border-radius: 40px;
+        color: #3CCACE;
+        border: 1px solid #ffb340;
+        color: #3CCACE;
+        border: 1px solid rgb(235, 158, 16);
+        border-radius: 40px;
+        margin: 5px;
+      }
+      a{
+        text-decoration: none;
+        margin: 0 auto;
+      }
+    }
+  }
 }

@@ -5,6 +5,8 @@
       .item__name
         %p
           = @item.item_name
+        %li.fas.fa-star
+          = @likes_count
       .item__image
         = image_tag @item.images.first.src.url
       .item__mini
@@ -73,12 +75,16 @@
     .chenge_item
       - if user_signed_in? && @item.user_id == current_user.id
         .edit.btn
-          = link_to "商品の編集する", "#", class: "btn_text"
+          %td= button_to "商品の編集をする", edit_item_path(@item.id), class: "btn_text"
         .destroy.btn
-          = link_to "商品の削除をする", "#", class: "btn_text"
+          %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
       -else
         .buy.btn
-          = link_to "購入画面に進む", "#", class: "btn_text"
+          %td= button_to "購入画面に進む","#", class: "btn_text"
+
+          %ul#likeBtn
+            = render partial: 'likes/like', locals: { user: @user}
+
   .item_comment
     .comment
       -if @comments

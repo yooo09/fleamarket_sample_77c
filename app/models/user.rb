@@ -4,18 +4,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  mount_uploader :image, ImageUploader
+
+
   has_many :credit_cards
   has_many :items
   has_many :comments, dependent: :destroy
   has_many :sns_credentials
-  
+  has_many :likes, dependent: :destroy
+
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
   validates :encrypted_password, length: { minimum: 7 }
   validates :password, confirmation: true
   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday, presence: true
 
- 
+
 
   def self.from_omniauth(auth)
     sns = SnsCredential.where(provider: auth.provider, uid: auth.uid).first_or_create
@@ -32,4 +36,6 @@ class User < ApplicationRecord
     end
     { user: user, sns: sns }
   end
+
+
 end

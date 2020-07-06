@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   root 'items#index'
+  post 'items/:id/edit' => 'items#edit'
+  post 'items/:id/confirm' => 'items#confirm'
+  get '/likes' => 'likes#index'
+  post '/likes/:item_id' => 'likes#create'
+  delete '/likes/:item_id/:user_id' => 'likes#destroy'
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users, only: [:new, :show, :destroy] do
@@ -21,12 +27,12 @@ Rails.application.routes.draw do
       get 'get_category_grandchildren', defaults: { format: 'json' }
     end
     collection do
-      get :search
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
+      get 'search'
+      get 'deep_search'
+
     end
   end
-
   resources :categories, only: [:index, :show]
-
 end

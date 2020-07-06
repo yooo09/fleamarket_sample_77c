@@ -4,10 +4,13 @@
   .main
     .main_content
       .user
-        tech camp
+        .user__icon
+          %img{:src => @user.image, width: "100", height: '100'}
+        .user__nickname
+          = @user.nickname
       .credit
         = link_to "クレジットカード変更画面", new_user_credit_card_path(:user_id), class: "credit_link"
-    
+
       .product
         .product_header
           購入した商品

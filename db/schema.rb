@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_140449) do
+
+ActiveRecord::Schema.define(version: 2020_07_02_090832) do
+
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "zip_code", null: false
@@ -68,7 +70,6 @@ ActiveRecord::Schema.define(version: 2020_07_02_140449) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price", null: false
-    t.integer "customer_id"
     t.text "detail"
     t.integer "condition", default: 0, null: false
     t.string "delivery_fee", null: false
@@ -77,6 +78,16 @@ ActiveRecord::Schema.define(version: 2020_07_02_140449) do
     t.integer "user_id", null: false
     t.string "brand_id"
     t.integer "category_id"
+    t.integer "customer_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_likes_on_item_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_140449) do
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
     t.integer "birthday", null: false
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -111,4 +123,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_140449) do
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
   add_foreign_key "sns_credentials", "users"
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
+
 end

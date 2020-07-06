@@ -1,0 +1,74 @@
+.search_main_details{
+  background-color: whitesmoke;
+  height: 100%;
+  width: 500px;
+  overflow: scroll;
+  &_form{
+    background-color: #fff;
+    margin: 40px 30px 40px 30px;
+    padding-bottom: 30px;
+    p{
+      padding: 20px 0px 0px 30px;
+      font-size: 20px;
+    }
+    .search_name{
+      width:70%;
+      margin: 0 auto;
+      padding-top: 20px;
+      .search_form{
+        height: 40px;
+        width: 100%;
+      }
+    }
+    .search_brand{
+      width:70%;
+      margin: 0 auto;
+      padding-top: 20px;
+      .search_form{
+        height: 40px;
+        width: 100%;
+      }
+    }
+    .search_price{
+      margin: 10px 0px;
+      padding: 0 10px;
+      &_form{
+        height: 40px;
+      }
+      p{
+        font-size: 18px;
+      }
+    }
+    .search_condition{
+      margin-bottom: 20px;
+      padding: 0px 30px;
+      h1{
+        display: block;
+        font-size: 20px;
+        padding-bottom: 10px;;
+      }
+      &_select{
+        display: flex;
+        &_left{
+          width:50%;
+        }
+        &_right{
+        }
+      }
+    }
+    .search_fee{
+      padding-left: 30px;
+    }
+    .became_block{
+      margin-bottom: 10px;
+    }
+    .search_btn{
+      display: block;
+      border: none;
+      margin: 0 auto;
+      width: 75%;
+      height: 50px;
+      background-color: #3CCACE;
+    }
+  }
+}

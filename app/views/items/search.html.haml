@@ -2,8 +2,7 @@
   .search_header
     = render "header"
   .search_main
-    .search_main_details
-    
+    = render "side_search"
     .search_main_lists
       - @items.each do |item|
         .search_list
