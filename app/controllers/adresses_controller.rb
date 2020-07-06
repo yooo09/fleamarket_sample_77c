@@ -1,7 +1,7 @@
 class AdressesController < ApplicationController
   before_action :set_category
   before_action :user_params, only: [:new, :edit ]
-
+  before_action :set_adress, only: [:edit, :update,:destroy]
   def new
     @adress = Adress.new
   end
@@ -16,11 +16,9 @@ class AdressesController < ApplicationController
   end
 
   def edit
-    @adress = Adress.find(params[:id])
   end
 
   def update
-    @adress = Adress.find(params[:id])
     if @adress.update(adress_params)
       redirect_to root_path
     else
@@ -28,12 +26,18 @@ class AdressesController < ApplicationController
     end
   end
 
-  def show
+  def destroy
+    @adress.destroy
+    redirect_to root_path
   end
 
   private
   def adress_params
     params.require(:adress).permit(:zip_code, :prefecture, :city, :house_number, :building, :phone_number).merge(user_id_id: current_user.id)
+  end
+
+  def set_adress
+    @adress = Adress.find(params[:id])
   end
 
   def user_params

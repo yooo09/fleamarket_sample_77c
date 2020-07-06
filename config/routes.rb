@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   resources :users, only: [:show, :destroy] do
     resources :credit_cards, only: [:new, :create, :edit, :update]
-    resources :adresses, only: [:new, :create, :edit, :update,:show]
+    resources :adresses, only: [:new, :create, :edit, :update,:destroy]
     member do
       get :logout
     end
