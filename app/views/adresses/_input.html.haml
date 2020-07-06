@@ -1,0 +1,40 @@
+= form_for [@user, @adress] do |f|
+  .form_all
+    .zip_code.form
+      %h1郵便番号
+      -if @adress.errors.messages[:zip_code].any?
+        .error-msg
+          %p※入力してください
+      = f.text_field :zip_code, class:"form_input"
+    .prefecture.form
+      %h1都道府県
+      -if @adress.errors.messages[:prefecture].any?
+        .error-msg
+          %p※入力してください
+      = f.text_field :prefecture, class:"form_input"
+    .city.form
+      %h1市町村
+      -if @adress.errors.messages[:city].any?
+        .error-msg
+          %p※入力してください
+      = f.text_field :city, class:"form_input"
+    .house_number.form
+      %h1番地
+      -if @adress.errors.messages[:house_number].any?
+        .error-msg
+          %p※入力してください
+      = f.text_field :house_number, class:"form_input"
+    .building.form
+      %h1建物名
+      = f.text_field :building, class:"form_input"
+    .phone_number.form
+      %h1電話番号
+      -if @adress.errors.messages[:phone_number].any?
+        .error-msg
+          %p※入力してください
+      = f.text_field :phone_number, class:"form_input"
+    .address_btn
+      - if @adress.persisted?
+        = f.submit '変更する',class: "adress_btn"
+      - else
+        = f.submit '登録する',class: "adress_btn"
