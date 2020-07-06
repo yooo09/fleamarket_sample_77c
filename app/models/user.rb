@@ -12,7 +12,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :sns_credentials
   has_many :likes, dependent: :destroy
-
+  has_one :adress
+  
+  
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
   validates :encrypted_password, length: { minimum: 7 }
