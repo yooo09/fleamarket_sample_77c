@@ -1,0 +1,33 @@
+.item_deep_search_content{
+  .deep_search_result{
+    height: calc(100vh - 122px);
+    width: 100vw;
+    h1{
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+    &_body{
+      width:80%;
+      margin: 0 auto;
+      &_inside{
+        height: calc(100vh - 220px);
+        display: flex;
+        flex-wrap: wrap;
+        overflow: scroll;
+        .search_list{
+          box-shadow: 10px 5px #dcdcdc;
+          display: block;
+          display: flex;
+          height: 250px;
+          margin-right:30px;
+          margin-bottom: 10px;
+          &_link{
+            text-decoration: none;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

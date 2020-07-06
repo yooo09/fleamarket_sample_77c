@@ -114,7 +114,7 @@
 
     }
     .top-share {
-      background-image: url(pict/bg-topMiddleDl-pict.jpg);
+      background-image: image-url("pict/bg-topMiddleDl-pict.jpg");
       background-position: bottom right;
       height: 400px;
       background-size: cover;
@@ -167,7 +167,7 @@
           bottom: 0;
           left: 50%;
           transform: translateX(-50%);
-        }       
+        }
       }
       .items {
         max-width: calc(1040px + 20px);
@@ -307,7 +307,14 @@
                     font-size: 10px;
                     text-align: left;
                   }
+                  .fas.fa-star{
+                    color: rgb(235, 158, 16);
+                    font-size: 15px;
+                    margin-right: 20px;
+                
+                  }
                 }
+                
               }
             }
           }
@@ -320,7 +327,7 @@
 
   }
   .app {
-    background-image: url(pict/bg-appBanner-pict.jpg);
+    background-image: image-url("pict/bg-appBanner-pict.jpg");
     padding: 100px 40px;
     position: relative;
     background-size: cover;

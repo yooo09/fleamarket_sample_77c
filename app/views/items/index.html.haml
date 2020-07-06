@@ -20,7 +20,7 @@
               1
             = image_tag ("pict/pict-reason-01.jpg")
           %h3.list__text
-            %span 
+            %span
               3分
             ですぐに出品
           %p.list__detail
@@ -110,8 +110,13 @@
                         %li
                           = item.price
                           円
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
                       %p
                         （税込）
+                    
+                      
             -else
               %ul.item-list
                 = link_to item_path(item) do
@@ -123,11 +128,19 @@
                     .itemu-list__data
                       %ul
                         %li
-                          = item.price
-                          円
+                          -# - item = item.price * 1.1
+                          -# = "¥#{item.floor}"
+                          
+                        %li.icon
+                          .fas.fa-star
+                            = item.likes.count
+                      %p
+
+                        - item = item.price * 1.1
+                        = "¥#{item.floor}"
                       %p
                         （税込）
-           
+
   .app
     .content
       %h2.content__title

@@ -24,6 +24,10 @@ $(document).on('turbolinks:load', ()=> {
     const html = `item_images_attributes_${num + 1}_src`;
     return html;
   }
+  const buildlabel2 = (num)=> {
+    const html = `item_images_attributes_${num}_src`;
+    return html;
+  }
   const buildeditlabel = (num)=> {
     const html = `item_images_attributes_${num}_src`;
     return html;
@@ -45,6 +49,7 @@ $(document).on('turbolinks:load', ()=> {
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
+    lastIndex = $('.js-file_group:last').data('index');
 
     const element = document.getElementById("label_image");
     element.htmlFor;
@@ -64,7 +69,7 @@ $(document).on('turbolinks:load', ()=> {
         // 末尾の数に1足した数を追加する
         fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
         
-        element.htmlFor = (buildlabel(targetIndex));
+        element.htmlFor = (buildlabel(lastIndex));
 
         // クリックエリアを非表示
         if (previewcount > 4) {
@@ -77,7 +82,7 @@ $(document).on('turbolinks:load', ()=> {
   });
 
   $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index');
+    const targetIndex = $(this).parent().prev().data('index');
 
     $(`#item_images_attributes_${targetIndex}_src`).remove()
 
@@ -91,7 +96,7 @@ $(document).on('turbolinks:load', ()=> {
 
 
     $(this).parent().remove();
-    $(`img[data-index="${targetIndex - 1}"]`).remove();
+    // $(`img[data-index="${targetIndex - 1}"]`).remove();
 
     // クリックエリアを表示
     const previewcount = $('.preview').length;
@@ -99,10 +104,13 @@ $(document).on('turbolinks:load', ()=> {
         $('#label_image').show();
       }
 
-    // 画像入力欄が0個にならないようにしておく
+      // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
   });
-
+  if ($('.js-file').length > 1) {
+  const element = document.getElementById("label_image");
+  element.htmlFor;
+  element.htmlFor = (buildlabel2(lastIndex));
+  }
 });
-
 

@@ -1,0 +1,204 @@
+       // font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+$frima_gray_color:#BBBBBB;
+$frima_logo_color:#40e0d0;
+
+.purchase-content{
+  background-color: #EEEEEE;
+  justify-content: center;
+  .main-box{
+    height: 100%;
+    width: 700px;
+    background-color: $frima_gray_color;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+    .header{
+      background-color: $frima_gray_color;
+      height: 128px;
+      width: 1400px;
+      text-align: center;
+      display: block;
+      padding-top: 40px;
+    
+    }
+    .center{
+      background-color:white;
+      height: 850px;
+      width:700px;
+      // margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
+      .title{
+        height: 98px;
+        font-size: 24px;
+   
+        font-weight: 600;
+        text-align: center;
+        line-height: 98px;
+      }
+      .item{
+        height: 145px;
+        display: flex;
+	      align-items: center;
+         justify-content: center;
+         border-top: 1px solid rgb(245, 245, 245);
+          &__i-container{
+            height: 80px;
+            width: 343px;
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+          
+            &__product{
+              height: 80px;
+              width: 80px;
+              border: solid 1px $frima_gray_color;
+              img{
+                height: 80px;
+                width: 80px;
+              }
+            }
+            &__i-price{
+              height: 80px;
+              width: 160px;
+              display:block;
+              p.item-name{
+              font-size: 14px;
+              }
+              p.item-price{
+                line-height: 3px;
+                font-size: 15px;
+                font-weight: 600;
+              }
+            }
+          }
+      }
+      .price{
+        height: 138px;
+        font-size: 18px;
+        font-weight: 600;
+        display: flex;
+	      align-items: center;
+       	justify-content: center;
+        border-top: 1px solid rgb(245, 245, 245);
+        .p-container{
+          height: 25px;
+          width: 343px;
+          background-color: white;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+      
+      .credit{
+        height: 168px;
+        display: flex;
+	      align-items: center;
+        justify-content: center;
+        border-top: 1px solid rgb(245, 245, 245);
+        &__c-container{
+          height: 152px;
+          width: 375px;
+          background-color: white;
+            &__how{
+              height: 25px;  
+              display: flex;
+              justify-content: space-between;
+              .how-to{
+                height: 17px; 
+                width: 90px;
+                font-size: 17px;
+                
+              }
+              .c-right{
+                height: 22px; 
+                width: 75px; 
+                background-color:$frima_logo_color;
+                text-align: center; 
+                border-radius:3px ;
+                .change-credit{
+                  font-size: 17px;
+                  color: white;
+                  text-decoration: none;
+                }
+              }
+            }
+            &__c-detail{
+              font-size: 14px;
+              line-height: 25px;
+            }
+            &__icon{
+              height: 40px;
+              width: 100px;
+              // background-color: $frima_logo_color;
+              font-size: 12.5px;
+              color: white;
+            }
+        }
+      }
+      .adress{
+        height: 163px;
+        display: flex;
+	      align-items: center;
+        justify-content: center;
+        border-top: 1px solid rgb(245, 245, 245); 
+          &__a-container{
+            height: 120px;
+            width: 375px;
+            background-color: white;
+            &__shipping{
+              height: 25px;  
+              display: flex;
+              justify-content: space-between;
+              .s-adress{
+                width: 90px;
+                font-size: 17px;
+              }
+              .a-right{
+                height: 22px; 
+                width: 75px;
+                background-color:$frima_logo_color;
+                text-align: center; 
+                border-radius:3px ;
+                .change-adress{
+                  font-size: 17px;
+                  color: white;
+                  text-decoration: none;
+                }
+              }
+            }
+            &__a-ditail{
+              line-height: 25px;
+              font-size: 14px;
+            }
+          }
+      }
+      .purchase{
+        display: flex;
+	      align-items: center;
+        justify-content: center;
+        border-top: 1px solid rgb(245, 245, 245); 
+        &__p-container{
+          height: 60px;
+          width: 375px;
+          background-color: white;
+          margin-top: 8px;
+          .p-btn{
+            height: 60px;
+            width: 343px;
+            background-color: $frima_logo_color;
+            text-align: center;
+            line-height: 60px;
+            border-radius:7px ;
+            .purchase-btn{
+              font-size: 30px;
+              color: white;
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
