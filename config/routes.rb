@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'confirm'
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
+      get 'purchase'
     end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
