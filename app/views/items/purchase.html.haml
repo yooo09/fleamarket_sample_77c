@@ -1,33 +1,45 @@
 .purchase-content 
+  .header
+    = render "header"
   .main-box
-    .header
-      = image_tag "/images/logo/logo.png",size: "300x80"
     .center
       .title
         %p 購入内容の確認
       .item
         .item__i-container
           .item__i-container__product
-            = image_tag "/images/icon/member_photo_noimage_thumb.png"
-          .item__i-container__i-price
-            %p.item-name にこちゃん    グレー
-            %p.item-price ¥0 (税込) 送料込み
+            = image_tag @item.images.first.src.url
+          .item__i-container__i_price
+            %p.item-name 
+              = @item.item_name
+            %p.item-price 
+              - priceoftem = @item.price * 1.1
+              = "¥#{priceoftem.floor}"
       .price
         .p-container
           .p-container__payment 支払い金額
-          .p-container__p-price ¥0
+          .p-container__p-price 
+          - priceoftem = @item.price * 1.1
+          = "¥#{priceoftem.floor}"
       .credit
         .credit__c-container
           .credit__c-container__how
             .how-to 支払い方法
             .c-right
-              =link_to "#" ,class:"change-credit" do
+              =link_to user_credit_card_path(:user_id,:credit_card_id) ,class:"change-credit" do
                 変更する
-          .credit__c-container__c-detail    
-            %p クレジットカード
-            %p ＊＊＊＊＊＊＊＊＊＊＊＊２５２５
-            %p 有効期限 01 / 22
-          .credit__c-container__icon credit card logo
+          .credit__c-container__c-detail   
+            .card
+              クレジットカード
+            .card_number
+              = "**** **** **** " + @customer_card.last4
+            .card_xep
+              - exp_month = @customer_card.exp_month.to_s
+              - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+              
+          -# .credit__c-container__icon 
+          -#   = image_tag "credit_cards/visa.svg"
       .adress
         .adress__a-container
           .adress__a-container__shipping
@@ -42,9 +54,6 @@
       .purchase
         .purchase__p-container
           .p-btn
-            = link_to buy_user_credit_cards_path(@user,@credit_card) ,class:"purchase-btn" do
+            = link_to "/items/#{@item.id}/pay", method: :post, class:"purchase-btn" do
               購入する
-          
-    .footer
-      = image_tag "/images/logo/logo.png",size: "300x80"
-
+  = render "footer"

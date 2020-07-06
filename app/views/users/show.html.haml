@@ -6,8 +6,12 @@
       .user
         tech camp
       .credit
-        = link_to "クレジットカード変更画面", new_user_credit_card_path(:user_id), class: "credit_link"
-    
+        - if @user.credit_card.blank?
+          .new
+            = link_to "クレジットカード新規画面", new_user_credit_card_path(:user_id), class: "credit_link"
+        - else
+          .edit
+            = link_to "クレジットカード確認画面", user_credit_card_path(:user_id,:credit_card_id),class: "credit_link"
       .product
         .product_header
           購入した商品

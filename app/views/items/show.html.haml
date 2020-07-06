@@ -71,10 +71,16 @@
           = link_to "商品の編集する", "#", class: "btn_text"
         .destroy.btn
           = link_to "商品の削除をする", "#", class: "btn_text"
-      -else
-        .buy.btn
-          = link_to "購入画面に進む", "#", class: "btn_text"
-
+      - else
+        - if @user.credit_card.blank?
+          .register.btn
+            = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
+              クレジット登録画面へ進む
+        - else
+          .buy.btn
+            = link_to purchase_item_path(@item), class: "btn_text" do
+              購入画面に進む
+          
   .under
     .more
       %pヴィトンをもっとみる

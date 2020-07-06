@@ -16,7 +16,7 @@
           .inner_field
             = f.label :cvv, "CVV"
             %br
-            = text_field_tag :cvv, '', class: 'cvv'
+            = text_field_tag :cvv, '', class: 'cvv', placeholder: "カード背面3~4桁の番号"
           .inner_field
             = f.label:exp_date, "EXPIRATION DATE"
             %br
@@ -25,10 +25,10 @@
             = select_tag :exp_year, options_for_select([[20,2020], [21,2021], [22,2022], [23,2023], [24,2024], [25,2025], [26,2026]]), class: 'inner_field_select'
             %span 年
           .inner_btn{ id: 'token' }
-            -# .token#card_token 
             = f.submit "登録する", class: 'inner_btn_tag'
-          .token#card_token 
-            %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
+            .token#card_token 
+              %input.token{ type: "hidden", name: "payjpToken", value: "" }
+  .credit_footer
     =render "items/footer"
    
   
