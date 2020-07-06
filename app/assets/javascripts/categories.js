@@ -101,10 +101,10 @@ $(function(){
     });
     $(".title li ul").hide();
     $(".title li").hover(function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideDown("fast");
+        $(">ul:not(:animated)", this).stop(true, true).slideDown("1000");
         $(">a", this).addClass("active");
     }, function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideUp("fast");
+        $(">ul:not(:animated)", this).stop(true, true).slideUp("1000");
         $(">a", this).removeClass("active");
   });
 });
