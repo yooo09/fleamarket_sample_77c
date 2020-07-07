@@ -94,17 +94,20 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-//header/indexせつこリスト
-$(function(){
-  $(".category__search").mouseover(function(){
-    $(".category__parent").toggle();
-    });
-    $(".title li ul").hide();
+//header/index categoryリスト
+$(document).on('turbolinks:load', function(){
+  $(".category__search").hover(function(){
+    $(".category__parent").show(500);
+    $(".category__parent").mouseleave(function(){
+      $(this).hide(500);
+  });
+  $(".title li ul").hide(500);
     $(".title li").hover(function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideDown("1000");
+        $(">ul:not(:animated)", this).stop(true, true).slideDown("500");
         $(">a", this).addClass("active");
-    }, function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideUp("1000");
+      }, function() {
+        $(">ul:not(:animated)", this).slideUp("500");
         $(">a", this).removeClass("active");
+      });
   });
 });
