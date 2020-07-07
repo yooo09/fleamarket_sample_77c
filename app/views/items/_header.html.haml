@@ -10,7 +10,8 @@
             .search__input-box
               = text_field_tag :search, "",class: "search__input-box__text" , placeholder: "キーワードを入力してください"
               = image_submit_tag "icon/icon-search 1.png", class: "search__submit"
-        -# .result
+
+        .result
     .box__under
       .categorywindow
         .title
@@ -39,7 +40,7 @@
       %ul.right-menu
         - if user_signed_in?
           %li.right-menu__likepage
-            = link_to "/likes" do
+            = link_to "#" do
               お気に入り一覧
           %li.right-menu__mypage
             = link_to "/users/#{current_user.id}" do

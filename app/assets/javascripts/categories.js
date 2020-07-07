@@ -37,8 +37,8 @@ $(document).on('turbolinks:load', function(){
 
     // 親カテゴリー選択後のイベント
     $('#parent_category').on('change', function(){
-      var parent_category_id = document.getElementById
-      ('parent_category').value; //選択された親カテゴリーの名前を取得
+      var parent_category_id = document.getElementById('parent_category').value; 
+      //選択された親カテゴリーの名前を取得
       if (parent_category_id != "---"){ //親カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/items/category/get_category_children',
@@ -66,7 +66,8 @@ $(document).on('turbolinks:load', function(){
 
     // 子カテゴリー選択後のイベント
     $('.category__choose').on('change','#child_category', function(){
-      var child_category_id = $('#child_category option:selected').data('category'); //選択された子カテゴリーのidを取得
+      var child_category_id = $('#child_category option:selected').val(); //選択された子カテゴリーのidを取得
+      console.log(child_category_id);
       if (child_category_id != "---"){ //子カテゴリーが初期値でないことを確認
         $.ajax({
           url: '/items/category/get_category_grandchildren',
@@ -94,17 +95,17 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-//header/indexせつこリスト
+//header/indexドロップリスト
 $(function(){
   $(".category__search").mouseover(function(){
     $(".category__parent").toggle();
     });
     $(".title li ul").hide();
     $(".title li").hover(function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideDown("fast");
+        $(">ul:not(:animated)", this).stop(true, true).slideDown("1000");
         $(">a", this).addClass("active");
     }, function() {
-        $(">ul:not(:animated)", this).stop(true, true).slideUp("fast");
+        $(">ul:not(:animated)", this).stop(true, true).slideUp("1000");
         $(">a", this).removeClass("active");
   });
 });
