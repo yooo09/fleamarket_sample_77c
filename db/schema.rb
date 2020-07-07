@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.integer "user_id", null: false
     t.string "brand_id"
     t.integer "category_id"
+    t.integer "customer_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

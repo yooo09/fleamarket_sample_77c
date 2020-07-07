@@ -78,6 +78,7 @@
           %td= button_to "商品の編集をする", edit_item_path(@item.id), class: "btn_text"
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
+
       - else
         - if @user.credit_card.blank?
             .register.btn
@@ -91,6 +92,15 @@
               購入画面に進む
             %ul#likeBtn
               = render partial: 'likes/like', locals: { user: @user}
+
+      -else
+        .buy.btn
+          %td= button_to "購入画面に進む", purchase_item_path(@item), class: "btn_text"
+          - if user_signed_in?
+            %ul#likeBtn
+              = render partial: 'likes/like', locals: { user: @user}
+
+
   .item_comment
     .comment
       -if @comments

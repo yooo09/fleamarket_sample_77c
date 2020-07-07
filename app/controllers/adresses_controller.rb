@@ -1,8 +1,7 @@
 class AdressesController < ApplicationController
   before_action :set_category
-  before_action :user_params, only: [:new, :edit]
-  before_action :set_item, only: [:edit, :update]
-
+  before_action :user_params, only: [:new, :edit ]
+  before_action :set_adress, only: [:edit, :update,:destroy]
   def new
     @adress = Adress.new
   end
@@ -17,7 +16,6 @@ class AdressesController < ApplicationController
   end
 
   def edit
-    @adress = Adress.find_by(user_id_id: params[:id])
   end
 
   def update
@@ -28,7 +26,9 @@ class AdressesController < ApplicationController
     end
   end
 
-  def show
+  def destroy
+    @adress.destroy
+    redirect_to root_path
   end
 
   private
@@ -36,11 +36,11 @@ class AdressesController < ApplicationController
     params.require(:adress).permit(:zip_code, :prefecture, :city, :house_number, :building, :phone_number).merge(user_id_id: current_user.id)
   end
 
-  def set_item
+  def set_adress
     @adress = Adress.find(params[:id])
   end
 
   def user_params
-    @user = User.find(params[:user_id])
+    @user = User.find_by(params[:id])
   end
 end

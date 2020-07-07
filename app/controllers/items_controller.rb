@@ -1,17 +1,17 @@
 class ItemsController < ApplicationController
   require 'payjp'
-  Payjp.api_key = "sk_test_b35834d5428660e31c8ca8fb"
-  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :purchase, :pay, :done]
+  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :not_currect_user, :purchase, :pay]
   before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
   before_action :set_category_link, only: [:show]
   before_action :set_item_search_query
+  before_action :not_currect_user, only: [:edit, :update, :destroy, :confirm]
 
 
   def index
     @items = Item.all
     @items = Item.all.order("created_at DESC").limit(40)
   end
-
+  
   
   def new
     @item = Item.new
@@ -38,9 +38,9 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    if @item.user_id != current_user.id
-      redirect_to root_path
-    end
+  @category_parent = @item.category.parent.parent
+  @category_child_array = @item.category.parent.parent.children
+  @category_grandchild_array = @item.category.parent.children
   end
   
   def update
@@ -86,7 +86,6 @@ class ItemsController < ApplicationController
     @comments = @item.comments.all
   end
   
-  
   def destroy
     if @item.destroy
       redirect_to root_path
@@ -96,9 +95,6 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    if @item.user_id != current_user.id
-    redirect_to root_path
-    end
   end
 
   def search
@@ -157,4 +153,15 @@ end
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
   end
+
+
+
+  def not_currect_user
+    redirect_to root_path if current_user.id != @item.user_id
+  end
+
 end
+
+
+
+
