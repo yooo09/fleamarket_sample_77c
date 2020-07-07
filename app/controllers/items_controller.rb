@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
-  require 'payjp'
-  Payjp.api_key = "sk_test_b35834d5428660e31c8ca8fb"
-  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :purchase, :pay, :done]
-  before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
+  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :purchase, :pay]
+  before_action :set_category, only: [:index, :new, :show, :search, :deep_search, :purchase]
   before_action :set_category_link, only: [:show]
   before_action :set_item_search_query
-
+  require 'payjp'
+  Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+  
 
   def index
     @items = Item.all
@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   def purchase
     @items = Item.all
     credit_card = current_user.credit_card
-    Payjp.api_key = "sk_test_b35834d5428660e31c8ca8fb"
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       @customer_card = customer.cards.retrieve(credit_card.card_id)
       @card_brand = @customer_card.brand
@@ -77,11 +77,10 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @user = current_user
     @items = Item.all
     credit_card = current_user.credit_card
     @likes_count = Like.where(item_id: @item.id).count
-    @user_items = Item.where(customer_id: nil, user: @item.user).limit(5)
+    @user_items = Item.where(buyer_id: nil, user: @item.user).limit(5)
     @comment = Comment.new
     @comments = @item.comments.all
   end
@@ -108,12 +107,9 @@ class ItemsController < ApplicationController
   def deep_search
   end
 
-  
-  
-
   def pay
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     credit_card = CreditCard.find_by(user_id: current_user.id)
-    Payjp.api_key = Rails.application.credentials.payjp = "sk_test_b35834d5428660e31c8ca8fb"
     Payjp::Charge.create(
       amount: @item.price, # Payjpに載る金額
       customer: credit_card.customer_id,
@@ -125,7 +121,7 @@ class ItemsController < ApplicationController
   end
 
 
-  private
+private
 
   def item_params
     params.require(:item).permit(:image, :item_name,:detail,:condition,:delivery_fee,:shipping_area,:delivery_time,:price,:brand_id,:category_id,images_attributes:  [:src, :_destroy, :id]).merge(user_id: current_user.id)
@@ -138,11 +134,12 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
   def set_api_key
-    Payjp.api_key = Rails.application.credentials.payjp = "sk_test_b35834d5428660e31c8ca8fb"
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
   end
   
-end
+
 
   def set_category_link
     @category = Category.find(params[:id])
@@ -158,3 +155,4 @@ end
     @items = @q.result(distinct: true)
   end
 end
+

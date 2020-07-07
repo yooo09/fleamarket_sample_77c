@@ -20,19 +20,20 @@
             height: 40px;
           }
         }
-        &_btn{
+        .inner_delete{
           width: 100%;
-          margin: 20px 0 20px;
           background-color: #3CCACE;
+          margin: 20px 0 20px;
           border-radius: 10px;
           font-size: 25px;
           color: #fff;
           font-weight: bold;
-          text-decoration: none;
+        
           text-align: center;
-            &_tag{
-              text-decoration: none;
-          }
+          text-decoration: none;
+          // .inner_btn_tag{
+          // }
+          
         }
       }
     }

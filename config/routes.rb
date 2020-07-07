@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
+  
   resources :items do
     resources :comments, only: [:create, :destroy]  
-    resources :categories, only: [:index, :show]
     member do
       get 'confirm'
       get 'get_category_children', defaults: { format: 'json' }
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
       get 'deep_search'
     end
   end
-
+  
+  resources :categories, only: [:index, :show]
    
 end

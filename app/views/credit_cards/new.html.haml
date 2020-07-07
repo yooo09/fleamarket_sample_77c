@@ -6,10 +6,6 @@
       .inner
         = form_with model: @credit_card, url:user_credit_cards_path, id: 'charge-form',local: true do |f|
           .inner_field
-            -# = label_tag :credit_card_type, "CARD TYPE"
-            -# %br
-            -# = text_field_tag :credit_card_type, '', class: 'inner_field_input '
-          .inner_field
             = f.label :card_number, "CARD NUMBER"
             %br
             = text_field_tag :card_number, '', class: 'inner_field_input'

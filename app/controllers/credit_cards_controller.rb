@@ -1,13 +1,15 @@
 class CreditCardsController < ApplicationController
   require 'payjp'
-  Payjp.api_key = "sk_test_b35834d5428660e31c8ca8fb"
-  
+  Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+  before_action :set_category, only: [:new, :show]
 
   def new
+    
     @credit_card = CreditCard.new
   end
 
   def create
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if params['payjp-token'].blank?
       redirect_to action: "new"
       # トークンが取得出来てなければループ
@@ -32,7 +34,6 @@ class CreditCardsController < ApplicationController
    if credit_card.blank?
     redirect_to  new_user_credit_card_path
    else
-    Payjp.api_key = "sk_test_b35834d5428660e31c8ca8fb"
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       @customer_card = customer.cards.retrieve(credit_card.card_id)
     end
@@ -48,7 +49,6 @@ class CreditCardsController < ApplicationController
     if credit_card.blank?
       redirect_to new_user_credit_card_path
     else
-      Payjp.api_key = 'sk_test_b35834d5428660e31c8ca8fb'
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       customer.delete
       #ここでpay.jpの方を消している

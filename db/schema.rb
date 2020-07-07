@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-Schema.define(version: 2020_07_02_023541) do
 ActiveRecord::Schema.define(version: 2020_07_05_035942) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
