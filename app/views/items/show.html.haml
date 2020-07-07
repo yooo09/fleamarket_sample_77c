@@ -81,9 +81,9 @@
       -else
         .buy.btn
           %td= button_to "購入画面に進む", purchase_item_path(@item), class: "btn_text"
-
-          %ul#likeBtn
-            = render partial: 'likes/like', locals: { user: @user}
+          - if user_signed_in?
+            %ul#likeBtn
+              = render partial: 'likes/like', locals: { user: @user}
 
   .item_comment
     .comment
