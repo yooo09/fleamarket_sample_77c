@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   before_action :set_category, only: [:index, :new, :show, :search, :deep_search]
   before_action :set_category_link, only: [:show]
-  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update]
+  before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :not_currect_user]
   before_action :set_item_search_query
+  before_action :not_currect_user, only: [:edit, :update, :destroy, :confirm]
 
   def index
     @items = Item.all
@@ -35,20 +36,13 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    if @item.user_id != current_user.id
-      redirect_to root_path
-    end
   @category_parent = @item.category.parent.parent
   @category_child_array = @item.category.parent.parent.children
   @category_grandchild_array = @item.category.parent.children
   end
   
   def update
-    if @item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
+    render :edit
   end
   
   def show
@@ -68,9 +62,6 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    if @item.user_id != current_user.id
-    redirect_to root_path
-    end
   end
 
   def search
@@ -104,6 +95,11 @@ class ItemsController < ApplicationController
     @q = Item.ransack(params[:q])
     @items = @q.result(distinct: true)
   end
+
+  def not_currect_user
+    redirect_to root_path if current_user.id != @item.user_id
+  end
+
 end
 
 
