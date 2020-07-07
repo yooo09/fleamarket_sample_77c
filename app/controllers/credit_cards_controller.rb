@@ -12,7 +12,7 @@ class CreditCardsController < ApplicationController
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if params['payjp-token'].blank?
       redirect_to action: "new"
-      # トークンが取得出来てなければループ
+      # トークンが取得出来てなければループする
     else
       user_id = current_user.id
       customer = Payjp::Customer.create(
