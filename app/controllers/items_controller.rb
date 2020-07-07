@@ -111,7 +111,7 @@ class ItemsController < ApplicationController
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     credit_card = CreditCard.find_by(user_id: current_user.id)
     Payjp::Charge.create(
-      amount: @item.price, # Payjpに載る金額
+      amount: @item.price, # Payjpの売り上げに記載される金額
       customer: credit_card.customer_id,
       currency: 'jpy'
     )
