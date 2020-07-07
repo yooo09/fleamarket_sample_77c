@@ -2,11 +2,13 @@
   = render "header"
   .main-box
     .item
-      .item__name
-        %p
-          = @item.item_name
-        %li.fas.fa-star
-          = @likes_count
+      .item-show-box
+        .item__name
+          %p
+            = @item.item_name
+        .item-icon
+          %li.fas.fa-star
+            = @likes_count
       .item__image
         = image_tag @item.images.first.src.url
       .item__mini
@@ -78,12 +80,17 @@
           %td= button_to "商品の編集をする", edit_item_path(@item.id), class: "btn_text"
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
-      -else
-        .buy.btn
-          %td= button_to "購入画面に進む", purchase_item_path(@item), class: "btn_text"
-
-          %ul#likeBtn
-            = render partial: 'likes/like', locals: { user: @user}
+      - else
+        - if current_user.credit_card.blank?
+          .register.btn
+            = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
+              クレジット登録画面へ進む
+        -else
+          .buy.btn
+            = link_to purchase_item_path(@item), class: "btn_text" do
+              購入画面に進む
+            %ul#likeBtn
+              = render partial: 'likes/like', locals: { user: @user}
 
   .item_comment
     .comment

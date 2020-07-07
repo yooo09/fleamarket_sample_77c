@@ -10,7 +10,7 @@
         = "#{@category.name}の商品一覧"
     .item-lists
       - @items.each do |item|
-        -if item.customer_id.present?
+        -if item.buyer_id.present?
           %ul.item-list
             = link_to "/items/#{item.id}", method: :get do
               .sold

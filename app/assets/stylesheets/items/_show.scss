@@ -14,17 +14,17 @@
       height: 450px;
       margin: 0 auto;
       margin-bottom: 15px;
-      &__name {
-        font-size: 20px;
-        text-align: center;
+      .item-show-box{
         display: flex;
-        margin: 0 auto;
-        padding: 0 180px 0 200px;
-      }
-      li.fas.fa-star{
-        color: rgb(235, 158, 16);
-        font-size: 20px;
-        margin: 10px 0 15px 30px;
+        .item__name {
+          font-size: 20px;
+          margin-left: 200px;
+        }
+        .item-icon{
+          color: rgb(235, 158, 16);
+          font-size: 20px;
+          margin-left: 50px;
+        }
       }
       &__image {
         width: 100%;
@@ -99,7 +99,7 @@
         font-weight: bold;
         cursor: pointer;
         background-color: #3CCACE;
-        color: #ffffff;
+        color: black;
         line-height: 2;
         transition: .3s; 
         box-shadow: 6px 6px 3px #666666;

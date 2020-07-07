@@ -1,11 +1,15 @@
 .categorywindow {
   .title {
+    line-height: 32px;
     &__list {
       width: 100%;
       position: relative;
+      z-index: 3;
       .category__search {
         color: #333;
         text-decoration: none;
+        display: block;
+        font-size: 14px;
         &:hover {
           color:#3CCACE;
         }
@@ -14,73 +18,82 @@
     .category__parent {
       display: none;
       position: absolute;
-      z-index: 3;
-      height: 100%;
-      // &:hover {
-      //   display: block;
-      // }
+      z-index: 1;
       &__list {
         box-sizing: border-box;
         background-color: rgb(255, 255, 255);
         width: 224px;
-        text-align: center;
-        cursor: pointer;
         &:hover {
-          color:#3CCACE;
+          background-color: #3CCACE;
         }
         .category__parent__name {
           text-decoration: none;
           color: #333;
+          display: block;
+          font-size: 14px;
+          line-height: 30px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding: 0px 16px;
           &:hover {
-            color:#3CCACE;
+            color: #fff;
           }
         }
       }
     }
     .category__child {
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 2px;
       display: none;
       position: absolute;
       background-color: rgb(255, 255, 255);
-      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-      display: none;
       top: 0;
       left: 224px;
       bottom: 0px;
       width: 225px;
-      cursor: pointer;
-      text-align: center;
-      &:hover {
-        color:#3CCACE;
-      }
+      &__list {
+        box-sizing: border-box;
+        background-color: rgb(255, 255, 255);
+        width: 224px;
+        &:hover {
+          background-color: #EEEEEE;
+          
+        }
       .category__child__name {
         text-decoration: none;
         color: #333;
         font-size: 13px;
-        &:hover {
-          color:#3CCACE;
-        }
+        line-height: 30px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        padding: 0px 16px;
       }
-
+    }
     }
     .category__grandchild {
+      box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 2px;
       display: none;
       position: absolute;
       background-color: rgb(255, 255, 255);
-      box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-      display: none;
       top: 0px;
       left: 224px;
       bottom: 0px;
-      width: 225px;
-      cursor: pointer;
-      text-align: center;
-      .category__grandchild__name {
-        text-decoration: none;
-        color: #333;
-        display: inline-flex;
-        font-size: 13px;
+      width: 320px;
+      &__list {
+        box-sizing: border-box;
+        background-color: rgb(255, 255, 255);
+        width: 320px;
         &:hover {
-          color:#3CCACE;
+          background-color: #EEEEEE;
+          
+        }
+        .category__grandchild__name {
+          text-decoration: none;
+          color: #333;
+          font-size: 13px;
+          line-height: 30px;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding: 0px 16px;
         }
       }
     }
