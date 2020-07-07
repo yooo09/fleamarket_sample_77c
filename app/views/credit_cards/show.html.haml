@@ -1,0 +1,26 @@
+.creditcard_show_content
+  .credit_header
+    = render "items/header"
+  .credit_main
+    .contents
+      .inner
+        = form_with model: @credit_card, url:user_credit_cards_path, id: 'charge-form',local: true do |f|
+          .inner_field
+            = f.label :card_number, "CARD NUMBER"
+            %br
+            = text_field_tag :card_number,  "**** **** **** " + @customer_card.last4, class: 'inner_field_input'
+          .inner_field
+            = f.label:exp_date, "EXPIRATION DATE"
+            %br
+            = text_field_tag :exp_month ,@customer_card.exp_month.to_s , class: 'inner_field_select'
+            %span 月
+            = text_field_tag :exp_year, @customer_card.exp_year.to_s.slice(2,3) , class: 'inner_field_select'
+            %span 年
+          .inner_delete
+            .inner_btn{ id: 'token' }
+              = link_to "削除する", user_credit_card_path, method: :delete, class: 'inner_btn_tag' 
+            .token#card_token 
+              %input.payjp-token{ type: "hidden", name: "payjpToken", value: "" }
+  .credit_footer
+    = render "items/footer"
+   

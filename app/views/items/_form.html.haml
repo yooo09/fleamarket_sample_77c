@@ -74,8 +74,20 @@
           -if @item.errors.messages[:category_id].any?
             .error-message
               %p必ず入力してください
-        .category__choose
-          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"}, {id: 'parent_category'}
+        - if @item.persisted?
+          .category__choose
+            = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください",selected: @item.category&.root_id}, {id: 'parent_category'}
+            .category__choose__added
+              #children_wrapper
+                .category__choose1
+                  = f.collection_select :category_id, @category_child_array, :id, :name,{prompt: "選択してください",selected: @item.category.parent.id}, {id: 'child_category'}
+            .category__choose__added
+              #grandchildren_wrapper
+                .category__choose2
+                  = f.collection_select :category_id, @category_grandchild_array, :id, :name,{prompt: "選択してください"}, {id: 'grandchild_category'}
+        - else
+          .category__choose
+            = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name,{prompt: "選択してください"}, {id: 'parent_category'}
         .about-content__box
           .menu
             .menu-name

@@ -44,14 +44,11 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
   end
 
   create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "cvs", null: false
-    t.integer "expiation_date", null: false
-    t.string "card_number", null: false
-    t.string "credit_card_type", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expiation_year", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
@@ -68,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price", null: false
-    t.integer "customer_id"
+    t.integer "buyer_id"
     t.text "detail"
     t.integer "condition", default: 0, null: false
     t.string "delivery_fee", null: false

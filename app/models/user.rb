@@ -7,13 +7,15 @@ class User < ApplicationRecord
   mount_uploader :image, ImageUploader
 
 
-  has_many :credit_cards
+
+
+  
   has_many :items
+  has_one :credit_card, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :sns_credentials
   has_many :likes, dependent: :destroy
   has_one :adress
-  
   
   validates :nickname, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}

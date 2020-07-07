@@ -4,17 +4,26 @@
   .main
     .main_content
       .user
-        .user__icon
-          %img{:src => @user.image, width: "100", height: '100'}
+        - if @user.image.present?
+          .user__icon
+            %img{:src => @user.image, width: "100", height: '100'}
         .user__nickname
           = @user.nickname
       .credit
-        = link_to "クレジットカード変更画面", new_user_credit_card_path(:user_id), class: "credit_link"
-
+        - if @user.credit_card.blank?
+          .new
+            = link_to "クレジットカード新規画面", new_user_credit_card_path(:user_id), class: "credit_link"
+        - else
+          .edit
+            = link_to "クレジットカード確認画面", user_credit_card_path(:user_id,:credit_card_id),class: "credit_link"
         -if @adress.blank?
           = link_to "新規住所登録" , new_user_adress_path(current_user), class: "adress_link"
         -else
+
           = link_to "住所変更" , edit_user_adress_path(@adress), class: "adress_link"
+
+          = link_to "住所変更" , edit_user_adress_path(@user,@adress), class: "adress_link"
+
 
 
       .product

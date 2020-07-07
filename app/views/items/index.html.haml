@@ -93,7 +93,7 @@
               投稿商品
         .item-lists
           - @items.each do |item|
-            -if item.customer_id.present? 
+            -if item.buyer_id.present? 
               %ul.item-list
                 = link_to item_path(item) do
                   .sold
@@ -135,7 +135,6 @@
                           .fas.fa-star
                             = item.likes.count
                       %p
-
                         - item = item.price * 1.1
                         = "¥#{item.floor}"
                       %p
