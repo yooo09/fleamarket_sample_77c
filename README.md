@@ -89,17 +89,18 @@ Things you may want to cover:
 |user_id|references|null:false,foreginkey: true|
 |brand_id|references|foreginkey: true|
 |category_id|references|foreginkey: true|
-|price| integer| null: false
-|customer_id| integer| 
+|buyer_id| integer| 
 ### Association
 - belongs_to :user
 - belongs_to :category
 - belongs_to :brand
 - has_many :images dependent: :destroy
+- has_many :likes dependent: :destroy
+- has_many :comments dependent: :destroy
 
 
 ## images table
-|image|text|null: false|
+|src|string|null: false|
 |item_id|references|null: false,foreginkey: true|
 
 ### Association
@@ -111,16 +112,9 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |name|string|null: false|
+|ancestry|string|null: false|
 
 ### Association
 - has_many :items 
+- has_ancestry
 
-
-
-##  brands
-|Colm|Type|Option|
-|----|----|------|
-|name|string|null: false|
-
-### Association
-- has_many :items 
