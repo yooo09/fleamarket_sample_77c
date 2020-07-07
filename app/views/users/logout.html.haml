@@ -1,6 +1,8 @@
 .logout_content
   .logout_header
     = render "items/header"
+    - breadcrumb :logout
+    = breadcrumbs separator: " &rsaquo; "
   .logout_main
     .main_content
       .select

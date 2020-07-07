@@ -1,4 +1,17 @@
-.logout_main{
+.breadcrumbs {
+  a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    &:hover {
+      color:#3CCACE;
+    }
+  }
+  span{
+    font-size: 13px;
+  }
+}.logout_main{
   margin-top: 50px;
   width: 100%;
   height: 70vh;
