@@ -13,13 +13,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   resources :users, only: [:new, :show, :destroy] do
-    resources :credit_cards, only: [:new, :create, :edit, :update]
+    resources :credit_cards, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :adresses, only: [:new, :create, :edit, :update,:destroy]
     member do
       get :logout
     end
   end
 
+  
   resources :items do
     resources :comments, only: [:create, :destroy]  
     member do
@@ -27,14 +28,16 @@ Rails.application.routes.draw do
       get 'get_category_children', defaults: { format: 'json' }
       get 'get_category_grandchildren', defaults: { format: 'json' }
       get 'purchase'
+      post 'pay'
     end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
       get 'search'
       get 'deep_search'
-
     end
   end
+  
   resources :categories, only: [:index, :show]
+   
 end
