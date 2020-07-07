@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_035942) do
+ActiveRecord::Schema.define(version: 2020_07_07_014944) do
 
   create_table "adresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "zip_code", null: false
+    t.string "zip_code", null: false
     t.string "prefecture", null: false
     t.string "city", null: false
-    t.integer "house_number", null: false
+    t.string "house_number", null: false
     t.string "building"
     t.string "phone_number", null: false
     t.bigint "user_id_id", null: false
@@ -47,8 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
+    t.integer "expiation_year", null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
   end
 
@@ -66,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.datetime "updated_at", null: false
     t.integer "price", null: false
     t.integer "buyer_id"
+
     t.text "detail"
     t.integer "condition", default: 0, null: false
     t.string "delivery_fee", null: false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_035942) do
     t.integer "user_id", null: false
     t.string "brand_id"
     t.integer "category_id"
+    t.integer "customer_id"
   end
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
