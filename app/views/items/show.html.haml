@@ -2,11 +2,13 @@
   = render "header"
   .main-box
     .item
-      .item__name
-        %p
-          = @item.item_name
-        %li.fas.fa-star
-          = @likes_count
+      .item-show-box
+        .item__name
+          %p
+            = @item.item_name
+        .item-icon
+          %li.fas.fa-star
+            = @likes_count
       .item__image
         = image_tag @item.images.first.src.url
       .item__mini
