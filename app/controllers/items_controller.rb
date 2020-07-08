@@ -53,6 +53,9 @@ class ItemsController < ApplicationController
   end
    
   def purchase
+    if current_user.id == @item.user_id
+      redirect_to root_path 
+    else
     @items = Item.all
     credit_card = current_user.credit_card
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
@@ -75,6 +78,7 @@ class ItemsController < ApplicationController
       when "Discover"
         @card_src = "discover.png"
       end
+    end
   end
   
   def show
@@ -105,16 +109,20 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
-    credit_card = CreditCard.find_by(user_id: current_user.id)
-    Payjp::Charge.create(
-      amount: @item.price, # Payjpの売り上げに記載される金額
-      customer: credit_card.customer_id,
-      currency: 'jpy'
-    )
-    @item.update(buyer_id: current_user.id)
-    redirect_to root_path
-    flash[:notice] = '購入が完了しました'
+    if current_user.id == @item.user_id
+      redirect_to root_path 
+    else
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+      credit_card = CreditCard.find_by(user_id: current_user.id)
+      Payjp::Charge.create(
+        amount: @item.price, # Payjpの売り上げに記載される金額
+        customer: credit_card.customer_id,
+        currency: 'jpy'
+      )
+      @item.update(buyer_id: current_user.id)
+      redirect_to root_path
+      flash[:notice] = '購入が完了しました'
+    end
   end
 
 
