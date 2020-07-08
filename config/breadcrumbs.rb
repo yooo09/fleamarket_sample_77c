@@ -21,6 +21,11 @@ crumb :adresses do
   parent :users
 end
 
+crumb :item do
+  link Item.find(params[:id]).item_name, item_path
+  parent :root
+end
+
 
 # crumb :search do |q|
 #   link q.name_cont
