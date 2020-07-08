@@ -1,6 +1,8 @@
 .adress_new_content
   .adress_new_content_header
     =render 'items/header'
+    - breadcrumb :adresses
+    = breadcrumbs separator: " &rsaquo; "
   .adress_new_content_body
     .address_inner
       .address_inner_user_address

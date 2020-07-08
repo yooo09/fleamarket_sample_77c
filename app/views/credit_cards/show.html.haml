@@ -1,6 +1,8 @@
 .creditcard_show_content
   .credit_header
     = render "items/header"
+    - breadcrumb :credit_card
+    = breadcrumbs separator: " &rsaquo; "
   .credit_main
     .contents
       .inner
