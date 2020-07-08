@@ -1,4 +1,5 @@
 .like-new-content{
+  background-color: whitesmoke;
   h1{
     text-align: center;
     padding: 10px;
@@ -6,7 +7,9 @@
   }
   .like-content{
     height: 700px;
+    overflow: scroll;
     .like-box{
+      background-color: white;
       width: 700px;
       height: 100px;
       margin: 0 auto;
