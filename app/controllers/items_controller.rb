@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   before_action :set_category_link, only: [:show]
   before_action :set_item_search_query
   before_action :buyer, only: [:purchase, :pay]
-
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
 
@@ -41,19 +40,20 @@ class ItemsController < ApplicationController
   end
   
   def edit
-  @category_parent = @item.category.parent.parent
-  @category_child_array = @item.category.parent.parent.children
-  @category_grandchild_array = @item.category.parent.children
-  end
-  
-  def update
-    if @item.update(item_params)
-      redirect_to root_path
-    else
     @category_parent = @item.category.parent.parent
     @category_child_array = @item.category.parent.parent.children
     @category_grandchild_array = @item.category.parent.children
-    render :edit
+  end
+  
+  def update
+    @item.update(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      @category_parent = @item.category.parent.parent
+      @category_child_array = @item.category.parent.parent.children
+      @category_grandchild_array = @item.category.parent.children
+      render :edit
     end
   end
    
