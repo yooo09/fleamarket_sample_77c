@@ -80,6 +80,7 @@
 .box-first_name_kana{
   margin-bottom: 13px;
   float: right;
+  margin-right: 35px;
 }
 
 .box-nickname{
@@ -103,7 +104,7 @@
   margin-bottom: 13px;
 }
 
-.box-first_name_kana, .box-last_name_kana, .box-first_name, .box-last_name, .box-nickname label, .box-email label, .box-password label, .box-password_confirmation label, .box-birthday label{
+.box-first_name_kana, .box-last_name_kana, .box-first_name, .box-last_name, .box-nickname label, .box-email label, .box-password label, .box-password_confirmation label, .box-birthday label, .box-image label{
   font-weight: 700;
   font-size: 13px;
   padding-left: 2px;
@@ -141,7 +142,7 @@
     border-style: none;
     width: 100%;
     height: 30px;
-    background-color:rgb(125, 233, 236);
+    background-color:#3CCACE;
     border-radius: 5px;
     border: 1px #3CCACE solid;
     
@@ -169,7 +170,6 @@
   float: right;
 }
 .box-image {
-  // width: 100px;
   input {
     display: none;
   }
@@ -189,7 +189,8 @@ border: solid 1px blue;
 }
 }
 
-.new-acount-content {
+.new-acount-content, .login-acount-content{
+  margin-top: 20px;
   a{
     text-decoration: none;
     color: black;

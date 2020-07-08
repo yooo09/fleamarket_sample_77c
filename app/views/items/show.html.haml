@@ -1,5 +1,7 @@
+= render "header"
 .item_show_content
-  = render "header"
+  - breadcrumb :item
+  = breadcrumbs separator: " &rsaquo; "
   .main-box
     .item
       .item-show-box
@@ -17,9 +19,8 @@
             = image_tag image.src.url
     .price
       .price__value
-        - priceoftem = @item.price * 1.1
+        - priceoftem = @item.price 
         = "¥#{priceoftem.floor}"
-
       .price__fee
         %p
           (税込) 送料込み
@@ -81,40 +82,41 @@
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
       - else
-        - if current_user.credit_card.blank?
-          .register.btn
-            = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
-              クレジット登録画面へ進む
-        -else
+        - if user_signed_in?
+          %ul#likeBtn
+            = render partial: 'likes/like', locals: { user: @user}
+        - if user_signed_in? && @item.buyer_id.blank?
           .buy.btn
-            = link_to purchase_item_path(@item), class: "btn_text" do
-              購入画面に進む
-            %ul#likeBtn
-              = render partial: 'likes/like', locals: { user: @user}
-
-  .item_comment
-    .comment
-      -if @comments
-        - @comments.each do |comment|
-          .comment__box
-            .comment__box__user
-              = comment.user.nickname
-            - if comment.user_id == current_user.id
-              .comment__box__delete
-                = link_to  "    削除    ", item_comment_path(comment), method: :delete,class:"delete-btn"
-            .comment__box__text
-              .comment__box__text__content
-                = comment.text
-              .comment__box__text__time
-                = comment.created_at.strftime("%Y年%m月%d日")
-      .comment__precautions
-        %p
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .comment__erea
-        = form_with(model: [@item, @comment], local: true, id: "new_comment") do |form|
-          .comment__erea__submit
-            = form.text_area :text, rows: "2", class: "textbox"
-            = form.submit "コメントする", class: "form__submit"
+            - if current_user.credit_card.blank?
+              = link_to new_user_credit_card_path(:user_id) do
+                %td= button_to "購入画面に進む", class: "btn_text"
+            - else
+              = link_to purchase_item_path(@item) do
+                %td= button_to "購入画面に進む", class: "btn_text"
+  - if user_signed_in?
+    .item_comment
+      .comment
+        -if @comments
+          - @comments.each do |comment|
+            .comment__box
+              .comment__box__user
+                = comment.user.nickname
+              - if comment.user_id == current_user.id
+                .comment__box__delete
+                  = link_to  "    削除    ", item_comment_path(comment), method: :delete,class:"delete-btn"
+              .comment__box__text
+                .comment__box__text__content
+                  = comment.text
+                .comment__box__text__time
+                  = comment.created_at.strftime("%Y年%m月%d日")
+        .comment__precautions
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .comment__erea
+          = form_with(model: [@item, @comment], local: true, id: "new_comment") do |form|
+            .comment__erea__submit
+              = form.text_area :text, rows: "2", class: "textbox"
+              = form.submit "コメントする", class: "form__submit"
   .under
     .more
       %p

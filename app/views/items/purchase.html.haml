@@ -19,7 +19,7 @@
         .p-container
           .p-container__payment 支払い金額
           .p-container__p-price 
-          - priceoftem = @item.price * 1.1
+          - priceoftem = @item.price 
           = "¥#{priceoftem.floor}"
       .credit
         .credit__c-container
@@ -36,18 +36,26 @@
             .card_xep
               - exp_month = @customer_card.exp_month.to_s
               - exp_year = @customer_card.exp_year.to_s.slice(2,3)
-              = exp_month + " / " + exp_year
+              = exp_month + "/" + exp_year
       .adress
         .adress__a-container
           .adress__a-container__shipping
             .s-adress 配送先
             .a-right
-              =link_to "#" ,class:"change-adress" do
-                変更する
+              - if @adress.present?
+                =link_to edit_user_adress_path(current_user,@adress),class:"change-adress" do
+                  変更する
+              - else
+                =link_to new_user_adress_path(current_user),class:"change-adress" do
+                  登録する
           .adress__a-container__a-ditail
-            %p 〒 542-0076
-            %p 大阪府 大阪市中央区 難波 5-1-60 なんばスカイオ 15階
-            %p 難波 空緒
+            - if @adress.present?
+              %p
+                = @adress.zip_code
+              %p
+                = @adress.prefecture + " " + @adress.city
+              %p
+                = @adress.building + " " + @adress.house_number
       .purchase
         .purchase__p-container
           .p-btn

@@ -1,6 +1,8 @@
 .show_content
   .show_header
     = render "items/header"
+    - breadcrumb :users
+    = breadcrumbs separator: " &rsaquo; "
   .main
     .main_content
       .user

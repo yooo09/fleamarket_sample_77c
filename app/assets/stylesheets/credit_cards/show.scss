@@ -1,8 +1,22 @@
+.breadcrumbs {
+  a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    &:hover {
+      color:#3CCACE;
+    }
+  }
+  span{
+    font-size: 13px;
+  }
+}
 .creditcard_show_content{
   .credit_main{
     margin-top: 50px;
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     .contents{
       width: 500px;
       margin: 0 auto;
@@ -30,9 +44,11 @@
           font-weight: bold;
         
           text-align: center;
-          text-decoration: none;
+          .inner_btn_tag{
+            text-decoration: none;
+
+          }
          
-          
         }
       }
     }

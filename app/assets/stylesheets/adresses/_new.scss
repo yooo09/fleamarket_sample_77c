@@ -1,4 +1,18 @@
 .adress_new_content{
+  .breadcrumbs {
+    a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 13px;
+      &:hover {
+        color:#3CCACE;
+      }
+    }
+    span{
+      font-size: 13px;
+    }
+  }
   &_body{
     width: 100vw;
     // height: calc(100vh - 122px);
