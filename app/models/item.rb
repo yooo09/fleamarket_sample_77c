@@ -14,6 +14,8 @@ class Item < ApplicationRecord
   validates_associated:images
   validates :item_name, :images, :detail, :condition, :delivery_fee, :shipping_area, :delivery_time, :price, :user_id, :category_id, presence: true
   validates :delivery_fee,:shipping_area,:condition, exclusion: { in: %w(選択してください) }
+  validates :category_id, numericality: { greater_than: 1 }
+
   enum shipping_area:{
     # "選択してください":0,
     北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

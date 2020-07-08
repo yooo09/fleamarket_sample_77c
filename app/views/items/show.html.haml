@@ -91,25 +91,6 @@
                 %td= button_to "購入画面に進む", class: "btn_text"
           %ul#likeBtn
             = render partial: 'likes/like', locals: { user: @user}
-        
-
-            
-
-
-
-
-
-
-      -#     %td= button_to "購入画面に進む", purchase_item_path(@item), class: "btn_text"
-      -#     %ul#likeBtn
-      -#       = render partial: 'likes/like', locals: { user: @user}
-      -# - if current_user.credit_card.blank?
-      -#   .register.btn
-      -#     -# %td= button_to "クレジット登録画面へ進む", new_user_credit_card_path(:user_id), class: "btn_text"
-      -#     = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
-      -#       クレジット登録画面へ進む
-      -# -else
-
   .item_comment
     .comment
       -if @comments
