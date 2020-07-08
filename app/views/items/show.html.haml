@@ -83,6 +83,8 @@
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
       - else
+        %ul#likeBtn
+          = render partial: 'likes/like', locals: { user: @user}
         - if user_signed_in? && @item.buyer_id.blank?
           .buy.btn
             - if current_user.credit_card.blank?
@@ -91,8 +93,6 @@
             - else
               = link_to purchase_item_path(@item) do
                 %td= button_to "購入画面に進む", class: "btn_text"
-          %ul#likeBtn
-            = render partial: 'likes/like', locals: { user: @user}
   - if user_signed_in?
     .item_comment
       .comment
