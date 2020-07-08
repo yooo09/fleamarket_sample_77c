@@ -36,22 +36,22 @@
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email"
         .box-password
-        - if @sns_id.present?
-          = hidden_field_tag :sns_auth, true
-        - else
-          = f.label :password, "パスワード (7文字以上)"
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} characters minimum)
-          %br/
-          = f.password_field :password, autocomplete: "new-password"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            = f.label :password, "パスワード (7文字以上)"
+            - if @minimum_password_length
+              %em
+                (#{@minimum_password_length} characters minimum)
+            %br/
+            = f.password_field :password, autocomplete: "new-password"
         .box-password_confirmation
-        - if @sns_id.present?
-          = hidden_field_tag :sns_auth, true
-        - else
-          = f.label :password_confirmation, "パスワード (確認用)"
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password"
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            = f.label :password_confirmation, "パスワード (確認用)"
+            %br/
+            = f.password_field :password_confirmation, autocomplete: "new-password"
         .box-birthday
           = f.label :birthday, "生年月日 (例：19950511)"
           %br/
