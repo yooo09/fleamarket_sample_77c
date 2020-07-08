@@ -53,28 +53,12 @@ class ItemsController < ApplicationController
   end
    
   def purchase
+    @adress = Adress.find_by(user_id_id: current_user.id)
     @items = Item.all
     credit_card = current_user.credit_card
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       customer = Payjp::Customer.retrieve(credit_card.customer_id)
       @customer_card = customer.cards.retrieve(credit_card.card_id)
-      @card_brand = @customer_card.brand
-      case @card_brand
-      when "Visa"
-        # 例えば、Pay.jpからとってきたカード情報の、ブランドが"Visa"だった場合は返り値として
-        # (画像として登録されている)Visa.pngを返す
-        @card_src = "visa.png"
-      when "JCB"
-        @card_src = "jcb.png"
-      when "MasterCard"
-        @card_src = "master.png"
-      when "American Express"
-        @card_src = "amex.png"
-      when "Diners Club"
-        @card_src = "diners.png"
-      when "Discover"
-        @card_src = "discover.png"
-      end
   end
   
   def show

@@ -17,9 +17,8 @@
             = image_tag image.src.url
     .price
       .price__value
-        - priceoftem = @item.price * 1.1
+        - priceoftem = @item.price 
         = "¥#{priceoftem.floor}"
-
       .price__fee
         %p
           (税込) 送料込み
