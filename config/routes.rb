@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'users/registrations'
-  }
+  devise_for :users
+
+  #SNSAPI使用
+  # devise_for :users, controllers: {
+  #   omniauth_callbacks: 'users/omniauth_callbacks',
+  #   registrations: 'users/registrations'
+  # }
+  
   root 'items#index'
   post 'items/:id/edit' => 'items#edit'
   post 'items/:id/confirm' => 'items#confirm'
