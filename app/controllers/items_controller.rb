@@ -50,7 +50,10 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render :edit
+    @category_parent = @item.category.parent.parent
+    @category_child_array = @item.category.parent.parent.children
+    @category_grandchild_array = @item.category.parent.children
+    render :edit
     end
   end
    
