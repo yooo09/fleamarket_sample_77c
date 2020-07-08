@@ -81,7 +81,7 @@
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
       - else
-        - if current_user.credit_card.blank?
+        - if user_signed_in? && current_user.credit_card.blank?
           .register.btn
             = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
               クレジット登録画面へ進む
