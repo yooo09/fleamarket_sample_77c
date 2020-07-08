@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
   before_action :not_currect_user, only: [:edit, :update, :destroy, :confirm]
   before_action :set_category_link, only: [:show]
   before_action :set_item_search_query
+  before_action :buyer, only: [:purchase, :pay]
+
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
 
@@ -53,9 +55,6 @@ class ItemsController < ApplicationController
   end
    
   def purchase
-    if current_user.id == @item.user_id
-      redirect_to root_path 
-    else
     @items = Item.all
     credit_card = current_user.credit_card
     Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
@@ -78,13 +77,14 @@ class ItemsController < ApplicationController
       when "Discover"
         @card_src = "discover.png"
       end
-    end
   end
   
   def show
+    if user_signed_in?
+      credit_card = current_user.credit_card
+      @likes_count = Like.where(item_id: @item.id).count
+    end
     @items = Item.all
-    credit_card = current_user.credit_card
-    @likes_count = Like.where(item_id: @item.id).count
     @user_items = Item.where(buyer_id: nil, user: @item.user).limit(5)
     @comment = Comment.new
     @comments = @item.comments.all
@@ -109,9 +109,6 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    if current_user.id == @item.user_id
-      redirect_to root_path 
-    else
       Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
       credit_card = CreditCard.find_by(user_id: current_user.id)
       Payjp::Charge.create(
@@ -122,7 +119,6 @@ class ItemsController < ApplicationController
       @item.update(buyer_id: current_user.id)
       redirect_to root_path
       flash[:notice] = '購入が完了しました'
-    end
   end
 
 
@@ -164,6 +160,10 @@ private
 
   def not_currect_user
     redirect_to root_path if current_user.id != @item.user_id
+  end
+
+  def buyer
+    redirect_to root_path if current_user.id == @item.user_id || @item.buyer_id.present? 
   end
 
 end
