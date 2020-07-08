@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:confirm, :destroy, :show, :edit, :update, :not_currect_user, :purchase, :pay]
   before_action :set_category, only: [:index, :new, :show, :search, :deep_search, :purchase]
   before_action :not_currect_user, only: [:edit, :update, :destroy, :confirm]

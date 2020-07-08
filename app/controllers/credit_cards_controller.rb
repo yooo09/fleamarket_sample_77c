@@ -2,6 +2,7 @@ class CreditCardsController < ApplicationController
   require 'payjp'
   Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
   before_action :set_category, only: [:new, :show]
+  before_action :authenticate_user!
 
   def new
     

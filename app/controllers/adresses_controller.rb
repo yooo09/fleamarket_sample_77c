@@ -1,7 +1,9 @@
 class AdressesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category
   before_action :user_params, only: [:new, :edit ]
-  before_action :set_adress, only: [:edit, :update,:destroy]
+  before_action :set_adress, only: [:edit, :update,:destroy, :not_currect_user]
+  before_action :not_currect_user, only: [:edit, :update, :destroy]
   def new
     @adress = Adress.new
   end
@@ -43,4 +45,9 @@ class AdressesController < ApplicationController
   def user_params
     @user = User.find_by(params[:id])
   end
+
+  def not_currect_user
+    redirect_to root_path if current_user.id != @adress.user_id_id
+  end
+
 end
