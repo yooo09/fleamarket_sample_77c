@@ -81,17 +81,16 @@
         .destroy.btn
           %td= button_to "商品の削除をする", confirm_item_path(@item.id), class: "btn_text"
       - else
-        - if user_signed_in? && current_user.credit_card.blank?
-          .register.btn
-            = link_to new_user_credit_card_path(:user_id) ,class: "btn_text" do
-              クレジット登録画面へ進む
-        -else
+        - if @item.buyer_id.blank?
           .buy.btn
-            = link_to purchase_item_path(@item), class: "btn_text" do
-              購入画面に進む
-            %ul#likeBtn
-              = render partial: 'likes/like', locals: { user: @user}
-
+            - if user_signed_in? && current_user.credit_card.blank?
+              = link_to new_user_credit_card_path(:user_id) do
+                %td= button_to "購入画面に進む", class: "btn_text"
+            - else
+              = link_to purchase_item_path(@item) do
+                %td= button_to "購入画面に進む", class: "btn_text"
+          %ul#likeBtn
+            = render partial: 'likes/like', locals: { user: @user}
   .item_comment
     .comment
       -if @comments
