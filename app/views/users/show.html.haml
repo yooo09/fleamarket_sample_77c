@@ -9,45 +9,53 @@
             %img{:src => @user.image, width: "100", height: '100'}
         .user__nickname
           = @user.nickname
-      .credit
-        - if @user.credit_card.blank?
-          .new
+      .link
+        .link_credit
+          - if @user.credit_card.blank?
             = link_to "クレジットカード新規画面", new_user_credit_card_path(:user_id), class: "credit_link"
-        - else
-          .edit
+          - else
             = link_to "クレジットカード確認画面", user_credit_card_path(:user_id,:credit_card_id),class: "credit_link"
-        -if @adress.blank?
-          = link_to "新規住所登録" , new_user_adress_path(current_user), class: "adress_link"
-        -else
-
-          = link_to "住所変更" , edit_user_adress_path(@adress), class: "adress_link"
-
-          = link_to "住所変更" , edit_user_adress_path(@user,@adress), class: "adress_link"
-
-
-
+        .link_address
+          -if @adress.blank?
+            = link_to "新規住所登録" , new_user_adress_path(current_user), class: "adress_link"
+          -else
+            = link_to "住所変更" , edit_user_adress_path(@adress), class: "adress_link"
       .product
         .product_header
           購入した商品
 
         .product_items
           %input#selling.tab_radio{checked: "checked", name: "tab_item", type: "radio"}/
-          %label.tab_item{ for: "selling"} 取引中
+          %label.tab_item{ for: "selling"} 出品中の商品
           %input#bought.tab_radio{name: "tab_item", type: "radio"}/
           %label.tab_item{ for: "bought"} 購入した商品
 
           #selling_content.tab_content
             .tab_content_description
-              %p.c-txtsp 取引
-              %p.c-txtsp 取引
-              %p.c-txtsp 取引
+              -if @item.buyer_id.blank?
+                - @users.each do |user|
+                  = link_to item_path(user.id) , class:"link_tag" do
+                    .items_one
+                      .item_iamge
+                        = image_tag user.images.first.src.url, width: "100", height:"100"
+                      .item_name
+                        = user.item_name
+                        .item_price
+                          = "¥#{user.price}"
+              -else
+                出品中の商品はございません
           #bought_content.tab_content
             .tab_content_description
-              %p.c-txtsp 購入した商品
-              %p.c-txtsp 購入した商品
-              %p.c-txtsp 購入した商品
-              %p.c-txtsp 購入した商品
-
+              -@items.each do |item|
+                = link_to item_path(@item) , class:"link_tag" do
+                  .items_one
+                    .item_iamge
+                      = image_tag item.images.first.src.url, width: "100", height:"100"
+                    .item_name
+                      = item.item_name
+                      .item_price
+                        = "¥#{item.price}"
+                        
   .show_sell_icon
     = render "items/cameraicon"
   .show_footer

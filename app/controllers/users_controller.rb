@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @item = Item.find(params[:id])
+    @items = Item.where(buyer_id: current_user.id)
+    @users = @user.items.order("created_at DESC")
     @adress = Adress.find_by(user_id_id: params[:id])
     if @user.id != current_user.id
       redirect_to root_path
