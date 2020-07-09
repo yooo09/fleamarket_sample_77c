@@ -14,8 +14,7 @@
                   .item-name
                     = like.item.item_name
                   .item-price
-                    - price = like.item.price * 1.1
-                    = "¥#{price.floor}"
+                    ="￥#{like.item.price}"
                     .fee
                       %p
                         (税込) 送料込み
