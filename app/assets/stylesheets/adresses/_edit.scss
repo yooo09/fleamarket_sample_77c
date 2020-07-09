@@ -44,14 +44,24 @@
               margin-top:15px;
             }
           }
-          .address_btn{
+          .address{
             margin-top: 30px;
-            .adress_btn{
+            &_btn{
               background-color: #3CCACE;
               border: none;
               width: 100%;
               color: #fff;
+              line-height: 50px;
+            }
+            &_delete{
+              display: block;
+              text-decoration: none;
+              color: #fff;
               line-height: 50px;;
+              background-color: #3CCACE;
+              width: 100%;
+              margin-top:10px;
+              text-align: center;
             }
           }
         }
