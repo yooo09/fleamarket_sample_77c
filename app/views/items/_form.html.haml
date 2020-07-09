@@ -27,15 +27,15 @@
             
             - if @item.persisted?
               .js-file_group{"data-index" => "#{@item.images.count}"}
-                = file_field_tag :src, id: "item_images_attributes_#{@item.images.count}_src", class: 'js-file'
+                = file_field_tag :src, id: "item_images_attributes_#{@item.images.count}_src", class: 'js-file',name:"item[images_attributes][#{@item.images.count}][src]"
 
-        - unless @item.persisted? 
-          %label{for: "item_images_attributes_0_src",id:"label_image"}
+        - if @item.persisted?
+          %label{for: "item_images_attributes_#{@item.images.count}_src",id:"label_image"}
             .click_erea
               .click_erea__content
                 %pクリックして画像を選択してください
-        - if @item.persisted?
-          %label{for: "item_images_attributes_#{@item.images.count}_src",id:"label_image"}
+        - else
+          %label{for: "item_images_attributes_0_src",id:"label_image"}
             .click_erea
               .click_erea__content
                 %pクリックして画像を選択してください
