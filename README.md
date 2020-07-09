@@ -24,12 +24,14 @@ Things you may want to cover:
 * ...
 
 
+
 ## users table
 |Colm|Type|Option|
 |----|----|------|
 |nickname|string|null: false,unique: true,index: true|
 |email|integer|null: false,unique: true|
 |password|integer|null: false|
+|password_confirm|integer|null: false|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
@@ -37,22 +39,25 @@ Things you may want to cover:
 |birthday|integer|null: false|
 
 ### Association
-- has_many :adresses dependent: :destroy
-- has_many :credit_cards dependent: :destroy
+- has_one :adresses dependent: :destroy
+- has_one :credit_cards dependent: :destroy
 - has_many :items dependent: :destroy
+- has_many :comments
+- has_many :likes
+
 
 
 
 ## adresses table
 |Colm|Type|Option|
 |----|----|------|
-|zip_code|integernull: false|
+|zip_code|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
-|house_number|integer|null: false|
-|building|string|null: false|
-|phone_number|integer|null: false|
-|user_id|references|null: false,foreginkey: true|
+|house_number|string|null: false|
+|building|string|
+|phone_number|string|null: false|
+|user_id|references|null: false,foreignkey: true|
 
 ### Association
 - belongs_to :user
@@ -62,11 +67,9 @@ Things you may want to cover:
 ## credit_card table
 |Colm|Type|Option|
 |----|----|------|
-|credit_card_type|string|null: false|
-|card_number|integer|null:false|
-|CVS|integer|null:false|
-|Expiration_date|date|null: false|
-|user_id||references|null: false|foreginkey: true|
+|coutomer_id|string|null: false|
+|card_id|string|null:false|
+|user_id|references|null: false|foreignkey: true|
 
 ### Association
 - belongs_to :user
@@ -76,28 +79,31 @@ Things you may want to cover:
 ## itemes table
 |Colm|Type|Option|
 |----|----|------|
-|name|string|null: false|
+|item_name|string|null: false|
 |detail|text|
 |condition|integer|null: false,default: 0|
-|delivery_fee|integer|null: false|
-|shippig_area|string|null: false|
-|delivery_time|integer|null: false|
+|delivery_fee|string|null: false|
+|shippig_area|integer|null: false|
+|delivery_time|string|null: false|
 |price|integer|null:false|
-|user_id|references|null:false,foreginkey: true|
-|brand_id|references|foreginkey: true|
-|category_id|references|foreginkey: true|
-|price| integer| null: false
-|customer_id| integer| 
+|user_id|references|null:false,foreignkey: true|
+|brand_id|string|
+|category_id|references|null:false,foreignkey: true|
+|buyer_id|references|foreignkey: true|
+
+
 ### Association
 - belongs_to :user
 - belongs_to :category
-- belongs_to :brand
 - has_many :images dependent: :destroy
+- has_many :comments
+- has_many :likes
+
 
 
 ## images table
-|image|text|null: false|
-|item_id|references|null: false,foreginkey: true|
+|src|string|null: false|
+|item_id|references|null: false,foreignkey: true|
 
 ### Association
 - belongs_to :item
@@ -108,16 +114,35 @@ Things you may want to cover:
 |Colm|Type|Option|
 |----|----|------|
 |name|string|null: false|
+|ancestry|string|index:true|
+
 
 ### Association
 - has_many :items 
 
 
 
-##  brands
+## comment
 |Colm|Type|Option|
 |----|----|------|
-|name|string|null: false|
+|text|text|
+|user_id|references|null:false,foreignkey: true|
+|item_id|references|null: false,foreignkey: true|
+
 
 ### Association
-- has_many :items 
+-belongs_to :item
+_belongs_to :user
+
+
+
+## likes
+|Colm|Type|Option|
+|----|----|------|
+|user_id|references|null:false,foreignkey: true|
+|item_id|references|null: false,foreignkey: true|
+
+
+### Association
+-belongs_to :item
+_belongs_to :user
